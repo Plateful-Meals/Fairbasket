@@ -1643,6 +1643,186 @@ section.pf-home-logo .pf-logo.pf-logo--stack .pf-tagline{color:var(--on-band)}
   .pf48-best{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--harbour);color:var(--paper);font-size:.74rem;font-weight:800;line-height:1.2;white-space:nowrap}
 }
 @media (max-width:760px) and (prefers-reduced-motion:reduce){ .toast{animation:none} }
+/* v49 (13 Oct 2026): review fixes. Price and main buttons sooner, recipes on the first phone screen, a calmer desktop menu, clearer live/estimate note, shorter desktop lists. */
+.pf49-peek{display:none}
+/* ---------- phones ---------- */
+@media (max-width:760px){
+  /* recipe page: title, facts, picture, servings, buttons, then the price straight away */
+  .mealhead .meal-time{display:none}
+  .mealhead .meal-kind{font-size:.88rem;margin-top:2px}
+  .mealhead .mh-img > .f46-btn{order:10;margin-top:14px}
+  .mealhead #nut-slot{order:10}
+  .mealhead .settings{order:11}
+  .mealhead .meal-more{order:9;margin-top:14px}
+  .mealhead .meal-actions{flex-wrap:nowrap;gap:8px;margin-top:14px}
+  .mealhead .meal-actions > *{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px;font-size:.92rem;white-space:normal;line-height:1.2}
+  .mealhead .controls{margin-top:14px;gap:10px}
+  .mealhead #answer{margin-top:4px}
+  /* home: search on one row, quick picks under it, shortcuts after the recipes */
+  body[data-view="home"] main{display:flex;flex-direction:column}
+  body[data-view="home"] main > .hero{order:0}
+  body[data-view="home"] main > .popular{order:1}
+  body[data-view="home"] main > .promos{order:2;margin-top:8px}
+  body[data-view="home"] main > *{order:3}
+  .hero .search-row{flex-direction:row;gap:8px;align-items:stretch}
+  .hero .search-row input{flex:1;min-width:0}
+  .hero .search-row .btn{flex:none;width:auto;padding:0 18px;min-height:52px}
+  .hero p.err:empty{display:none}
+  .hero .controls{gap:12px;margin-top:14px}
+  .hero .controls #compare{min-height:46px}
+  .pf49-peek{display:block;margin:16px 0 0}
+  .pf49-peek h2{font-size:1rem;font-stretch:100%;font-weight:700;margin:0 0 8px;color:inherit;opacity:1}
+  .pf49-row{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;padding:2px 20px 8px;margin:0 -20px;list-style:none;scrollbar-width:none}
+  .pf49-row::-webkit-scrollbar{display:none}
+  .pf49-row li{flex:0 0 42%;scroll-snap-align:start}
+  .pf49-card{display:flex;flex-direction:column;gap:4px;width:100%;height:100%;padding:0 0 10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-align:left;font:inherit;cursor:pointer;overflow:hidden}
+  .pf49-card svg{display:block;width:100%;height:70px;object-fit:cover}
+  .pf49-card .pf49-n{padding:4px 10px 0;font-weight:700;font-size:.86rem;line-height:1.2;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  .pf49-card .pf49-p{padding:0 10px;font-size:.8rem;color:var(--muted)}
+  .pf49-card .pf49-p .tag{font-size:.95rem;padding:2px 6px 1px;transform:none}
+  .pf49-all{display:inline-block;margin-top:4px;padding:10px 0;background:none;border:0;color:inherit;font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px}
+  .popular .pop-head #pop-hint{font-size:.88rem}
+  /* bottom tab labels a touch bigger */
+  header.top .nav-b{font-size:.75rem}
+}
+/* ---------- computers ---------- */
+@media (min-width:761px){
+  /* fewer menu links: Previous, Favourites and Saved sit under "More" */
+  header.top .nav{position:relative}
+  #nav-more{display:inline-flex}
+  #nav-more .nav-i{display:none}
+  #nav-more::after{content:'';width:7px;height:7px;margin:-3px 0 0 2px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .15s}
+  #nav-more[aria-expanded="true"]::after{transform:rotate(-135deg);margin-top:4px}
+  header.top .nav #nav-prev,header.top .nav #nav-favs,header.top .nav #nav-saved{display:none}
+  header.top .nav.open #nav-prev,header.top .nav.open #nav-favs,header.top .nav.open #nav-saved{display:flex;position:absolute;right:0;min-width:11rem;padding:0 16px;min-height:46px;z-index:60;background:var(--surface);border:1px solid var(--line);border-bottom-width:1px;color:var(--ink);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+  header.top .nav.open #nav-prev{top:calc(100% + 6px);border-radius:10px 10px 0 0}
+  header.top .nav.open #nav-favs{top:calc(100% + 52px);border-top:0}
+  header.top .nav.open #nav-saved{top:calc(100% + 98px);border-top:0;border-radius:0 0 10px 10px}
+  header.top .nav.open #nav-prev:hover,header.top .nav.open #nav-favs:hover,header.top .nav.open #nav-saved:hover{background:var(--harbour-soft)}
+  body[data-view="prev"] #nav-more,body[data-view="favs"] #nav-more,body[data-view="saved"] #nav-more{color:var(--ink);border-bottom-color:var(--tag)}
+  /* long item lists in the price cards start folded, like on phones */
+  .ans-opt .f46-btn,.basket .f46-btn{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;min-height:40px;margin:10px 0 4px;padding:6px 12px;border:1px solid var(--line);border-radius:10px;background:none;color:var(--ink);font:inherit;font-size:.9rem;font-weight:600;text-align:left;cursor:pointer}
+  .ans-opt .f46-btn::after,.basket .f46-btn::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-4px;flex:none}
+  .ans-opt .f46-btn[aria-expanded=true]::after,.basket .f46-btn[aria-expanded=true]::after{transform:rotate(-135deg);margin-top:4px}
+  .ans-opt .f46-btn:hover,.basket .f46-btn:hover{background:var(--harbour-soft)}
+  .ans-opt .f46-f.f46-shut,.basket .f46-f.f46-shut{display:none!important}
+}
+/* ---------- both: the live / estimate note reads as a clear notice ---------- */
+.answer .ans-note{display:block;max-width:none;margin-top:12px;padding:8px 12px;border-left:3px solid var(--tag);border-radius:6px;background:var(--table);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){ #nav-more::after{transition:none} }
+/* v50 base: shared "feels like an app" rules. Phone only; the desktop page is untouched. */
+@keyframes pv-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pv-pop{0%{transform:scale(1)}40%{transform:scale(.9)}100%{transform:scale(1)}}
+@keyframes pv-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (max-width:760px){
+  html{-webkit-text-size-adjust:100%}
+  body{overscroll-behavior-y:none}
+  main.pv-enter,#app.pv-enter{animation:pv-enter .24s cubic-bezier(.2,.8,.2,1)}
+  button,.btn,.btn-ghost,.chip,.pick,.mcard,.nav-b,.pf49-card{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  button:active,.mcard:active{transition:transform .08s}
+  .mcard:active{transform:scale(.975)}
+  /* the small print link moves out of the way: the page is the app */
+  header.top #pill-about{font-size:.74rem;padding:5px 10px}
+  .hint,.ans-note{font-size:.84rem}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){main.pv-enter,#app.pv-enter{animation:none}}
+
+/* ===== v50 (13 Oct 2026): the app-style phone design, picked from the previews.
+   Floating tab bar and pill back button (A), home tiles and rounded recipe cards (E),
+   recipe page with a big rounded picture and a sticky price + Add bar (D). Phone only. ===== */
+.pv-tiles{display:none}
+@keyframes pv-in{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  /* --- floating tab bar (A) --- */
+  body{padding-bottom:104px}
+  html{scroll-padding-bottom:110px}
+  html:has(body.has-bar){scroll-padding-bottom:220px}
+  html:has(body[data-view="meal"]){scroll-padding-bottom:190px}
+  header.top .nav{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;border:1px solid var(--line);border-radius:30px;background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.28);padding:6px;gap:2px;overflow:visible}
+  header.top .nav .nav-b{min-height:56px;border-radius:24px;border-top:0;padding:6px 2px;transition:background-color .2s,color .2s}
+  header.top .nav .nav-b[aria-current="page"],#nav-more.cur{background:var(--tag);color:var(--tag-ink);box-shadow:0 3px 10px rgba(0,0,0,.22);border-top:0}
+  header.top .nav .nav-b[aria-current="page"] .nav-i{animation:pv-bob .5s ease-out;stroke-width:2.3}
+  header.top .nav.open .nav-x2{border-radius:0}
+  header.top .nav.open #nav-left{border-radius:16px 16px 0 0}
+  header.top .nav.open #nav-saved{border-radius:0 0 16px 16px}
+  header.top .nav.open #nav-left{bottom:calc(306px + env(safe-area-inset-bottom,0px))}
+  header.top .nav.open #nav-budget{bottom:calc(252px + env(safe-area-inset-bottom,0px))}
+  header.top .nav.open #nav-prev{bottom:calc(198px + env(safe-area-inset-bottom,0px))}
+  header.top .nav.open #nav-favs{bottom:calc(144px + env(safe-area-inset-bottom,0px))}
+  header.top .nav.open #nav-saved{bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(98px + env(safe-area-inset-bottom,0px))!important}
+  body.has-bar .toast{bottom:calc(206px + env(safe-area-inset-bottom,0px))!important}
+  /* the My shop bar floats too, just above the tab bar */
+  .shopbar{bottom:calc(84px + env(safe-area-inset-bottom,0px));border-radius:22px 22px 0 0;border-top:2px solid var(--harbour)}
+  body.has-bar{padding-bottom:210px}
+  .pf47-top{bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+  body.has-bar .pf47-top{bottom:calc(206px + env(safe-area-inset-bottom,0px))}
+  /* on a recipe the sticky price + Add bar replaces the My shop bar (the tab shows the count) */
+  body[data-view="meal"] .shopbar{display:none!important}
+  body.has-bar[data-view="meal"] .pf47-top{bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+  body.has-bar[data-view="meal"] .toast{bottom:calc(178px + env(safe-area-inset-bottom,0px))!important}
+  /* --- pill back button (A) --- */
+  .back{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 16px 8px 12px;margin:2px 0 6px;border-radius:999px;background:var(--harbour-soft);text-decoration:none;font-size:.9rem;color:var(--ink)}
+  .back::before{content:'\2039';font-size:1.5rem;line-height:1;font-weight:700;margin-top:-2px}
+  /* --- softer, rounder boxes and buttons (A) --- */
+  .answer,.basket,.panel{border-radius:24px}
+  .ans-opt,.l-promo,.f46-btn,.btn,.btn-ghost{border-radius:18px}
+  .chip{border-radius:999px}
+  .btn{box-shadow:0 5px 14px rgba(0,0,0,.2)}
+  .seg{background:var(--harbour-soft);padding:4px;border-radius:999px;border:0;gap:2px}
+  .seg .chip{border:0;background:transparent;border-radius:999px;white-space:nowrap;padding-left:16px;padding-right:16px}
+  .seg .chip[aria-pressed="true"],.seg .chip.on,.seg .chip.cur{background:var(--tag);color:var(--tag-ink)}
+  /* --- home: compact hero and big tiles (E) --- */
+  .hero{padding:16px 16px 20px;border-radius:0 0 28px 28px}
+  .hero .lede,.hero .controls{display:none}
+  .hero h1{font-size:2rem}
+  .hero .search-row input{border-radius:18px}
+  .hero .search-row .btn{border-radius:18px}
+  .hero .search-row input{padding-left:14px;padding-right:10px}
+  body[data-view="home"] main > .promos,.pf49-peek{display:none!important}
+  body[data-view="home"] main > .pv-tiles{order:0}
+  .pv-tiles{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(112px,auto);gap:12px;padding:16px 16px 4px}
+  .pv-tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;padding:52px 14px 14px;border:0;border-radius:24px;text-align:left;font:inherit;color:var(--ink);background:var(--harbour-soft);overflow:hidden;cursor:pointer;animation:pv-in .35s both}
+  .pv-tile:nth-child(2){animation-delay:.05s}.pv-tile:nth-child(3){animation-delay:.1s}.pv-tile:nth-child(4){animation-delay:.15s}.pv-tile:nth-child(5){animation-delay:.2s}
+  .pv-tile svg{position:absolute;top:12px;left:14px;width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .pv-tile b{font-size:1.1rem;font-weight:800;line-height:1.1}
+  .pv-tile span{font-size:.8rem;color:inherit;line-height:1.25}
+  .pv-tile.t1{background:var(--tag);color:var(--tag-ink);grid-column:span 2;min-height:96px}
+  .pv-tile.t1 span{color:var(--tag-ink)}
+  .pv-tile.t2{background:var(--harbour);color:var(--on-harbour)}
+  .pv-tile.t2 span{color:var(--on-harbour)}
+  .pv-tile:active{transform:scale(.96)}
+  .popular{padding-top:14px}
+  .popular .pop-head h2{font-size:1.4rem}
+  /* --- recipe cards: rounded, with a round-cornered + button (E) --- */
+  ul.meals{gap:12px}
+  .mcard{border-radius:26px;border:0;background:var(--harbour-soft);overflow:hidden;position:relative}
+  .mcard .meal-img svg,.mcard svg.meal-img{border-radius:0;height:100px}
+  .mcard .meal-body{padding:10px 14px 56px}
+  .mcard .meal-meta{display:none}
+  .mcard .meal-price{position:absolute;left:14px;bottom:12px;max-width:calc(100% - 72px);font-size:.74rem;line-height:1.25}
+  .mcard .meal-price .tag{font-size:1rem;padding:2px 6px 1px}
+  .mcard .pick{position:absolute;right:10px;bottom:10px;margin:0;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border-radius:16px;font-size:0;background:var(--harbour);border:0}
+  .mcard .pick::before{content:'+';font-size:1.7rem;font-weight:800;line-height:44px;color:var(--on-harbour);display:block}
+  .mcard .pick[aria-pressed="true"]::before,.mcard .pick.in::before{content:'\2713';font-size:1.3rem}
+  .mcard .fav{top:8px;right:8px}
+  /* --- recipe page: big rounded picture and a sticky price + Add bar (D) --- */
+  body[data-view="meal"] .mealhead .dish-img{width:100%;margin:8px 0 0;border-radius:28px;box-shadow:0 10px 26px rgba(0,0,0,.22)}
+  body[data-view="meal"] .mealhead h1{font-size:2.1rem}
+  body[data-view="meal"]{padding-bottom:184px}
+  body.has-bar[data-view="meal"]{padding-bottom:184px}
+  .pv-cta{position:fixed;left:12px;right:12px;bottom:calc(94px + env(safe-area-inset-bottom,0px));z-index:58;display:none;align-items:center;gap:12px;padding:10px 10px 10px 18px;border-radius:22px;background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 28px rgba(0,0,0,.32)}
+  body[data-view="meal"] .pv-cta{display:flex;animation:pv-enter .3s .1s both}
+
+  .pv-cta .pv-p{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+  .pv-cta .pv-p small{font-size:.74rem;color:var(--muted);font-weight:600}
+  .pv-cta .pv-p b{font-size:1.45rem;font-weight:850;font-stretch:80%}
+  .pv-cta button{flex:1;min-height:50px;border:0;border-radius:16px;background:var(--harbour);color:var(--on-harbour);font:inherit;font-weight:800;font-size:1rem;cursor:pointer}
+  .pv-cta button:active{transform:scale(.97)}
+}
+@media (min-width:761px){.pv-cta,.pv-tiles{display:none!important}}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.pv-tile,body[data-view="meal"] .pv-cta,header.top .nav .nav-b[aria-current="page"] .nav-i{animation:none}}
+@media (max-width:340px){.hero{padding-left:12px;padding-right:12px}.hero .search-row .btn{padding:0 12px}}
 </style>
 <!-- =====================================================================
   STEP 4 - COIN-TOSS INTRO
@@ -1749,7 +1929,7 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
     inOutCubic: function (u) { return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; }
   };
   function reduced() { return !!(win.matchMedia && win.matchMedia('(prefers-reduced-motion: reduce)').matches); }
-  function seen() { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+  function seen() { try { if (sessionStorage.getItem(KEY) === '1') return true; } catch (e) {} try { return ['plateful-basket', 'plateful-mylist', 'plateful-life', 'plateful-recipes', 'plateful-saved', 'plateful-leftovers'].some(function (k) { return localStorage.getItem(k) !== null; }); } catch (e) { return false; } }
   function markSeen() { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} }
   function logos() { return Array.prototype.slice.call(d.querySelectorAll('.pf-logo')); }
   function visible(el) { var r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; }
@@ -9640,6 +9820,124 @@ function tidy46(){
   }
   let q = 0, obs;
   const run = () => { q = 0; obs.disconnect(); try { polish48(); } catch (e) {} obs.observe(document.body, {childList: true, subtree: true}); };
+  obs = new MutationObserver(() => { if (!q) q = requestAnimationFrame(run); });
+  run();
+})();
+
+/* v49 (13 Oct 2026): review fixes. Price straight after the main buttons, quick picks on the phone home page. */
+(function(){
+  const mq = window.matchMedia('(max-width:760px)');
+  const esc49 = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  /* recipe page: put the price card before the favourites / planner buttons (phones already order it with CSS) */
+  function moveAnswer(){
+    const a = document.getElementById('answer'), m = document.getElementById('meal-more');
+    if (!a || !m || a.parentNode !== m.parentNode) return;
+    if (m.compareDocumentPosition(a) & Node.DOCUMENT_POSITION_FOLLOWING){
+      const note = document.getElementById('bg-note');
+      if (note && note.parentNode === m.parentNode) m.parentNode.insertBefore(note, m);
+      m.parentNode.insertBefore(a, m);
+    }
+  }
+  /* phone home page: a strip of the cheapest recipes right under the search box */
+  let peekSig = '';
+  function peek(){
+    const hero = document.querySelector('.hero .hero-main');
+    const old = document.querySelector('.pf49-peek');
+    if (!mq.matches || document.body.dataset.view !== 'home' || !hero || window.PF_NO_FOLD){ if (old) old.remove(); peekSig = ''; return; }
+    const cards = [...document.querySelectorAll('ul.meals > li.mcard')].slice(0, 8);
+    if (!cards.length){ if (old) old.remove(); return; }
+    const sig = cards.map(c => { const b = c.querySelector('.meal'); return (b && b.dataset.id) + (c.querySelector('.tag') || {}).textContent; }).join('|');
+    if (old && sig === peekSig && old.parentNode) return;
+    peekSig = sig;
+    const sec = document.createElement('section'); sec.className = 'pf49-peek'; sec.setAttribute('aria-labelledby', 'pf49-h');
+    sec.innerHTML = '<h2 id="pf49-h">Cheapest right now</h2><ul class="pf49-row"></ul><button type="button" class="pf49-all">See all recipes</button>';
+    const row = sec.querySelector('ul');
+    cards.forEach((c, i) => {
+      const b = c.querySelector('.meal'); if (!b) return;
+      const name = (c.querySelector('.meal-name') || {}).textContent || '';
+      const tag = (c.querySelector('.meal-price .tag') || {}).textContent || '';
+      const li = document.createElement('li');
+      li.innerHTML = `<button type="button" class="pf49-card" data-act="open" data-id="${esc49(b.dataset.id)}" aria-label="${esc49(name)}, from ${esc49(tag)}"><span class="pf49-n">${esc49(name)}</span><span class="pf49-p">From <span class="tag">${esc49(tag)}</span></span></button>`;
+      const svg = c.querySelector('svg');
+      if (svg){
+        const k = svg.cloneNode(true); k.setAttribute('aria-hidden', 'true'); k.setAttribute('focusable', 'false');
+        const ids = {}; k.querySelectorAll('[id]').forEach(e => { const n = e.id + '-pk' + i; ids[e.id] = n; e.id = n; });
+        if (Object.keys(ids).length) k.querySelectorAll('*').forEach(e => { for (const at of [...e.attributes]) { let v = at.value, ch = false; for (const o in ids) { if (v.indexOf('#' + o) >= 0) { v = v.split('#' + o + ')').join('#' + ids[o] + ')').split('url(#' + o + ')').join('url(#' + ids[o] + ')'); if (v === '#' + o) v = '#' + ids[o]; ch = true; } } if (ch) e.setAttribute(at.name, v); } });
+        li.firstChild.insertBefore(k, li.firstChild.firstChild);
+      }
+      row.appendChild(li);
+    });
+    sec.querySelector('.pf49-all').addEventListener('click', () => { const p = document.querySelector('.popular'); if (p) p.scrollIntoView({block: 'start'}); });
+    if (old) old.replaceWith(sec);
+    else { const s = hero.querySelector('.search'); hero.insertBefore(sec, s ? s.nextSibling : hero.firstChild); }
+  }
+  /* phone search box: a shorter hint so it is never cut off next to the Search button */
+  function hint(){
+    const q = document.getElementById('q'); if (!q) return;
+    if (!q.dataset.pf49) q.dataset.pf49 = q.getAttribute('placeholder') || '';
+    const want = mq.matches ? 'Search recipes' : q.dataset.pf49;
+    if (q.getAttribute('placeholder') !== want) q.setAttribute('placeholder', want);
+  }
+  function run49(){ moveAnswer(); peek(); hint(); }
+  let q = 0, obs;
+  const run = () => { q = 0; obs.disconnect(); try { run49(); } catch (e) {} obs.observe(document.body, {childList: true, subtree: true}); };
+  obs = new MutationObserver(() => { if (!q) q = requestAnimationFrame(run); });
+  mq.addEventListener && mq.addEventListener('change', () => { peekSig = ''; run(); });
+  run();
+})();
+
+/* v50 (13 Oct 2026): app-style phone helpers: page-change slide-in, the sticky price + Add bar on recipes, the home tiles. Phone only. */
+(function(){
+  const mq = window.matchMedia('(max-width:760px)');
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let lastView = document.body.dataset.view;
+  /* a short slide-in each time you move to another page */
+  function enter(){
+    const v = document.body.dataset.view;
+    if (v === lastView) return; lastView = v;
+    const m = document.getElementById('app'); if (!m || !mq.matches) return;
+    m.classList.remove('pv-enter'); void m.offsetWidth; m.classList.add('pv-enter');
+    setTimeout(() => m.classList.remove("pv-enter"), 260);
+  }
+  /* D: a bar at the bottom of a recipe with the price and the main button */
+  let cta = null;
+  function ctaBar(){
+    if (!cta){
+      cta = document.createElement('aside'); cta.className = 'pv-cta'; cta.setAttribute('aria-label', 'Price and add to my shop');
+      cta.innerHTML = '<div class="pv-p"><small></small><b></b></div><button type="button"></button>';
+      cta.querySelector('button').addEventListener('click', () => { const p = document.getElementById('pick-main'); if (p) p.click(); });
+      document.body.appendChild(cta);
+    }
+    const main = document.getElementById('pick-main'), tag = document.querySelector('#answer .ans-opt.win .tag') || document.querySelector('#answer .tag');
+    const want = (!main || !tag) ? 'none' : '';
+    if (cta.style.display !== want) cta.style.display = want;
+    if (want) return;
+    const hd = document.querySelector('#answer .ans-h');
+    const set = (el, t) => { if (el.textContent !== t) el.textContent = t; };   /* only touch the page when something changed */
+    set(cta.querySelector('small'), hd ? hd.textContent : 'Cheapest');
+    set(cta.querySelector('b'), tag.textContent.trim());
+    const bt = cta.querySelector('button'), txt = main.textContent.trim();
+    if (bt.textContent !== txt) bt.textContent = txt;
+  }
+  /* E: five big tiles under the search box */
+  const ICON = {
+    left:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14zM5 19c2-4 5-7 9-9"/></svg>',
+    budget:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 8.5c-.6-.9-1.5-1.3-2.5-1.3-1.5 0-2.5 1-2.5 2.3 0 2.7 1 3.1 1 4.7 0 .8-.5 1.3-1.3 1.7h5M8.8 12.2h4.4"/></svg>',
+    plan:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>',
+    fav:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+    list:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>'
+  };
+  const TILES = [['t1','goleft','left','Use up your leftovers','Tell us what is in the fridge'],['t2','gobudget','budget','Cook to a budget','Set what you can spend'],['','goplan','plan','Meal planner','Plan your week'],['','gofavs','fav','Favourites','Meals you love'],['','golist','list','Shopping list','Build one, tick it off']];
+  function tiles(){
+    const old = document.querySelector('.pv-tiles'), hero = document.querySelector('main .hero');
+    if (!mq.matches || document.body.dataset.view !== 'home' || !hero){ if (old) old.remove(); return; }
+    if (old) return;
+    const s = document.createElement('section'); s.className = 'pv-tiles'; s.setAttribute('aria-label', 'Quick links');
+    s.innerHTML = TILES.map(t => `<button type="button" class="pv-tile ${t[0]}" data-act="${t[1]}">${ICON[t[2]]}<b>${esc(t[3])}</b><span>${esc(t[4])}</span></button>`).join('');
+    hero.parentNode.insertBefore(s, hero.nextSibling);
+  }
+  let q = 0, obs;
+  const run = () => { q = 0; obs.disconnect(); try { enter(); ctaBar(); tiles(); } catch (e) {} obs.observe(document.body, {childList: true, subtree: true}); };
   obs = new MutationObserver(() => { if (!q) q = requestAnimationFrame(run); });
   run();
 })();
