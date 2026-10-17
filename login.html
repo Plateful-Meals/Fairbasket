@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Log in or sign up | Plateful</title>
+<meta name="description" content="Log in or create a free Plateful account to save your meals, shops and favourites.">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#1B2D22">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://apis.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.gstatic.com; font-src 'self'; connect-src 'self' https://*.googleapis.com https://apis.google.com; frame-src 'self' https://*.firebaseapp.com https://*.web.app https://accounts.google.com https://content.googleapis.com https://apis.google.com; base-uri 'none'; form-action 'self'; object-src 'none'">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="login.css">
+</head>
+<body data-view="welcome">
+<a class="skip" href="#card">Skip to the form</a>
+
+<div class="shell">
+
+<section class="brand" aria-label="About Plateful">
+<a class="logo" href="index.html" data-skip aria-label="Plateful home">
+<svg width="46" height="46" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#FBF8EE" stroke-width="2.5"/><circle cx="22" cy="22" r="13" fill="#FBF8EE"/><text x="22" y="28" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="18" fill="#1B2D22">£</text></svg>
+<span class="logo-text"><span class="logo-name">Plateful</span><span class="logo-tag">PLAN · COMPARE · SAVE</span></span>
+</a>
+
+<div class="copy">
+<p class="h1 copy-welcome">Eat well for less.</p>
+<p class="h1 copy-signup">Your meals, in one place.</p>
+<p class="h1 copy-login">Welcome back.</p>
+<p class="lede copy-welcome">Find the cheapest shop for every recipe and plan your week around your budget.</p>
+<p class="lede copy-signup">Save favourites, your weekly planner and your shopping lists on every device.</p>
+<p class="lede copy-login">Pick up where you left off with your saved meals, planner and shops.</p>
+</div>
+
+<ul class="tiles" aria-label="What Plateful does">
+<li class="tile tile-yellow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 8.8c-.6-.6-1.4-.9-2.4-.9-1.4 0-2.4.8-2.4 2 0 2.7 4.9 1.5 4.9 4.2 0 1.2-1.1 2-2.6 2-1 0-1.9-.4-2.5-1M12 6.5v1.4M12 15.9v1.6"/></svg>Cook to a budget</li>
+<li class="tile tile-sage"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Plan your week</li>
+<li class="tile tile-dark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16l-1.6 9.2a2 2 0 0 1-2 1.7H7.6a2 2 0 0 1-2-1.7L4 7z"/><path d="M9 7V5.5A2.5 2.5 0 0 1 11.5 3h1A2.5 2.5 0 0 1 15 5.5V7"/></svg>Find the cheapest shop</li>
+</ul>
+</section>
+
+<main class="panel">
+<h1 class="sr">Log in or sign up to Plateful</h1>
+<div class="card" id="card">
+
+<p class="setup-note" id="setup-note" hidden>Sign-in is not switched on yet. The site owner needs to finish the setup in <code>firebase-config.js</code>.</p>
+
+<!-- 1. Get started -->
+<section id="v-welcome" aria-labelledby="h-welcome">
+<h2 id="h-welcome">Get started</h2>
+<p class="sub">Make a free account to save your meals, shops and favourites.</p>
+<div class="stack">
+<button type="button" class="btn btn-light" data-social="google" data-lock>
+<svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+Continue with Google</button>
+<button type="button" class="btn btn-yellow" data-go="signup" data-lock>Sign up with email</button>
+</div>
+<p class="msg msg-err" id="err-welcome" role="alert" hidden></p>
+<label class="check"><input type="checkbox" id="remember-welcome" checked> <span>Keep me signed in on this device</span></label>
+<p class="swap">Already have an account? <a href="#" data-go="login">Log in</a></p>
+<p class="swap swap-skip"><a href="index.html" data-skip>Continue without an account</a></p>
+<p class="fine">By continuing you agree to the <a href="index.html#terms">Terms of use</a> and <a href="index.html#privacy">Privacy page</a>. We never save your postcode.</p>
+</section>
+
+<!-- 2. Sign up -->
+<section id="v-signup" aria-labelledby="h-signup" hidden>
+<button type="button" class="back" data-go="welcome" aria-label="Back"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<h2 id="h-signup">Create your account</h2>
+<p class="sub">Free, and it takes under a minute.</p>
+<div class="pair">
+<button type="button" class="btn btn-light" data-social="google" data-lock>
+<svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+Google</button>
+</div>
+<div class="or"><span>or use your email</span></div>
+<form id="form-signup" novalidate>
+<label class="field"><span>First name</span><input id="su-name" type="text" autocomplete="given-name" maxlength="60" placeholder="Your name"></label>
+<label class="field"><span>Email</span><input id="su-email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" autocapitalize="none" spellcheck="false"></label>
+<label class="field"><span>Password</span>
+<span class="pw"><input id="su-password" type="password" autocomplete="new-password" maxlength="128" placeholder="At least 8 characters" aria-describedby="pw-hint"><button type="button" class="reveal" data-reveal="su-password" aria-pressed="false" aria-label="Show password">Show</button></span>
+</label>
+<p class="hint" id="pw-hint">Use 8 or more characters.</p>
+<label class="check"><input type="checkbox" id="remember-signup" checked> <span>Keep me signed in on this device</span></label>
+<p class="msg msg-err" id="err-signup" role="alert" hidden></p>
+<button type="submit" class="btn btn-yellow" data-lock>Create account</button>
+</form>
+<p class="swap">Already have an account? <a href="#" data-go="login">Log in</a></p>
+<p class="swap swap-skip"><a href="index.html" data-skip>Continue without an account</a></p>
+<p class="fine">By creating an account you agree to the <a href="index.html#terms">Terms of use</a> and <a href="index.html#privacy">Privacy page</a>. We will email you once to confirm your address.</p>
+</section>
+
+<!-- 3. Log in -->
+<section id="v-login" aria-labelledby="h-login" hidden>
+<button type="button" class="back" data-go="welcome" aria-label="Back"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<h2 id="h-login">Log in</h2>
+<p class="sub">Use the same way you signed up.</p>
+<p class="msg msg-ok" id="ok-login" role="status" hidden></p>
+<div class="pair">
+<button type="button" class="btn btn-light" data-social="google" data-lock>
+<svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+Google</button>
+</div>
+<div class="or"><span>or use your email</span></div>
+<form id="form-login" novalidate>
+<label class="field"><span>Email</span><input id="li-email" type="email" autocomplete="username" inputmode="email" maxlength="254" placeholder="you@example.com" autocapitalize="none" spellcheck="false"></label>
+<label class="field"><span>Password</span>
+<span class="pw"><input id="li-password" type="password" autocomplete="current-password" maxlength="128" placeholder="Your password"><button type="button" class="reveal" data-reveal="li-password" aria-pressed="false" aria-label="Show password">Show</button></span>
+</label>
+<div class="row">
+<label class="check"><input type="checkbox" id="remember-login" checked> <span>Keep me signed in</span></label>
+<a href="#" class="forgot" data-go="forgot">Forgot password?</a>
+</div>
+<p class="msg msg-err" id="err-login" role="alert" hidden></p>
+<button type="submit" class="btn btn-yellow" data-lock>Log in</button>
+</form>
+<p class="swap">New to Plateful? <a href="#" data-go="signup">Create an account</a></p>
+<p class="swap swap-skip"><a href="index.html" data-skip>Continue without an account</a></p>
+</section>
+
+<!-- 4. Check your email -->
+<section id="v-verify" aria-labelledby="h-verify" hidden>
+<svg class="mail" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 6 8-6"/></svg>
+<h2 id="h-verify">Check your email</h2>
+<p class="sub">We sent a confirmation link to <strong id="verify-email"></strong>. Open it to finish creating your account.</p>
+<p class="msg msg-ok" id="ok-verify" role="status" hidden></p>
+<p class="msg msg-err" id="err-verify" role="alert" hidden></p>
+<div class="stack">
+<button type="button" class="btn btn-yellow" id="btn-checked" data-lock>I have confirmed my email</button>
+<button type="button" class="btn btn-ghost" id="btn-resend">Send the email again</button>
+</div>
+<p class="fine">Nothing there? Look in your spam or junk folder. The email comes from Plateful's sign-in service and can take a minute.</p>
+<p class="swap"><button type="button" class="linkbtn" id="btn-other">Use a different email</button></p>
+</section>
+
+<!-- 5. Forgot password -->
+<section id="v-forgot" aria-labelledby="h-forgot" hidden>
+<button type="button" class="back" data-go="login" aria-label="Back to log in"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<h2 id="h-forgot">Reset your password</h2>
+<p class="sub">Enter your email and we will send you a link to choose a new password.</p>
+<form id="form-forgot" novalidate>
+<label class="field"><span>Email</span><input id="fg-email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" autocapitalize="none" spellcheck="false"></label>
+<p class="msg msg-ok" id="ok-forgot" role="status" hidden></p>
+<p class="msg msg-err" id="err-forgot" role="alert" hidden></p>
+<button type="submit" class="btn btn-yellow" data-lock>Send reset link</button>
+</form>
+<p class="swap"><a href="#" data-go="login">Back to log in</a></p>
+</section>
+
+</div>
+</main>
+
+</div>
+
+<noscript><p class="noscript">Plateful needs JavaScript switched on to log you in.</p></noscript>
+<script src="firebase-config.js"></script>
+<script src="login.js"></script>
+</body>
+</html>
