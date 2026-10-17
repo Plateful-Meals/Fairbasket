@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Confirm your email | Plateful</title>
+<meta name="description" content="Confirm your email or choose a new password for Plateful.">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#1B2D22">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://apis.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.gstatic.com; font-src 'self'; connect-src 'self' https://*.googleapis.com https://apis.google.com; frame-src 'self' https://*.firebaseapp.com https://*.web.app https://accounts.google.com https://content.googleapis.com https://apis.google.com; base-uri 'none'; form-action 'self'; object-src 'none'">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="login.css">
+<style>.copy-welcome{display:block}</style>
+</head>
+<body data-view="working">
+<a class="skip" href="#card">Skip to the content</a>
+<div class="shell">
+<section class="brand" aria-label="About Plateful">
+<a class="logo" href="login.html" aria-label="Plateful home">
+<svg width="46" height="46" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#FBF8EE" stroke-width="2.5"/><circle cx="22" cy="22" r="13" fill="#FBF8EE"/><text x="22" y="28" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="18" fill="#1B2D22">£</text></svg>
+<span class="logo-text"><span class="logo-name">Plateful</span><span class="logo-tag">PLAN · COMPARE · SAVE</span></span>
+</a>
+
+<div class="copy">
+<p class="h1 copy-welcome">Eat well for less.</p>
+<p class="lede copy-welcome">Find the cheapest shop for every recipe and plan your week around your budget.</p>
+</div>
+
+<ul class="tiles" aria-label="What Plateful does">
+<li class="tile tile-yellow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 8.8c-.6-.6-1.4-.9-2.4-.9-1.4 0-2.4.8-2.4 2 0 2.7 4.9 1.5 4.9 4.2 0 1.2-1.1 2-2.6 2-1 0-1.9-.4-2.5-1M12 6.5v1.4M12 15.9v1.6"/></svg>Cook to a budget</li>
+<li class="tile tile-sage"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Plan your week</li>
+<li class="tile tile-dark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16l-1.6 9.2a2 2 0 0 1-2 1.7H7.6a2 2 0 0 1-2-1.7L4 7z"/><path d="M9 7V5.5A2.5 2.5 0 0 1 11.5 3h1A2.5 2.5 0 0 1 15 5.5V7"/></svg>Find the cheapest shop</li>
+</ul>
+</section>
+<main class="panel">
+<h1 class="sr">Plateful email link</h1>
+<div class="card" id="card">
+
+<section id="v-working" aria-labelledby="h-working">
+<h2 id="h-working">One moment</h2>
+<p class="sub">We are checking your link.</p>
+</section>
+
+<section id="v-confirmed" aria-labelledby="h-confirmed" hidden>
+<svg class="mail" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg>
+<h2 id="h-confirmed">Email confirmed</h2>
+<p class="sub">Thank you. Your Plateful account is ready. If the sign-up page is still open in another tab, it will take you in by itself.</p>
+<div class="stack"><a class="btn btn-yellow" href="login.html?verified=1">Log in to Plateful</a></div>
+<p class="fine">Did not sign up for Plateful? You can ignore this page. No one can use the account without your password.</p>
+</section>
+
+<section id="v-reset" aria-labelledby="h-reset" hidden>
+<h2 id="h-reset">Choose a new password</h2>
+<p class="sub">For <strong id="reset-email"></strong></p>
+<form id="form-reset" novalidate>
+<label class="field"><span>New password</span>
+<span class="pw"><input id="rp-password" type="password" autocomplete="new-password" maxlength="128" placeholder="At least 8 characters" aria-describedby="rp-hint"><button type="button" class="reveal" id="reveal" aria-pressed="false" aria-label="Show password">Show</button></span>
+</label>
+<p class="hint" id="rp-hint">Use 8 or more characters.</p>
+<p class="msg msg-err" id="err-reset" role="alert" hidden></p>
+<button type="submit" class="btn btn-yellow" id="btn-reset">Save new password</button>
+</form>
+</section>
+
+<section id="v-resetdone" aria-labelledby="h-resetdone" hidden>
+<svg class="mail" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg>
+<h2 id="h-resetdone">Password changed</h2>
+<p class="sub">You can now log in with your new password.</p>
+<div class="stack"><a class="btn btn-yellow" href="login.html?view=login">Log in to Plateful</a></div>
+</section>
+
+<section id="v-bad" aria-labelledby="h-bad" hidden>
+<svg class="mail" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.2v.1"/></svg>
+<h2 id="h-bad">We could not use this link</h2>
+<p class="sub" id="bad-text"></p>
+<div class="stack"><a class="btn btn-yellow" href="login.html?view=login">Go to log in</a></div>
+</section>
+
+</div>
+</main>
+</div>
+<noscript><p class="noscript">Plateful needs JavaScript switched on to use this link.</p></noscript>
+<script src="firebase-config.js"></script>
+<script src="verify.js"></script>
+</body>
+</html>
