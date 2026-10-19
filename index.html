@@ -2327,9 +2327,16 @@ body[data-view="meal"] .pf-home-logo,body[data-view="basket"] .pf-home-logo,body
    cards on a cream ground, and the saving shown against the dearest shop.
    The computer layout is restyled. Phones keep their own layout (bottom tab bar).
    ===================================================================== */
-:root{--v53-panel:#E6EDDD;--paper:#FBF8EE;--wash:#F1EEDD;--line:#E3E0D0;--v52-save:#14561F;--v52-save-ink:#FFFFFF;--v52-warn:#9A4A1F;--v52-note:#DDEFD6;--v53-sage:#9CC59A;--v53-deep:#26402E}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--v53-panel:#1C2C21;--paper:#0F1912;--wash:#18271D;--line:#2C4232;--v52-save:#1F6B33;--v52-save-ink:#FFFFFF;--v52-warn:#FFB36B;--v52-note:#DDEFD6}}
-:root[data-theme="dark"]{--v53-panel:#1C2C21;--paper:#0F1912;--wash:#18271D;--line:#2C4232;--v52-save:#1F6B33;--v52-save-ink:#FFFFFF;--v52-warn:#FFB36B;--v52-note:#DDEFD6}
+:root{--v53-panel:#E6EDDD;--v52-save:#14561F;--v52-save-ink:#FFFFFF;--v52-warn:#9A4A1F;--v52-note:#DDEFD6;--v53-sage:#9CC59A;--v53-deep:#26402E}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--v53-panel:#1C2C21;--v52-save:#1F6B33;--v52-save-ink:#FFFFFF;--v52-warn:#FFB36B;--v52-note:#DDEFD6}}
+:root[data-theme="dark"]{--v53-panel:#1C2C21;--v52-save:#1F6B33;--v52-save-ink:#FFFFFF;--v52-warn:#FFB36B;--v52-note:#DDEFD6}
+
+/* the cream page ground and softer lines are for computers only: phones keep their original colours */
+@media (min-width:761px){
+  :root{--paper:#FBF8EE;--wash:#F1EEDD;--line:#E3E0D0}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0F1912;--wash:#18271D;--line:#2C4232}}
+  :root[data-theme="dark"]{--paper:#0F1912;--wash:#18271D;--line:#2C4232}
+}
 
 /* the green saving banner, used on the price panel and the planner */
 .v52-save{background:var(--v52-save);color:var(--v52-save-ink);border-radius:14px;padding:14px 18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 16px;margin-top:14px}
@@ -2688,12 +2695,6 @@ body #ing .ing-row .ing-shop,body #ing .ing-row .ing-cost{display:none}
 @media (min-width:1280px){
   body[data-view="meal"] .v53-rec{grid-template-columns:minmax(0,1fr) 480px}
 }
-@media (max-width:760px){
-  /* three sort buttons fit on one line on a phone */
-  body[data-view="home"] .pop-tools .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}
-  body[data-view="home"] .pop-tools .seg::-webkit-scrollbar{display:none}
-  body[data-view="home"] .pop-tools .seg .chip{flex:1 0 auto;padding-left:10px;padding-right:10px;font-size:.88rem;white-space:nowrap}
-}
 
 /* every shop, cheapest first, inside the price panel */
 .v53-lg{margin-top:16px}
@@ -2717,6 +2718,11 @@ body #ing .ing-row .ing-shop,body #ing .ing-row .ing-cost{display:none}
 .v53-acct a[hidden]{display:none}
 @media (min-width:1700px){
   header.top .pf-acct:not([hidden]){display:inline-flex;align-items:center;order:2;min-height:38px;padding:0 16px;border-radius:999px;background:var(--tag);color:var(--tag-ink);font-weight:800;font-size:.95rem;text-decoration:none;white-space:nowrap}
+}
+
+/* ---------- phones keep the layout they had before v53: hide everything v53 added ---------- */
+@media (max-width:760px){
+  .v52-save,#sort-save,.v53-lg,.tot-mix,.tot-lb,.pm-price,.pm-save,.day-tot,.v52-plan,.v53-band{display:none!important}
 }
 
 </style>
@@ -5415,7 +5421,7 @@ function nutPanelHTML(){
 }
 /* ---------- State ---------- */
 const state = {
-  view:'start', query:'', serves:4, diets:new Set(), err:'',
+  view:(window.matchMedia && window.matchMedia('(min-width:761px)').matches) ? 'start' : 'home', query:'', serves:4, diets:new Set(), err:'',
   mealId:null, items:[], postcode:'', pcMsg:'', nearOpen:false, budget:10, budgetText:'10.00', bgMode:'one', bgMsg:'', wipeAsk:false, wipeMsg:'',
   enabled:new Set(STORES.map(s => s.id)), cards:new Set(),
   mode:'all', open:null, showList:false, ticks:new Set(), last:null, sort:'price', done:new Set(),
@@ -6028,7 +6034,7 @@ const v53Wide = () => !!(v53MQ && v53MQ.matches);
 try { const f = () => { if (state.view === 'meal') render(); }; v53MQ && (v53MQ.addEventListener ? v53MQ.addEventListener('change', f) : v53MQ.addListener(f)); } catch (e) {}
 function mealWideHTML(m, c, on, fromBasket, nearWide, timeLine, own, confirmDel, share){
   return `<div class="wrap v53-rwide">
-    ${fromBasket ? `<button class="back" id="back" data-act="gobasket">Back to my shop</button>` : state.from === 'leftovers' ? `<button class="back" id="back" data-act="goleft">Back to leftovers</button>` : state.from === 'budget' ? `<button class="back" id="back" data-act="gobudget">Back to budget</button>` : state.from === 'start' ? `<button class="back" id="back" data-act="start">Back to home</button>` : `<button class="back" id="back" data-act="home">Choose a different meal</button>`}
+    ${fromBasket ? `<button class="back" id="back" data-act="gobasket">Back to my shop</button>` : state.from === 'leftovers' ? `<button class="back" id="back" data-act="goleft">Back to leftovers</button>` : state.from === 'budget' ? `<button class="back" id="back" data-act="gobudget">Back to budget</button>` : state.from === 'start' && PF_WIDE() ? `<button class="back" id="back" data-act="start">Back to home</button>` : `<button class="back" id="back" data-act="home">Choose a different meal</button>`}
     <div class="v53-rec">
       <div class="v53-rl">
         <div class="mealhead v53-rhead">
@@ -6104,7 +6110,7 @@ function mealHTML(){
       <p class="hint">The whole recipe is inside the link, and nothing is uploaded anywhere. Anyone who opens it can save their own copy. If a link won't open for them, they can paste it into “Got a link or code from someone?” under Add your own recipe.</p></div>` : '';
   if (v53Wide()) return mealWideHTML(m, c, on, fromBasket, nearWide, timeLine, own, confirmDel, share);
   return `<div class="wrap">
-    ${fromBasket ? `<button class="back" id="back" data-act="gobasket">Back to my shop</button>` : state.from === 'leftovers' ? `<button class="back" id="back" data-act="goleft">Back to leftovers</button>` : state.from === 'budget' ? `<button class="back" id="back" data-act="gobudget">Back to budget</button>` : state.from === 'start' ? `<button class="back" id="back" data-act="start">Back to home</button>` : `<button class="back" id="back" data-act="home">Choose a different meal</button>`}
+    ${fromBasket ? `<button class="back" id="back" data-act="gobasket">Back to my shop</button>` : state.from === 'leftovers' ? `<button class="back" id="back" data-act="goleft">Back to leftovers</button>` : state.from === 'budget' ? `<button class="back" id="back" data-act="gobudget">Back to budget</button>` : state.from === 'start' && PF_WIDE() ? `<button class="back" id="back" data-act="start">Back to home</button>` : `<button class="back" id="back" data-act="home">Choose a different meal</button>`}
     <div class="mealhead">
       <div class="mh-text">
         <h1>${esc(m.n)}</h1>
@@ -6284,10 +6290,12 @@ function restoreFocus(fid){
   const el = document.getElementById(fid);
   if (el) el.focus({preventScroll:true});
 }
+const PF_WIDE = () => !!(window.matchMedia && window.matchMedia('(min-width:761px)').matches);
 function render(){
   if (!PF_BOOTED){ PF_BOOTED = true; legalBoot(); }
   if (NEAR.trim){ NEAR.trim = false; save(); }   /* an older version left a postcode in storage: saving again writes the record without it */
   const fid = document.activeElement && document.activeElement.id;
+  if (state.view === 'start' && !PF_WIDE()) state.view = 'home';   /* phones keep the recipes home as before */
   if (state.view === 'meal' && !mealById(state.mealId)) state.view = 'home';
   if (state.view === 'editor' && !state.draft) state.view = 'home';
   const v = state.view;
@@ -7221,7 +7229,7 @@ document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]'); if (!t) return;
   switch (t.dataset.act){
     case 'home': state.view = 'home'; state.err = ''; render(); window.scrollTo(0, 0); break;
-    case 'start': state.view = 'start'; state.err = ''; render(); window.scrollTo(0, 0); break;
+    case 'start': state.view = PF_WIDE() ? 'start' : 'home'; state.err = ''; render(); window.scrollTo(0, 0); break;
     case 'v53all': state.sort = 'save'; state.view = 'home'; state.err = ''; render(); window.scrollTo(0, 0); break;
     case 'v53quick': {
       const v = Number(t.dataset.v), el = document.getElementById('v53-amt');
