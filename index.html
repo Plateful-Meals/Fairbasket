@@ -1919,8 +1919,10 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
     try { if (['plateful-basket', 'plateful-mylist', 'plateful-life', 'plateful-recipes', 'plateful-saved', 'plateful-leftovers'].some(function(k){ return localStorage.getItem(k) !== null; })) return false; } catch (e) {}
     return true;
   }
+  w.pfNeedLogin = needLogin;
+  w.pfGoLogin = function(){ try { location.replace('login.html'); } catch (e) { location.href = 'login.html'; } };
   if (needLogin() && !introWillPlay()) {
-    try { document.documentElement.style.visibility = 'hidden'; } catch (e) {}
+    try { document.documentElement.style.background = '#0F1912'; document.documentElement.style.visibility = 'hidden'; } catch (e) {}
     try { location.replace('login.html'); } catch (e) { location.href = 'login.html'; }
     setTimeout(function(){ try { document.documentElement.style.visibility = ''; } catch (e) {} }, 3000);   /* if the login page could not be opened, show the site again */
   }
@@ -2110,8 +2112,11 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
     raf = requestAnimationFrame(tick);
   }
 
+  /* A first-time visitor is on their way to the login page: the coin lands on the dark screen and the page behind is never shown. */
+  function toLogin() { try { return !!(win.pfNeedLogin && win.pfNeedLogin()); } catch (e) { return false; } }
+
   function lockTarget() {
-    var tg = findTarget(opts.land);
+    var tg = toLogin() ? null : findTarget(opts.land);
     if (tg) {
       var sg = tg.querySelector('.pf-stage');
       var r = sg && sg.getBoundingClientRect();
@@ -2174,7 +2179,7 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
     var iu = ease.inOutCubic(seg(t, T_IRIS0, T_IRIS1));
     var F = Math.min(st.W, st.H) * 0.22;
     var far = Math.hypot(Math.max(x, st.W - x), Math.max(y, st.H - y));
-    iris(x, y, lerp(-F, far + 10, iu), F);
+    if (toLogin()) iris(0, 0, -1, 0); else iris(x, y, lerp(-F, far + 10, iu), F);   /* going to login: keep the dark screen closed */
 
     render(x, y, k, a, b, c, shade);
 
@@ -2199,6 +2204,12 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
   }
 
   function cleanup() {
+    if (toLogin()) {   /* leave the dark screen up and hand over to the login page: the home page is never shown */
+      busy = false; cancelAnimationFrame(raf);
+      try { if (win.pfGoLogin) win.pfGoLogin(); } catch (e) {}
+      setTimeout(function () { intro.hidden = true; root.classList.remove('pfi-hold'); }, 3000);   /* if the login page could not be opened, show the site again */
+      return;
+    }
     try { if (win.pfGate) win.pfGate(); } catch (e) {}
     busy = false;
     cancelAnimationFrame(raf);
@@ -2216,6 +2227,7 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
     cancelAnimationFrame(raf);
     logos().forEach(function (l) { l.classList.remove('pfi-go'); });
     staticLogos(null);
+    if (toLogin()) { cleanup(); return; }
     intro.classList.add('pfi-fade');
     setTimeout(cleanup, 320);
   }
