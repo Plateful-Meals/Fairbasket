@@ -1909,12 +1909,27 @@ html .pf-logo.pfi-static{animation:pfi-appear .6s ease-out both;animation-play-s
     });
   }
   document.addEventListener('DOMContentLoaded', links);
+  /* A first-time visitor sees the coin-flip first, then goes straight to the login page (pfGate below runs the moment the coin has landed).
+     If the coin-flip is not going to play (reduced motion, or already seen in this browser), they go to the login page immediately,
+     before anything is drawn, so the home page never flashes up first. */
+  function needLogin(){ return ok() && !who() && !guest() && !/^#(r=|privacy$|terms$|about$)/.test(hash0); }
+  function introWillPlay(){
+    try { if (w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; } catch (e) {}
+    try { if (sessionStorage.getItem('pfIntroSeen') === '1') return false; } catch (e) {}
+    try { if (['plateful-basket', 'plateful-mylist', 'plateful-life', 'plateful-recipes', 'plateful-saved', 'plateful-leftovers'].some(function(k){ return localStorage.getItem(k) !== null; })) return false; } catch (e) {}
+    return true;
+  }
+  if (needLogin() && !introWillPlay()) {
+    try { document.documentElement.style.visibility = 'hidden'; } catch (e) {}
+    try { location.replace('login.html'); } catch (e) { location.href = 'login.html'; }
+    setTimeout(function(){ try { document.documentElement.style.visibility = ''; } catch (e) {} }, 3000);   /* if the login page could not be opened, show the site again */
+  }
   w.pfGate = function(){
     if (gone) return; gone = true;
     links();
-    if (!ok() || who() || guest() || /^#(r=|privacy$|terms$|about$)/.test(hash0)) return;
-    var d = document.documentElement; d.style.transition = 'opacity .25s'; d.style.opacity = '0';
-    setTimeout(function(){ location.replace('login.html'); }, 260);
+    if (!needLogin()) return;
+    var d = document.documentElement; d.style.transition = 'opacity .2s'; d.style.opacity = '0';
+    setTimeout(function(){ location.replace('login.html'); }, 200);
     setTimeout(function(){ d.style.opacity = ''; }, 3000);   /* if the page could not be opened, show the site again */
   };
 })();
@@ -2732,6 +2747,62 @@ body #ing .ing-row .ing-shop,body #ing .ing-row .ing-cost{display:none}
   .v52-save,#sort-save,.v53-lg,.tot-mix,.tot-lb,.pm-price,.pm-save,.day-tot,.v52-plan,.v53-band{display:none!important}
 }
 
+
+/* ---------- v54: wide screens. Only the spacing changes: on computers the page used to stop at a fixed width
+   and leave a big empty strip down each side. Now the sides grow with the screen, up to a sensible limit.
+   Nothing here touches colours, fonts, sizes or layout on phones and tablets (it all sits under min-width:1100px). ---------- */
+@media (min-width:1100px){
+  :root{
+    /* the empty strip at each side: about 30-50px on a laptop, growing with the screen; never more than the limit below */
+    --pf-pad:max(28px, calc((100% - 1400px) * .17 + 48px), calc((100% - 1800px) / 2));
+  }
+  .wrap,.v53-start.wrap{max-width:none;padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+  header.top,
+  section.pf-home-logo,
+  body[data-view="start"] section.pf-home-logo{padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+  .demo-note{padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+  .v53-band-in{padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+}
+/* the menu items are spread out evenly between the logo and the buttons on the right, with room at both ends */
+@media (min-width:1280px){
+  header.top .nav{flex:1 1 auto;justify-content:space-between;gap:2px 14px;margin-left:clamp(8px,calc((100vw - 1280px) * .12 + 8px),72px);margin-right:clamp(8px,calc((100vw - 1280px) * .12 + 8px),72px)}
+}
+/* very wide screens: four recipe cards across instead of three, so the cards stay the same size */
+@media (min-width:1700px){
+  body[data-view="home"] .popular .meals{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* the "Log out" button in the green band repeats the one in the header on wide screens, so the band's copy is hidden there */
+@media (min-width:1700px){
+  .v53-acct{display:none}
+}
+
+/* ---------- v54: wide screens. Only the spacing changes: on computers the page used to stop at a fixed width
+   and leave a big empty strip down each side. Now the sides grow with the screen, up to a sensible limit.
+   Nothing here touches colours, fonts, sizes or layout on phones and tablets (it all sits under min-width:1100px). ---------- */
+@media (min-width:1100px){
+  :root{
+    /* the empty strip at each side: about 30-50px on a laptop, growing with the screen; never more than the limit below */
+    --pf-pad:max(28px, calc((100% - 1400px) * .25 + 48px), calc((100% - 1600px) / 2));
+  }
+  .wrap,.v53-start.wrap{max-width:none;padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+  header.top,
+  section.pf-home-logo,
+  body[data-view="start"] section.pf-home-logo{padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+  .demo-note{padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+  .v53-band-in{padding-left:var(--pf-pad);padding-right:var(--pf-pad)}
+}
+/* the menu items are spread out evenly between the logo and the buttons on the right, with room at both ends */
+@media (min-width:1280px){
+  header.top .nav{flex:1 1 auto;justify-content:space-between;gap:2px 14px;margin-left:clamp(8px,calc((100vw - 1280px) * .12 + 8px),72px);margin-right:clamp(8px,calc((100vw - 1280px) * .12 + 8px),72px)}
+}
+/* very wide screens: four recipe cards across instead of three, so the cards stay the same size */
+@media (min-width:1700px){
+  body[data-view="home"] .popular .meals{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* the "Log out" button in the green band repeats the one in the header on wide screens, so the band's copy is hidden there */
+@media (min-width:1700px){
+  .v53-acct{display:none}
+}
 </style>
 <script>
 'use strict';
@@ -4917,7 +4988,8 @@ function canCook(m){
 }
 function kitAlsoCount(){ return MEALS.filter(m => !kitCooked(m) && mealIsType(m, state.mtype)).length; }
 /* the recipes to show: the chosen meal of the day, and only what the ticked kit can cook */
-function mealShown(m){ return mealIsType(m, state.mtype) && canCook(m) && goalFits(m); }
+function guestNameFits(m){ if (!PF_LOCK()) return true; const q = (state.query || '').trim().toLowerCase(); return !q || String(m.n).toLowerCase().indexOf(q) !== -1; }   /* without an account the search box filters the list instead of opening a recipe */
+function mealShown(m){ return mealIsType(m, state.mtype) && canCook(m) && goalFits(m) && guestNameFits(m); }
 
 /* ---------- v39: 36 more recipes ---------- */
 MEALS.push(
@@ -5427,6 +5499,12 @@ function nutPanelHTML(){
     </section>`;
 }
 /* ---------- State ---------- */
+/* accounts: with no account a visitor can only look around. The open pages are the home page, the Recipes list and the About, Privacy and Terms pages,
+   and they can search and filter the recipes. Anything that opens a recipe, adds or saves something, or opens another page sends them to the login page.
+   (It does nothing until firebase-config.js is filled in.) */
+function PF_LOCK(){ try { return !!(window.pfAuth && window.pfAuth.configured() && !window.pfAuth.who()); } catch (e) { return false; } }
+const PF_OPEN = v => v === 'start' || v === 'home' || v === 'about' || v === 'privacy' || v === 'terms';
+function pfToLogin(){ try { window.location.replace('login.html?need=1'); } catch (e) { window.location.href = 'login.html?need=1'; } }
 const state = {
   view:(window.matchMedia && window.matchMedia('(min-width:761px)').matches) ? 'start' : 'home', query:'', serves:4, diets:new Set(), err:'',
   mealId:null, items:[], postcode:'', pcMsg:'', nearOpen:false, budget:10, budgetText:'10.00', bgMode:'one', bgMsg:'', wipeAsk:false, wipeMsg:'',
@@ -6302,6 +6380,7 @@ function render(){
   if (!PF_BOOTED){ PF_BOOTED = true; legalBoot(); }
   if (NEAR.trim){ NEAR.trim = false; save(); }   /* an older version left a postcode in storage: saving again writes the record without it */
   const fid = document.activeElement && document.activeElement.id;
+  if (PF_LOCK() && !PF_OPEN(state.view)){ state.view = 'start'; pfToLogin(); }   /* no account: only the home page, so send them to log in */
   if (state.view === 'start' && !PF_WIDE()) state.view = 'home';   /* phones keep the recipes home as before */
   if (state.view === 'meal' && !mealById(state.mealId)) state.view = 'home';
   if (state.view === 'editor' && !state.draft) state.view = 'home';
@@ -6489,6 +6568,7 @@ function openMeal(id){
 function doCompare(){
   const el = document.getElementById('q');
   const q = el ? el.value : state.query; state.query = q;
+  if (PF_LOCK()){ state.err = ''; render(); return; }   /* no account: the list below is filtered by what was typed, and no recipe opens */
   if (!q.trim()){ state.err = 'Type a meal, or pick one of the recipes below.'; render(); return; }
   const m = findMeal(q);
   if (!m){ state.err = `“${q.trim()}” isn't in the recipe list yet. Pick one of the recipes below for now.`; render(); return; }
@@ -7232,8 +7312,15 @@ async function copyShare(){
   catch (e) { el.focus(); el.select(); say('Copying is blocked here. The link is selected, so copy it yourself.'); }
 }
 
+const PF_GUEST_OK = new Set(['skip', 'start', 'home', 'about', 'page', 'navmore', 'v53all', 'v53quick', 'compare', 'serves', 'diet', 'sort', 'mtype', 'shop', 'goal', 'kit', 'kitall']);   /* the only buttons that work without an account: looking around, searching and filtering */
+/* This guard runs first (capture phase) and stops the click for every other part of the page, so nothing is added or saved on the way to the login page. */
+document.addEventListener('click', e => {
+  const t = e.target.closest && e.target.closest('[data-act]'); if (!t) return;
+  if (PF_LOCK() && !PF_GUEST_OK.has(t.dataset.act)){ e.preventDefault(); e.stopImmediatePropagation(); pfToLogin(); }   /* no account: any other button leads to the login page */
+}, true);
 document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]'); if (!t) return;
+  if (PF_LOCK() && !PF_GUEST_OK.has(t.dataset.act)){ e.preventDefault(); pfToLogin(); return; }
   switch (t.dataset.act){
     case 'home': state.view = 'home'; state.err = ''; render(); window.scrollTo(0, 0); break;
     case 'start': state.view = PF_WIDE() ? 'start' : 'home'; state.err = ''; render(); window.scrollTo(0, 0); break;
@@ -9763,6 +9850,7 @@ function filterCount(n){
   return `${n} of ${MEALS.length} meals${type ? ' for ' + type[1].toLowerCase() : ''}${g ? (type ? ', ' : ' that are ') + g.as : ''}${state.kit.size ? (g ? ', and' : '') + ' you can cook with what you ticked' : ''}`;
 }
 function noMatchHTML(){
+  if (PF_LOCK() && (state.query || '').trim()) return `<p class="empty">No recipes match “${esc(state.query.trim())}”. Clear the search box and press Search to see them all.</p>`;   /* no account: the search box filters by name */
   const type = MEAL_TYPES.find(x => x[0] === state.mtype), g = goalNow(), kit = state.kit.size > 0 && state.kit.size < KIT.length;
   const also = kit && !state.kitAlso ? kitAlsoCount() : 0;
   return `<p class="empty" id="no-match">No ${type ? type[1].toLowerCase() + ' ' : ''}recipes ${g ? 'that are ' + g.as + ' ' : ''}${kit || !g ? 'can be cooked with only what you ticked' : 'to show'}. ${also ? `${plural(also, 'recipe needs', 'recipes need')} no cooking at all: tick “Also show” in the kitchen box to see ${also === 1 ? 'it' : 'them'}. ` : ''}${kit || !g ? 'Tick more of your kitchen' : 'Try another goal or meal'}, or <button type="button" class="linkbtn" id="filter-clear" data-act="filterclear">show every recipe</button>.</p>`;
