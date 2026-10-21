@@ -26,6 +26,9 @@ h2:focus{outline:none}
 .logo:hover{color:var(--cream)}
 .logo-text{display:flex;flex-direction:column;gap:3px}
 .logo-name{font-size:40px;font-weight:850;font-stretch:75%;line-height:1}
+.logo .logo-mark{display:block;flex:none;width:58px;height:48px}
+.logo .logo-word{display:block;width:176px;height:33px;fill:currentColor}
+.lm-ink{fill:var(--cream)}.lm-plate{fill:var(--cream)}.lm-ring{fill:none;stroke:var(--band)}.lm-coin{fill:var(--band)}.lm-leaf{fill:#A9C58F}
 .logo-tag{font-size:11px;font-weight:600;letter-spacing:2.6px;color:#B9CBB9}
 .copy{display:flex;flex-direction:column;gap:22px}
 .h1{margin:0;font-size:clamp(56px,7vw,96px);font-weight:850;font-stretch:62%;line-height:.92;max-width:9ch}
@@ -106,7 +109,7 @@ form{display:flex;flex-direction:column;gap:14px}
   .shell{flex-direction:column;flex-wrap:nowrap}
   .brand{flex:none;border-radius:0 0 32px 32px;padding:max(28px,env(safe-area-inset-top)) 24px 26px;gap:20px}
   .logo-name{font-size:34px}
-  .logo svg{width:44px;height:44px}
+  .logo .logo-mark{width:51px;height:42px}   .logo .logo-word{width:149px;height:28px}
   .copy{gap:12px}
   .h1{font-size:46px;font-stretch:66%;max-width:9ch}
   .lede{font-size:16px}
