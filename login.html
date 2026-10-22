@@ -151,6 +151,39 @@ Google</button>
 <p class="swap"><a href="#" data-go="login">Back to log in</a></p>
 </section>
 
+<!-- 6. Your account -->
+<section id="v-account" aria-labelledby="h-account" hidden>
+<h2 id="h-account">Your account</h2>
+<div id="acct-main">
+<p class="sub">You are signed in as <strong id="acct-email"></strong>.</p>
+<div class="stack">
+<a class="btn btn-yellow" href="index.html">Back to Fairbasket</a>
+<a class="btn btn-ghost" href="login.html?logout=1">Log out</a>
+</div>
+<div class="acct-box">
+<h3 id="h-delete">Delete my account</h3>
+<p class="fine">This deletes your sign-in, your first name and your email address from Fairbasket's sign-in service straight away. It cannot be undone. Anything saved in this browser stays here until you delete it on the Privacy page.</p>
+<button type="button" class="btn btn-ghost" id="btn-delask">Delete my account</button>
+<form id="form-delete" novalidate hidden>
+<label class="field" id="del-password-field"><span>Type your password to confirm</span>
+<span class="pw"><input id="del-password" type="password" autocomplete="current-password" maxlength="128" placeholder="Your password"><button type="button" class="reveal" data-reveal="del-password" aria-pressed="false" aria-label="Show password">Show</button></span>
+</label>
+<p class="fine" id="del-google-note" hidden>You signed in with Google, so Google will open a small window to check it is you.</p>
+<p class="msg msg-err" id="err-account" role="alert" hidden></p>
+<div class="stack">
+<button type="submit" class="btn btn-yellow" id="btn-delyes" data-lock>Yes, delete my account for good</button>
+<button type="button" class="btn btn-ghost" id="btn-delno">Keep my account</button>
+</div>
+</form>
+</div>
+</div>
+<div id="acct-gone" hidden>
+<p class="msg msg-ok" id="ok-account" role="status" hidden></p>
+<p class="sub">Your sign-in, first name and email address have been removed. You can still use Fairbasket without an account.</p>
+<div class="stack"><a class="btn btn-yellow" href="index.html" data-skip>Carry on to Fairbasket</a></div>
+</div>
+</section>
+
 </div>
 </main>
 

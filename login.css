@@ -35,7 +35,7 @@ h2:focus{outline:none}
 .lede{margin:0;font-size:20px;line-height:1.45;color:var(--soft);max-width:34ch}
 .copy-welcome,.copy-signup,.copy-login{display:none}
 body[data-view="welcome"] .copy-welcome,body[data-view="signup"] .copy-signup,
-body[data-view="login"] .copy-login,body[data-view="verify"] .copy-signup,body[data-view="forgot"] .copy-login{display:block}
+body[data-view="login"] .copy-login,body[data-view="account"] .copy-login,body[data-view="verify"] .copy-signup,body[data-view="forgot"] .copy-login{display:block}
 .tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .tile{border-radius:20px;padding:18px 16px;display:flex;flex-direction:column;gap:12px;font-size:16px;font-weight:700;line-height:1.15}
 .tile-yellow{background:var(--yellow);color:var(--on-yellow)}
@@ -137,3 +137,13 @@ form{display:flex;flex-direction:column;gap:14px}
 
 .need-note{margin:0 0 14px;padding:12px 14px;border-radius:12px;font-size:14px;line-height:1.4;font-weight:600;background:rgba(255,210,63,.14);border:1px solid rgba(255,210,63,.55);color:var(--cream)}
 .need-note[hidden]{display:none}
+
+.acct-box{margin-top:22px;padding:16px;border:1px solid rgba(255,180,168,.45);border-radius:14px}
+.acct-box h3{margin:0 0 8px;font-size:17px}
+.acct-box form{margin-top:14px}
+.acct-box form[hidden],#acct-main[hidden],#acct-gone[hidden]{display:none}
+
+[hidden]{display:none!important}
+#v-account .sub{margin:0 0 16px}
+.acct-box .fine{text-align:left;font-size:13px;margin:0 0 14px}
+#acct-gone .stack{margin-top:16px}
