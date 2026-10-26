@@ -416,7 +416,7 @@ def apify_search(actor, body, token, timeout_s, max_items, max_charge, tries=3):
                 out = json.loads(r.read().decode('utf-8', 'replace') or '[]')
                 return out if isinstance(out, list) else []
         except urllib.error.HTTPError as e:
-            text = e.read().decode('utf-8', 'replace')[:300].replace(token, '***')
+            text = e.read().decode('utf-8', 'replace')[:900].replace(token, '***')
             last = f'HTTP {e.code} {text}'
             if e.code in (401, 403):
                 raise Fatal('Apify refused the token or the actor (HTTP %d). Check the APIFY_TOKEN secret. %s' % (e.code, text))
@@ -642,7 +642,7 @@ def main():
                     raise RuntimeError(str(e).splitlines()[0][:150])
             else:
                 body = fill(shop['input'], kw, n)
-                charge = round(max(0.05, n * shop['per_1000_results'] / 1000 * 2), 3)
+                charge = round(max(0.5, n * shop['per_1000_results'] / 1000 * 2), 3)
                 raw = apify_search(shop['actor'], body, token, 240, n, charge)
         except Fatal as e:
             with lock:
@@ -656,7 +656,7 @@ def main():
                     st[s]['dead'] = 'the first 3 searches all failed, so the rest were not attempted'
                 if a.source == 'browser' and isinstance(e, ShopDown):
                     st[s]['dead'] = f'the website refused a visit ({e}), so this shop was stopped for the rest of the run and its old prices kept'
-            print(f'[{s}] {pid}: FAILED {str(e)[:120]}')
+            print(f'[{s}] {pid}: FAILED {str(e)[:600]}')
             return
         items = [normalise(r) for r in raw if isinstance(r, dict)]
         with lock:
