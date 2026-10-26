@@ -421,7 +421,7 @@ def apify_search(actor, body, token, timeout_s, max_items, max_charge, tries=3):
             if e.code in (401, 403):
                 raise Fatal('Apify refused the token or the actor (HTTP %d). Check the APIFY_TOKEN secret. %s' % (e.code, text))
             if e.code == 402:
-                raise Fatal('Apify says the account is out of credit (HTTP 402). Top up or upgrade the plan.')
+                raise Fatal('Apify says the account is out of credit (HTTP 402). Top up or upgrade the plan. Apify said: ' + text + '')
             if e.code in (400, 404):
                 raise ShopDown(last)
             if e.code == 429:
