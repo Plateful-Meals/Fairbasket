@@ -94,8 +94,8 @@ jobs:
           MODE: ${{ github.event.inputs.mode || 'live' }}
           SCOPE: ${{ steps.when.outputs.scope }}
           FREQ: ${{ steps.when.outputs.freq }}
-          # Which shops to search. To save money, make a repository variable called SHOPS (README step 13), e.g. aldi,lidl
-          SHOPS: ${{ vars.SHOPS || 'aldi,lidl,morrisons' }}
+          # Which shops to search. To save money, make a repository variable called SHOPS (README step 13), e.g. aldi,lidl,iceland (Morrisons is checked free by the home checker)
+          SHOPS: ${{ vars.SHOPS || 'aldi,lidl,iceland' }}
         run: python pipeline/update_prices.py --mode "$MODE" --scope "$SCOPE" --shops "$SHOPS" --freq "$FREQ"
 
       # Works out the site's web address from the repository name and writes it into index.html (link previews),
