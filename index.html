@@ -11064,6 +11064,42 @@ function tidy46(){
 load();
 routeBoot();
 render();
+
+/* ---------- Live prices file ----------
+   prices.json sits next to this page and is rewritten by the price checker. For each product and shop the newer of
+   the two (this file or the copy built into the page) is used. If the file can't be read, the built-in copy stays. */
+(async function(){
+  try {
+    const r = await fetch('prices.json', {cache: 'no-store'});
+    if (!r.ok) return;
+    const d = await r.json();
+    if (!d || typeof d !== 'object' || !d.prices || typeof d.prices !== 'object' || Array.isArray(d.prices)) return;
+    const day = v => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v)) ? v : '';
+    const okPacks = e => e && Array.isArray(e.packs) && e.packs.length && e.packs.every(k => Array.isArray(k) && typeof k[0] === 'number' && typeof k[1] === 'number' && k[1] > 0);
+    let changed = 0, newest = day(LIVE.checked);
+    Object.keys(d.prices).forEach(pid => {
+      const shops = d.prices[pid];
+      if (!P[pid] || !shops || typeof shops !== 'object') return;
+      Object.keys(shops).forEach(sid => {
+        const e = shops[sid];
+        if (!SBY[sid] || !okPacks(e)) return;
+        const when = day(e.checked) || day(d.checked);
+        if (!when) return;
+        const mine = LIVE.prices[pid] && LIVE.prices[pid][sid];
+        const mineWhen = mine ? (day(mine.checked) || day(LIVE.checked)) : '';
+        if (mine && mineWhen >= when) return;
+        if (!LIVE.prices[pid]) LIVE.prices[pid] = {};
+        LIVE.prices[pid][sid] = Object.assign({}, e, {checked: when});
+        changed++;
+        if (when > newest) newest = when;
+      });
+    });
+    if (!changed) return;
+    if (newest && newest !== LIVE.checked){ LIVE.checked = newest; LIVE.label = fmtDay(newest) + ' ' + newest.slice(0, 4); }
+    Object.keys(OFFER_CACHE).forEach(k => delete OFFER_CACHE[k]);
+    render();
+  } catch (e) { /* keep the prices built into the page */ }
+})();
 </script>
 <script>/* Guest log-in prompt: with no account, a button that needs one opens this box instead of sending the visitor to the login page. */
 (function(){
