@@ -1,58 +1,18 @@
 # Plateful price update: test run, 26 Oct 2026
 
-Ingredients searched: 8. Searches made: 14. Estimated cost: about $0.21 (worst case; Apify bills per result returned).
+Ingredients searched: 8. Searches made: 1. Estimated cost: about $0.07 (worst case; Apify bills per result returned).
+
+**Run stopped early:** Apify says the account is out of credit (HTTP 402). Top up or upgrade the plan.
 
 ## Summary by shop
 
 | Shop | Searches ok | Failed | Returned nothing | Ingredients matched | Used this run? |
 |---|---|---|---|---|---|
-| Aldi | 0 | 3 | 0 | 0 | NO: the first 3 searches all failed, so the rest were not attempted |
-| Lidl | 8 | 0 | 8 | 0 | NO: only 0% of searches returned anything (needs 25%), so the actor looks broken and its results were ignored |
-| Iceland | 0 | 3 | 0 | 0 | NO: the first 3 searches all failed, so the rest were not attempted |
+| Aldi | 0 | 0 | 0 | 0 | NO: nothing was searched |
+| Lidl | 1 | 0 | 1 | 0 | NO: only 0% of searches returned anything (needs 25%), so the actor looks broken and its results were ignored |
+| Iceland | 0 | 0 | 0 | 0 | NO: nothing was searched |
 
 _Test run: prices.json was NOT changed. Raw samples of what each shop returned are in pipeline/samples/._
-
-### Errors from Aldi
-
-- beef_mince: HTTP 400 {
-  "error": {
-    "type": "max-total-charge-usd-below-minimum",
-    "message": "Maximum cost per run is less than the allowed minimum of $5.00"
-  }
-}
-- spaghetti: HTTP 400 {
-  "error": {
-    "type": "max-total-charge-usd-below-minimum",
-    "message": "Maximum cost per run is less than the allowed minimum of $5.00"
-  }
-}
-- chopped_tomatoes: HTTP 400 {
-  "error": {
-    "type": "max-total-charge-usd-below-minimum",
-    "message": "Maximum cost per run is less than the allowed minimum of $5.00"
-  }
-}
-
-### Errors from Iceland
-
-- beef_mince: HTTP 400 {
-  "error": {
-    "type": "max-total-charge-usd-below-minimum",
-    "message": "Maximum cost per run is less than the allowed minimum of $5.00"
-  }
-}
-- spaghetti: HTTP 400 {
-  "error": {
-    "type": "max-total-charge-usd-below-minimum",
-    "message": "Maximum cost per run is less than the allowed minimum of $5.00"
-  }
-}
-- chopped_tomatoes: HTTP 400 {
-  "error": {
-    "type": "max-total-charge-usd-below-minimum",
-    "message": "Maximum cost per run is less than the allowed minimum of $5.00"
-  }
-}
 
 ## What it picked
 
