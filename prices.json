@@ -1,31 +1,31 @@
 {
- "checked": "2026-10-08",
- "label": "8 Oct 2026",
+ "checked": "2026-10-26",
+ "label": "26 Oct 2026",
  "autoNote": "Morrisons prices are refreshed automatically (everyday items every day, other items every few weeks).",
- "run": {"date":"2026-10-08","shops":{"morrisons":{"searches":86,"matched":58}}},
+ "run": {"date":"2026-10-26","shops":{"morrisons":{"searches":123,"matched":89}}},
  "prices": {
   "beef_mince": {
    "asda": {"packs":[[500,4.74]],"product":"Beef Mince 15% Fat","note":"15% fat, closest to 12%","checked":"2026-09-30"},
    "sainsburys": {"packs":[[500,4.75]],"product":"Sainsburys British or Irish 12% Fat Beef Mince 500g","checked":"2026-10-05","items":[{"n":"Sainsburys British or Irish 12% Fat Beef Mince 500g"}]},
-   "morrisons": {"packs":[[500,5.0,4.5],[1000,8.0]],"product":"Morrisons British Beef Mince 15% Fat 500g","checked":"2026-10-08","items":[{"n":"Morrisons British Beef Mince 15% Fat 500g","u":"https://groceries.morrisons.com/products/morrisons-british-beef-mince-15-fat-500g/113834327"},{"n":"Morrisons Beef Mince 1kg","u":"https://groceries.morrisons.com/products/morrisons-beef-mince-1kg/105194876"}],"saleNote":"Was £5"},
+   "morrisons": {"packs":[[1000,8.0]],"product":"Morrisons Beef Mince 1kg","checked":"2026-10-26","items":[{"n":"Morrisons Beef Mince 1kg","u":"https://groceries.morrisons.com/products/morrisons-beef-mince-1kg/105194876"}]},
    "aldi": {"packs":[[500,4.39]],"product":"Ashfields British Beef Mince 10% Fat","note":"10% fat, closest to 12%","checked":"2026-09-30"},
    "waitrose": {"packs":[[500,4.5]],"product":"Essential British Beef Mince 12% Fat","checked":"2026-09-30"}
   },
   "turkey_mince": {
    "tesco": {"packs":[[500,4.75]],"product":"Tesco British Turkey Breast Mince 2% Fat 500G","checked":"2026-10-06","items":[{"n":"Tesco British Turkey Breast Mince 2% Fat 500G"}]},
    "sainsburys": {"packs":[[500,4.95]],"product":"Sainsburys 2% Fat Fresh British Turkey Mince 500g","checked":"2026-10-06","items":[{"n":"Sainsburys 2% Fat Fresh British Turkey Mince 500g"}]},
-   "morrisons": {"packs":[[500,4.25]],"product":"Morrisons British Turkey Thigh Mince 500g","checked":"2026-10-08","items":[{"n":"Morrisons British Turkey Thigh Mince 500g","u":"https://groceries.morrisons.com/products/morrisons-british-turkey-thigh-mince-500g/106824921"}]}
+   "morrisons": {"packs":[[500,4.25]],"product":"Morrisons British Turkey Thigh Mince 500g","checked":"2026-10-26","items":[{"n":"Morrisons British Turkey Thigh Mince 500g","u":"https://groceries.morrisons.com/products/morrisons-british-turkey-thigh-mince-500g/106824921"}]}
   },
   "plant_mince": {
    "tesco": {"packs":[[454,1.58]],"product":"Tesco Plant Chef Meat Free Mince 454G","checked":"2026-10-06","items":[{"n":"Tesco Plant Chef Meat Free Mince 454G"}]},
    "sainsburys": {"packs":[[500,1.74]],"product":"Plant Pioneers Meat Free Mince 500g","checked":"2026-10-06","items":[{"n":"Plant Pioneers Meat Free Mince 500g"}]},
-   "morrisons": {"packs":[[1000,5.0]],"product":"Morrisons Plant Revolution Meat Free Mince","checked":"2026-10-08","items":[{"n":"Morrisons Plant Revolution Meat Free Mince","u":"https://groceries.morrisons.com/products/morrisons-plant-revolution-meat-free-mince/112164851"}]}
+   "morrisons": {"packs":[[1000,5.0]],"product":"Morrisons Plant Revolution Meat Free Mince","checked":"2026-10-26","items":[{"n":"Morrisons Plant Revolution Meat Free Mince","u":"https://groceries.morrisons.com/products/morrisons-plant-revolution-meat-free-mince/112164851"}]}
   },
   "spaghetti": {
    "tesco": {"packs":[[500,0.28],[1000,1.19]],"product":"Hearty Food Co. Spaghetti Pasta 500g","checked":"2026-10-06","items":[{"n":"Hearty Food Co. Spaghetti Pasta 500g"},{"n":"Tesco Spaghetti Pasta 1Kg"}]},
    "asda": {"packs":[[500,0.75]],"product":"Spaghetti","checked":"2026-09-30"},
    "sainsburys": {"packs":[[500,0.28],[1000,1.5]],"product":"Stamford Street Co. Spaghetti 500g","checked":"2026-10-06","items":[{"n":"Stamford Street Co. Spaghetti 500g"},{"n":"Sainsburys Spaghetti Pasta 1kg"}]},
-   "morrisons": {"packs":[[500,1.0]],"product":"Napolina Spaghetti","checked":"2026-10-08","items":[{"n":"Napolina Spaghetti","u":"https://groceries.morrisons.com/products/napolina-spaghetti/106686565"}]},
+   "morrisons": {"packs":[[500,1.0]],"product":"Napolina Spaghetti","checked":"2026-10-26","items":[{"n":"Napolina Spaghetti","u":"https://groceries.morrisons.com/products/napolina-spaghetti/106686565"}]},
    "aldi": {"packs":[[500,0.75]],"product":"Cucina Spaghetti","checked":"2026-09-30"}
   },
   "wholewheat_spaghetti": {
@@ -35,28 +35,28 @@
   "gf_spaghetti": {
    "tesco": {"packs":[[500,0.75,null,0.6]],"product":"Tesco Free From Spaghetti 500G","checked":"2026-10-05","items":[{"n":"Tesco Free From Spaghetti 500G"}]},
    "sainsburys": {"packs":[[500,0.75]],"product":"Sainsburys Free From Spaghetti Pasta 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Free From Spaghetti Pasta 500g"}]},
-   "morrisons": {"packs":[[500,0.75]],"product":"Morrisons Free From Spaghetti 500g","checked":"2026-10-08","items":[{"n":"Morrisons Free From Spaghetti 500g","u":"https://groceries.morrisons.com/products/morrisons-free-from-spaghetti-500g/105473681"}]}
+   "morrisons": {"packs":[[500,0.75]],"product":"Morrisons Free From Spaghetti 500g","checked":"2026-10-26","items":[{"n":"Morrisons Free From Spaghetti 500g","u":"https://groceries.morrisons.com/products/morrisons-free-from-spaghetti-500g/105473681"}]}
   },
   "onion": {
    "tesco": {"packs":[[3,1.0],[7,0.95]],"product":"Tesco Brown Onions 3 Pack","checked":"2026-10-05","items":[{"n":"Tesco Brown Onions 3 Pack"},{"n":"Tesco Brown Onions 1Kg"}],"est":[1]},
    "sainsburys": {"packs":[[3,0.95],[7,0.95]],"product":"Sainsburys Brown Onions x3","checked":"2026-10-05","items":[{"n":"Sainsburys Brown Onions x3"},{"n":"Sainsburys Onions 1kg"}],"est":[1]},
-   "morrisons": {"packs":[[3,0.95],[7,0.95]],"product":"Morrisons Brown Onions 3 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Brown Onions 3 Pack","u":"https://groceries.morrisons.com/products/morrisons-brown-onions-3-pack/113301635"},{"n":"Morrisons British Brown Onions 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-brown-onions-1kg/108504753"}]}
+   "morrisons": {"packs":[[7,0.95]],"product":"Morrisons British Brown Onions 1kg","checked":"2026-10-26","items":[{"n":"Morrisons British Brown Onions 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-brown-onions-1kg/108504753"}]}
   },
   "garlic": {
    "tesco": {"packs":[[10,0.5],[40,0.87]],"product":"Tesco Large Garlic","checked":"2026-10-05","items":[{"n":"Tesco Large Garlic"},{"n":"Tesco Garlic 4 Pack"}]},
    "sainsburys": {"packs":[[10,0.5],[40,0.87]],"product":"Sainsburys Large Garlic","checked":"2026-10-05","items":[{"n":"Sainsburys Large Garlic"},{"n":"Sainsburys Garlic x4"}]},
-   "morrisons": {"packs":[[40,0.87]],"product":"Morrisons Garlic Bulbs 4 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Garlic Bulbs 4 Pack","u":"https://groceries.morrisons.com/products/morrisons-garlic-bulbs-4-pack/111467041"}]}
+   "morrisons": {"packs":[[40,0.87]],"product":"Morrisons Garlic Bulbs 4 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Garlic Bulbs 4 Pack","u":"https://groceries.morrisons.com/products/morrisons-garlic-bulbs-4-pack/111467041"}]}
   },
   "chopped_tomatoes": {
    "tesco": {"packs":[[400,0.43],[1600,1.85]],"product":"Grower’s Harvest Chopped Tomatoes 400G","checked":"2026-10-05","items":[{"n":"Grower’s Harvest Chopped Tomatoes 400G"},{"n":"Tesco Italian Chopped Tomatoes 4 X 400G"}]},
    "sainsburys": {"packs":[[400,0.43],[1600,1.8]],"product":"Stamford Street Co. Chopped Tomatoes in Tomato Juice 400g","checked":"2026-10-05","items":[{"n":"Stamford Street Co. Chopped Tomatoes in Tomato Juice 400g"},{"n":"Sainsburys Italian Chopped Tomatoes 4×400g"}]},
-   "morrisons": {"packs":[[400,0.45],[1600,1.78]],"product":"Morrisons Chopped Tomatoes (400g)","checked":"2026-10-08","items":[{"n":"Morrisons Chopped Tomatoes (400g)","u":"https://groceries.morrisons.com/products/morrisons-chopped-tomatoes-400g/105415501"},{"n":"Morrisons Chopped Tomatoes (4x400g)","u":"https://groceries.morrisons.com/products/morrisons-chopped-tomatoes-4x400g/108606901"}]},
+   "morrisons": {"packs":[[400,0.45],[1600,1.78]],"product":"Morrisons Chopped Tomatoes (400g)","checked":"2026-10-26","items":[{"n":"Morrisons Chopped Tomatoes (400g)","u":"https://groceries.morrisons.com/products/morrisons-chopped-tomatoes-400g/105415501"},{"n":"Morrisons Chopped Tomatoes (4x400g)","u":"https://groceries.morrisons.com/products/morrisons-chopped-tomatoes-4x400g/108606901"}]},
    "waitrose": {"packs":[[400,0.6]],"product":"Essential Chopped Tomatoes in Natural Juice","note":"budget range","checked":"2026-09-30"}
   },
   "tomato_puree": {
    "tesco": {"packs":[[200,0.59]],"product":"Tesco Tomato Puree 200G","checked":"2026-10-06","items":[{"n":"Tesco Tomato Puree 200G"}]},
    "sainsburys": {"packs":[[142,0.8],[200,0.59]],"product":"Sainsburys Italian Tomato Puree Double Concentrate 142g","checked":"2026-10-06","items":[{"n":"Sainsburys Italian Tomato Puree Double Concentrate 142g"},{"n":"Sainsburys Tomato Puree, Double Concentrate 200g"}]},
-   "morrisons": {"packs":[[200,0.59],[142,1.5,1.0]],"product":"Morrisons Tomato Puree (200g)","checked":"2026-10-08","items":[{"n":"Morrisons Tomato Puree (200g)","u":"https://groceries.morrisons.com/products/morrisons-tomato-puree-200g/105809931"},{"n":"Cirio Tomato Puree 140g","u":"https://groceries.morrisons.com/products/cirio-tomato-puree-140g/300001549"}],"saleNote":"Was £1.50"}
+   "morrisons": {"packs":[[200,0.59],[142,1.2]],"product":"Morrisons Tomato Puree (200g)","checked":"2026-10-26","items":[{"n":"Morrisons Tomato Puree (200g)","u":"https://groceries.morrisons.com/products/morrisons-tomato-puree-200g/105809931"},{"n":"Napolina Double Concentrate Tomato Puree (142g)","u":"https://groceries.morrisons.com/products/napolina-double-concentrate-tomato-puree-142g/100368929"}]}
   },
   "italian_herbs": {
    "sainsburys": {"packs":[[14,1.15,null,0.95]],"product":"Sainsburys Italian Herb Seasoning 14g","checked":"2026-10-05","items":[{"n":"Sainsburys Italian Herb Seasoning 14g"}]},
@@ -65,7 +65,7 @@
   "parmesan": {
    "tesco": {"packs":[[100,2.8],[200,4.0]],"product":"Tesco Parmigiano Reggiano 100G","checked":"2026-10-06","items":[{"n":"Tesco Parmigiano Reggiano 100G"},{"n":"Tesco Parmigiano Reggiano Cheese 200 G"}]},
    "sainsburys": {"packs":[[200,4.0]],"product":"Sainsburys Parmigiano Reggiano Cheese 200g","checked":"2026-10-06","items":[{"n":"Sainsburys Parmigiano Reggiano Cheese 200g"}]},
-   "morrisons": {"packs":[[100,2.8],[200,4.0]],"product":"Morrisons Parmigiano Reggiano","checked":"2026-10-08","items":[{"n":"Morrisons Parmigiano Reggiano","u":"https://groceries.morrisons.com/products/morrisons-parmigiano-reggiano/113761383"},{"n":"Morrisons Parmigiano Reggiano","u":"https://groceries.morrisons.com/products/morrisons-parmigiano-reggiano/106145591"}]}
+   "morrisons": {"packs":[[100,2.8],[200,4.0]],"product":"Morrisons Parmigiano Reggiano","checked":"2026-10-26","items":[{"n":"Morrisons Parmigiano Reggiano","u":"https://groceries.morrisons.com/products/morrisons-parmigiano-reggiano/113761383"},{"n":"Morrisons Parmigiano Reggiano","u":"https://groceries.morrisons.com/products/morrisons-parmigiano-reggiano/106145591"}]}
   },
   "vegan_cheese": {
    "tesco": {"packs":[[200,3.0]],"product":"Violife Epic Cheddar Cheese Alternative 200g","checked":"2026-10-05","items":[{"n":"Violife Epic Cheddar Cheese Alternative 200g"}],"note":"a brand: no own-label version found"},
@@ -75,7 +75,7 @@
   "kidney_beans": {
    "tesco": {"packs":[[400,0.35]],"product":"Growers Harvest Red Kidney Beans In Water 400G","checked":"2026-10-05","items":[{"n":"Growers Harvest Red Kidney Beans In Water 400G"}]},
    "sainsburys": {"packs":[[400,0.39]],"product":"Sainsburys Red Kidney Beans in Water 400g","checked":"2026-10-05","items":[{"n":"Sainsburys Red Kidney Beans in Water 400g"}]},
-   "morrisons": {"packs":[[400,0.37]],"product":"Morrisons Red Kidney Beans (400g)","checked":"2026-10-08","items":[{"n":"Morrisons Red Kidney Beans (400g)","u":"https://groceries.morrisons.com/products/morrisons-red-kidney-beans-400g/105408168"}]}
+   "morrisons": {"packs":[[400,0.37]],"product":"Morrisons Red Kidney Beans (400g)","checked":"2026-10-26","items":[{"n":"Morrisons Red Kidney Beans (400g)","u":"https://groceries.morrisons.com/products/morrisons-red-kidney-beans-400g/105408168"}]}
   },
   "red_pepper": {
    "sainsburys": {"packs":[[1,0.7]],"product":"Sainsburys Red Pepper","checked":"2026-10-05","items":[{"n":"Sainsburys Red Pepper"}]},
@@ -89,29 +89,29 @@
   "rice": {
    "tesco": {"packs":[[1000,0.52]],"product":"Grower Harvest Long Grain Rice 1Kg","checked":"2026-10-06","items":[{"n":"Grower Harvest Long Grain Rice 1Kg"}]},
    "sainsburys": {"packs":[[500,0.63],[1000,0.52]],"product":"Sainsburys Easy Cook Long Grain White Rice 500g","checked":"2026-10-06","items":[{"n":"Sainsburys Easy Cook Long Grain White Rice 500g"},{"n":"Stamford Street Co. White Rice 1kg"}]},
-   "morrisons": {"packs":[[500,1.5]],"product":"Tilda Everyday Long Grain Rice","checked":"2026-10-08","items":[{"n":"Tilda Everyday Long Grain Rice","u":"https://groceries.morrisons.com/products/tilda-everyday-long-grain-rice/113768577"}]}
+   "morrisons": {"packs":[[500,1.5]],"product":"Tilda Everyday Long Grain Rice","checked":"2026-10-26","items":[{"n":"Tilda Everyday Long Grain Rice","u":"https://groceries.morrisons.com/products/tilda-everyday-long-grain-rice/113768577"}]}
   },
   "brown_rice": {
    "tesco": {"packs":[[1000,1.39]],"product":"Tesco Easy Cook Brown Rice 1Kg","checked":"2026-10-05","items":[{"n":"Tesco Easy Cook Brown Rice 1Kg"}]},
    "sainsburys": {"packs":[[500,0.69],[1000,1.39]],"product":"Sainsburys Brown Rice 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Brown Rice 500g"},{"n":"Sainsburys Brown Rice 1kg"}]},
-   "morrisons": {"packs":[[1000,1.39]],"product":"Morrisons Easy Cook Brown Long Grain Rice","checked":"2026-10-08","items":[{"n":"Morrisons Easy Cook Brown Long Grain Rice","u":"https://groceries.morrisons.com/products/morrisons-easy-cook-brown-long-grain-rice/104552192"}]}
+   "morrisons": {"packs":[[1000,1.39]],"product":"Morrisons Easy Cook Brown Long Grain Rice","checked":"2026-10-26","items":[{"n":"Morrisons Easy Cook Brown Long Grain Rice","u":"https://groceries.morrisons.com/products/morrisons-easy-cook-brown-long-grain-rice/104552192"}]}
   },
   "chicken_breast": {
    "tesco": {"packs":[[650,4.9],[1000,6.9]],"product":"Tesco British Chicken Breast Fillets 650G","checked":"2026-10-05","items":[{"n":"Tesco British Chicken Breast Fillets 650G"},{"n":"Tesco British Chicken Breast Fillets 1KG"}]},
-   "morrisons": {"packs":[[330,2.51],[630,4.85],[1000,6.99]],"product":"Morrisons British Chicken Breast Fillets 330g","checked":"2026-10-08","items":[{"n":"Morrisons British Chicken Breast Fillets 330g","u":"https://groceries.morrisons.com/products/morrisons-british-chicken-breast-fillets-330g/112077141"},{"n":"Morrisons British Chicken Breast Fillets 630g","u":"https://groceries.morrisons.com/products/morrisons-british-chicken-breast-fillets-630g/108444754"},{"n":"Morrisons British Chicken Breast Fillets 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-chicken-breast-fillets-1kg/108444711"}]}
+   "morrisons": {"packs":[[330,2.51],[630,4.85],[1000,6.99]],"product":"Morrisons British Chicken Breast Fillets 330g","checked":"2026-10-26","items":[{"n":"Morrisons British Chicken Breast Fillets 330g","u":"https://groceries.morrisons.com/products/morrisons-british-chicken-breast-fillets-330g/112077141"},{"n":"Morrisons British Chicken Breast Fillets 630g","u":"https://groceries.morrisons.com/products/morrisons-british-chicken-breast-fillets-630g/108444754"},{"n":"Morrisons British Chicken Breast Fillets 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-chicken-breast-fillets-1kg/108444711"}]}
   },
   "chicken_thighs": {
    "tesco": {"packs":[[1000,7.25]],"product":"Tesco British Chicken Thigh Fillets 1Kg","checked":"2026-10-05","items":[{"n":"Tesco British Chicken Thigh Fillets 1Kg"}]},
    "sainsburys": {"packs":[[1000,6.95]],"product":"Sainsburys 1kg British Chicken Thigh Fillets","checked":"2026-10-05","items":[{"n":"Sainsburys 1kg British Chicken Thigh Fillets"}]},
-   "morrisons": {"packs":[[1000,7.25]],"product":"Morrisons British Boneless Chicken Thigh Fillets 1kg","checked":"2026-10-08","items":[{"n":"Morrisons British Boneless Chicken Thigh Fillets 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-boneless-chicken-thigh-fillets-1kg/108854278"}]}
+   "morrisons": {"packs":[[1000,7.25]],"product":"Morrisons British Boneless Chicken Thigh Fillets 1kg","checked":"2026-10-26","items":[{"n":"Morrisons British Boneless Chicken Thigh Fillets 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-boneless-chicken-thigh-fillets-1kg/108854278"}]}
   },
   "plant_chicken": {
    "tesco": {"packs":[[300,2.75,null,1.5]],"product":"Quorn Chicken Style Pieces 300G","checked":"2026-10-06","items":[{"n":"Quorn Chicken Style Pieces 300G"}],"note":"a brand: no own-label version found"},
    "sainsburys": {"packs":[[300,2.3]],"product":"Plant Pioneers Meat Free Chicken-Style Pieces 300g","checked":"2026-10-06","items":[{"n":"Plant Pioneers Meat Free Chicken-Style Pieces 300g"}]},
-   "morrisons": {"packs":[[220,3.0,2.5]],"product":"Richmond Frozen Vegan No-Chicken Pieces","checked":"2026-10-08","items":[{"n":"Richmond Frozen Vegan No-Chicken Pieces","u":"https://groceries.morrisons.com/products/richmond-frozen-vegan-no-chicken-pieces/113366842"}],"saleNote":"Was £3"}
+   "morrisons": {"packs":[[260,2.75]],"product":"Linda McCartney Vegan Shredded Chicken 260g","checked":"2026-10-26","items":[{"n":"Linda McCartney Vegan Shredded Chicken 260g","u":"https://groceries.morrisons.com/products/linda-mccartney-vegan-shredded-chicken-260g/116246951"}]}
   },
   "curry_paste": {
-   "morrisons": {"packs":[[140,1.95,1.5]],"product":"Patak's Indian Tikka Masala Curry Paste Pots 2 x 70g","checked":"2026-10-08","items":[{"n":"Patak's Indian Tikka Masala Curry Paste Pots 2 x 70g","u":"https://groceries.morrisons.com/products/patak-s-indian-tikka-masala-curry-paste-pots-2-x-70g/109038918"}],"saleNote":"Was £1.95"}
+   "morrisons": {"packs":[[140,1.95,1.5]],"product":"Patak's Indian Tikka Masala Curry Paste Pots 2 x 70g","checked":"2026-10-26","items":[{"n":"Patak's Indian Tikka Masala Curry Paste Pots 2 x 70g","u":"https://groceries.morrisons.com/products/patak-s-indian-tikka-masala-curry-paste-pots-2-x-70g/109038918"}],"saleNote":"Was £1.95"}
   },
   "coconut_milk": {
    "tesco": {"packs":[[400,0.75]],"product":"Tesco Coconut Milk 400Ml","checked":"2026-10-05","items":[{"n":"Tesco Coconut Milk 400Ml"}]},
@@ -120,7 +120,7 @@
   },
   "egg_noodles": {
    "tesco": {"packs":[[250,0.95]],"product":"Tesco Medium Egg Noodles 250G","checked":"2026-10-05","items":[{"n":"Tesco Medium Egg Noodles 250G"}]},
-   "morrisons": {"packs":[[250,0.95]],"product":"Morrisons Medium Egg Noodles 250g","checked":"2026-10-08","items":[{"n":"Morrisons Medium Egg Noodles 250g","u":"https://groceries.morrisons.com/products/morrisons-medium-egg-noodles-250g/105762896"}]}
+   "morrisons": {"packs":[[250,0.95]],"product":"Morrisons Medium Egg Noodles 250g","checked":"2026-10-26","items":[{"n":"Morrisons Medium Egg Noodles 250g","u":"https://groceries.morrisons.com/products/morrisons-medium-egg-noodles-250g/105762896"}]}
   },
   "rice_noodles": {
    "sainsburys": {"packs":[[250,1.0]],"product":"Sainsburys Rice Noodles 250g","checked":"2026-10-06","items":[{"n":"Sainsburys Rice Noodles 250g"}]}
@@ -128,7 +128,7 @@
   "stir_fry_veg": {
    "tesco": {"packs":[[320,1.75],[570,2.1]],"product":"Tesco Vegetable Stir Fry 320g","checked":"2026-10-05","items":[{"n":"Tesco Vegetable Stir Fry 320g"},{"n":"Tesco Large Vegetable Stir Fry 570g"}]},
    "sainsburys": {"packs":[[300,1.75]],"product":"Sainsburys Mixed Vegetable Stir Fry","checked":"2026-10-05","items":[{"n":"Sainsburys Mixed Vegetable Stir Fry"}]},
-   "morrisons": {"packs":[[500,2.46]],"product":"Morrisons Stir Fry Vegetables 500g","checked":"2026-10-08","items":[{"n":"Morrisons Stir Fry Vegetables 500g","u":"https://groceries.morrisons.com/products/morrisons-stir-fry-vegetables-500g/104896753"}]}
+   "morrisons": {"packs":[[500,2.46]],"product":"Morrisons Stir Fry Vegetables 500g","checked":"2026-10-26","items":[{"n":"Morrisons Stir Fry Vegetables 500g","u":"https://groceries.morrisons.com/products/morrisons-stir-fry-vegetables-500g/104896753"}]}
   },
   "soy_sauce": {
    "tesco": {"packs":[[150,0.55]],"product":"Tesco Light Soy Sauce 150Ml","checked":"2026-10-05","items":[{"n":"Tesco Light Soy Sauce 150Ml"}]},
@@ -141,57 +141,57 @@
   "baking_potatoes": {
    "tesco": {"packs":[[1,0.27],[4,0.85]],"product":"Tesco Large Baking Potatoes Loose","checked":"2026-10-06","items":[{"n":"Tesco Large Baking Potatoes Loose"},{"n":"Tesco Baking Potatoes 4 Pack"}]},
    "sainsburys": {"packs":[[4,0.79]],"product":"Sainsburys Baking Potatoes x4","checked":"2026-10-06","items":[{"n":"Sainsburys Baking Potatoes x4"}],"est":[1]},
-   "morrisons": {"packs":[[4,0.79]],"product":"Morrisons British Baking Potatoes 4 Pack","checked":"2026-10-08","items":[{"n":"Morrisons British Baking Potatoes 4 Pack","u":"https://groceries.morrisons.com/products/morrisons-british-baking-potatoes-4-pack/108414272"}]}
+   "morrisons": {"packs":[[4,0.79]],"product":"Morrisons British Baking Potatoes 4 Pack","checked":"2026-10-26","items":[{"n":"Morrisons British Baking Potatoes 4 Pack","u":"https://groceries.morrisons.com/products/morrisons-british-baking-potatoes-4-pack/108414272"}]}
   },
   "baked_beans": {
    "tesco": {"packs":[[420,0.28],[1680,1.55]],"product":"Stockwell & Co Baked Beans In Tomato Sauce 420G","checked":"2026-10-06","items":[{"n":"Stockwell & Co Baked Beans In Tomato Sauce 420G"},{"n":"Tesco Baked Beans In Tomato Sauce 4X420g"}]},
    "sainsburys": {"packs":[[400,0.3],[1600,1.52]],"product":"Stamford Street Co. Baked Beans in Tomato Sauce 400g","checked":"2026-10-06","items":[{"n":"Stamford Street Co. Baked Beans in Tomato Sauce 400g"},{"n":"Sainsburys Baked Beans 4x400g"}]},
-   "morrisons": {"packs":[[410,0.38],[1640,1.5]],"product":"Morrisons Baked Beans 410g","checked":"2026-10-08","items":[{"n":"Morrisons Baked Beans 410g","u":"https://groceries.morrisons.com/products/morrisons-baked-beans-410g/105859372"},{"n":"Morrisons Baked Beans 4x410g","u":"https://groceries.morrisons.com/products/morrisons-baked-beans-4x410g/105859348"}]}
+   "morrisons": {"packs":[[410,0.37],[1640,1.5]],"product":"Morrisons Baked Beans 410g","checked":"2026-10-26","items":[{"n":"Morrisons Baked Beans 410g","u":"https://groceries.morrisons.com/products/morrisons-baked-beans-410g/105859372"},{"n":"Morrisons Baked Beans 4x410g","u":"https://groceries.morrisons.com/products/morrisons-baked-beans-4x410g/105859348"}]}
   },
   "cheddar": {
    "tesco": {"packs":[[220,2.5],[400,2.45]],"product":"Tesco British Mature Cheddar Cheese 220G","checked":"2026-10-05","items":[{"n":"Tesco British Mature Cheddar Cheese 220G"},{"n":"Creamfields Mature White Cheddar 400G"}]},
    "sainsburys": {"packs":[[220,2.5],[400,2.45]],"product":"Sainsburys Mature British Cheddar 220g","checked":"2026-10-05","items":[{"n":"Sainsburys Mature British Cheddar 220g"},{"n":"Stamford Street Co. Mature White Cheddar 400g"}]},
-   "morrisons": {"packs":[[240,2.75],[400,3.25,2.95]],"product":"Morrisons British Mature Cheddar 240g","checked":"2026-10-08","items":[{"n":"Morrisons British Mature Cheddar 240g","u":"https://groceries.morrisons.com/products/morrisons-british-mature-cheddar-240g/112603682"},{"n":"Morrisons British Mature Cheddar 400g","u":"https://groceries.morrisons.com/products/morrisons-british-mature-cheddar-400g/114285471"}],"saleNote":"Was £3.25"}
+   "morrisons": {"packs":[[400,2.45]],"product":"Morrisons British Savers Mature Coloured Cheddar 400g","checked":"2026-10-26","items":[{"n":"Morrisons British Savers Mature Coloured Cheddar 400g","u":"https://groceries.morrisons.com/products/morrisons-british-savers-mature-coloured-cheddar-400g/114287492"}]}
   },
   "butter": {
    "tesco": {"packs":[[250,1.85]],"product":"Tesco British Salted Block Butter 250G","checked":"2026-10-05","items":[{"n":"Tesco British Salted Block Butter 250G"}]},
    "sainsburys": {"packs":[[250,1.85]],"product":"Sainsburys British Butter, Salted 250g","checked":"2026-10-05","items":[{"n":"Sainsburys British Butter, Salted 250g"}]},
-   "morrisons": {"packs":[[250,1.85]],"product":"Morrisons British Salted Butter 250g","checked":"2026-10-08","items":[{"n":"Morrisons British Salted Butter 250g","u":"https://groceries.morrisons.com/products/morrisons-british-salted-butter-250g/107007886"}]}
+   "morrisons": {"packs":[[250,1.85]],"product":"Morrisons British Salted Butter 250g","checked":"2026-10-26","items":[{"n":"Morrisons British Salted Butter 250g","u":"https://groceries.morrisons.com/products/morrisons-british-salted-butter-250g/107007886"}]}
   },
   "plant_spread": {
    "tesco": {"packs":[[500,2.0]],"product":"Vitalite Dairy Free Spread 500G","checked":"2026-10-06","items":[{"n":"Vitalite Dairy Free Spread 500G"}],"note":"a brand: no own-label version found"},
-   "morrisons": {"packs":[[500,1.6]],"product":"Morrisons Olive Spread 500g","checked":"2026-10-08","items":[{"n":"Morrisons Olive Spread 500g","u":"https://groceries.morrisons.com/products/morrisons-olive-spread-500g/115289211"}]}
+   "morrisons": {"packs":[[500,2.25,1.9]],"product":"Vitalite Dairy Free Spread 500g","checked":"2026-10-26","items":[{"n":"Vitalite Dairy Free Spread 500g","u":"https://groceries.morrisons.com/products/vitalite-dairy-free-spread-500g/103141990"}],"saleNote":"Was £2.25"}
   },
   "penne": {
    "tesco": {"packs":[[500,0.41],[1000,1.19]],"product":"Hearty Food Co. Penne Pasta 500G","checked":"2026-10-05","items":[{"n":"Hearty Food Co. Penne Pasta 500G"},{"n":"Tesco Penne Pasta Quills 1Kg"}]},
    "sainsburys": {"packs":[[500,0.41],[1000,1.38]],"product":"Stamford Street Co. Penne Pasta 500g","checked":"2026-10-05","items":[{"n":"Stamford Street Co. Penne Pasta 500g"},{"n":"Sainsburys Penne Pasta 1kg"}]},
-   "morrisons": {"packs":[[500,1.0],[1000,1.29]],"product":"Napolina Penne Pasta","checked":"2026-10-08","items":[{"n":"Napolina Penne Pasta","u":"https://groceries.morrisons.com/products/napolina-penne-pasta/100409727"},{"n":"Morrisons Penne Pasta","u":"https://groceries.morrisons.com/products/morrisons-penne-pasta/114527396"}]}
+   "morrisons": {"packs":[[500,1.0],[1000,1.29]],"product":"Napolina Penne Pasta","checked":"2026-10-26","items":[{"n":"Napolina Penne Pasta","u":"https://groceries.morrisons.com/products/napolina-penne-pasta/100409727"},{"n":"Morrisons Penne Pasta","u":"https://groceries.morrisons.com/products/morrisons-penne-pasta/114527396"}]}
   },
   "gf_penne": {
    "tesco": {"packs":[[500,0.75,null,0.6]],"product":"Tesco Free From Penne Pasta 500G","checked":"2026-10-05","items":[{"n":"Tesco Free From Penne Pasta 500G"}]},
    "sainsburys": {"packs":[[500,0.75]],"product":"Sainsburys Free From Penne Pasta 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Free From Penne Pasta 500g"}]},
-   "morrisons": {"packs":[[500,0.75]],"product":"Morrisons Free From Penne","checked":"2026-10-08","items":[{"n":"Morrisons Free From Penne","u":"https://groceries.morrisons.com/products/morrisons-free-from-penne/111255495"}]}
+   "morrisons": {"packs":[[500,0.75]],"product":"Morrisons Free From Penne","checked":"2026-10-26","items":[{"n":"Morrisons Free From Penne","u":"https://groceries.morrisons.com/products/morrisons-free-from-penne/111255495"}]}
   },
   "macaroni": {
    "tesco": {"packs":[[500,0.69]],"product":"Tesco Macaroni Pasta 500G","checked":"2026-10-05","items":[{"n":"Tesco Macaroni Pasta 500G"}]},
    "sainsburys": {"packs":[[500,0.69]],"product":"Sainsburys Macaroni Pasta 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Macaroni Pasta 500g"}]},
-   "morrisons": {"packs":[[500,1.0]],"product":"Napolina Macaroni","checked":"2026-10-08","items":[{"n":"Napolina Macaroni","u":"https://groceries.morrisons.com/products/napolina-macaroni/113780550"}]}
+   "morrisons": {"packs":[[500,1.0]],"product":"Napolina Macaroni","checked":"2026-10-26","items":[{"n":"Napolina Macaroni","u":"https://groceries.morrisons.com/products/napolina-macaroni/113780550"}]}
   },
   "tuna": {
    "tesco": {"packs":[[145,0.65],[580,2.49]],"product":"Tesco Tuna Chunks In Spring Water 145G","checked":"2026-10-05","items":[{"n":"Tesco Tuna Chunks In Spring Water 145G"},{"n":"Tesco Tuna Chunks In Spring Water 4 X 145G"}]},
    "sainsburys": {"packs":[[580,2.49]],"product":"Sainsburys Tuna Chunks in Spring Water 4x145g","checked":"2026-10-05","items":[{"n":"Sainsburys Tuna Chunks in Spring Water 4x145g"}]},
-   "morrisons": {"packs":[[145,0.8],[580,2.49]],"product":"Morrisons Tuna Chunks In Spring Water 145g","checked":"2026-10-08","items":[{"n":"Morrisons Tuna Chunks In Spring Water 145g","u":"https://groceries.morrisons.com/products/morrisons-tuna-chunks-in-spring-water-145g/110557168"},{"n":"Morrisons Tuna Chunks In Spring Water 4x145g","u":"https://groceries.morrisons.com/products/morrisons-tuna-chunks-in-spring-water-4x145g/110557192"}]}
+   "morrisons": {"packs":[[145,0.8],[580,2.49]],"product":"Morrisons Tuna Chunks In Spring Water 145g","checked":"2026-10-26","items":[{"n":"Morrisons Tuna Chunks In Spring Water 145g","u":"https://groceries.morrisons.com/products/morrisons-tuna-chunks-in-spring-water-145g/110557168"},{"n":"Morrisons Tuna Chunks In Spring Water 4x145g","u":"https://groceries.morrisons.com/products/morrisons-tuna-chunks-in-spring-water-4x145g/110557192"}]}
   },
   "sweetcorn": {
    "tesco": {"packs":[[200,0.5],[600,1.45]],"product":"Tesco Naturally Sweet Sweetcorn 200G","checked":"2026-10-05","items":[{"n":"Tesco Naturally Sweet Sweetcorn 200G"},{"n":"Tesco Naturally Sweet Sweetcorn In Water 3X200G"}]},
    "sainsburys": {"packs":[[198,0.3],[594,0.9]],"product":"Sainsburys Naturally Sweet Sweetcorn In Water 198g","checked":"2026-10-05","items":[{"n":"Sainsburys Naturally Sweet Sweetcorn In Water 198g"},{"n":"Sainsburys Sweetcorn 3x198g"}]},
-   "morrisons": {"packs":[[198,0.55],[640,4.5]],"product":"Morrisons Sweet Corn In Water (198g)","checked":"2026-10-08","items":[{"n":"Morrisons Sweet Corn In Water (198g)","u":"https://groceries.morrisons.com/products/morrisons-sweet-corn-in-water-198g/109319904"},{"n":"Birds Eye Supersweet Sweetcorn 640g","u":"https://groceries.morrisons.com/products/birds-eye-supersweet-sweetcorn-640g/112134273"}]}
+   "morrisons": {"packs":[[198,0.55]],"product":"Morrisons Sweet Corn In Water (198g)","checked":"2026-10-26","items":[{"n":"Morrisons Sweet Corn In Water (198g)","u":"https://groceries.morrisons.com/products/morrisons-sweet-corn-in-water-198g/109319904"}]}
   },
   "eggs": {
    "tesco": {"packs":[[6,1.8],[12,2.85]],"product":"Tesco Free Range Eggs Medium 6 Pack","checked":"2026-10-05","items":[{"n":"Tesco Free Range Eggs Medium 6 Pack"},{"n":"Tesco Medium Free Range Eggs 12 Pack"}]},
    "asda": {"packs":[[12,2.85]],"product":"Medium Welsh Free Range Eggs","checked":"2026-09-30"},
    "sainsburys": {"packs":[[6,1.8],[12,2.95]],"product":"Sainsburys British Free Range Eggs Medium x6","checked":"2026-10-05","items":[{"n":"Sainsburys British Free Range Eggs Medium x6"},{"n":"Sainsburys British Free Range Eggs Medium x12"}]},
-   "morrisons": {"packs":[[6,1.8],[12,2.85]],"product":"Morrisons Medium Free Range Eggs 6 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Medium Free Range Eggs 6 Pack","u":"https://groceries.morrisons.com/products/morrisons-medium-free-range-eggs-6-pack/105828736"},{"n":"Morrisons Medium Free Range Eggs 12 Pack","u":"https://groceries.morrisons.com/products/morrisons-medium-free-range-eggs-12-pack/110250449"}]},
+   "morrisons": {"packs":[[6,1.8],[12,2.85]],"product":"Morrisons Medium Free Range Eggs 6 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Medium Free Range Eggs 6 Pack","u":"https://groceries.morrisons.com/products/morrisons-medium-free-range-eggs-6-pack/105828736"},{"n":"Morrisons Medium Free Range Eggs 12 Pack","u":"https://groceries.morrisons.com/products/morrisons-medium-free-range-eggs-12-pack/110250449"}]},
    "waitrose": {"packs":[[6,2.35]],"product":"Waitrose British Blacktail Free Range Eggs","checked":"2026-09-30"}
   },
   "frozen_peas": {
@@ -207,78 +207,79 @@
   "fajita_seasoning": {
    "tesco": {"packs":[[30,1.0]],"product":"Tesco Fajita Seasoning 30G","checked":"2026-10-05","items":[{"n":"Tesco Fajita Seasoning 30G"}]},
    "sainsburys": {"packs":[[30,1.0]],"product":"Sainsburys Fajita Spice Mix 30g","checked":"2026-10-05","items":[{"n":"Sainsburys Fajita Spice Mix 30g"}]},
-   "morrisons": {"packs":[[28,1.25]],"product":"Santa Maria Mild Fajita Mix","checked":"2026-10-08","items":[{"n":"Santa Maria Mild Fajita Mix","u":"https://groceries.morrisons.com/products/santa-maria-mild-fajita-mix/109035418"}]}
+   "morrisons": {"packs":[[30,1.0]],"product":"Morrisons Smoky BBQ Fajita Seasoning","checked":"2026-10-26","items":[{"n":"Morrisons Smoky BBQ Fajita Seasoning","u":"https://groceries.morrisons.com/products/morrisons-smoky-bbq-fajita-seasoning/110503856"}]}
   },
   "tortillas": {
    "tesco": {"packs":[[8,0.99]],"product":"H.W. Nevills Plain White Tortilla Wraps 8 Pack","checked":"2026-10-05","items":[{"n":"H.W. Nevills Plain White Tortilla Wraps 8 Pack"}]},
    "sainsburys": {"packs":[[8,0.99]],"product":"Stamford Street Co. Plain Tortilla Wraps x8","checked":"2026-10-05","items":[{"n":"Stamford Street Co. Plain Tortilla Wraps x8"}]},
-   "morrisons": {"packs":[[8,3.0]],"product":"Morrisons Plain Tortilla Wraps 8 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Plain Tortilla Wraps 8 Pack","u":"https://groceries.morrisons.com/products/morrisons-plain-tortilla-wraps-8-pack/112909657"}]}
+   "morrisons": {"packs":[[8,1.4]],"product":"Morrisons Plain Tortilla Wraps 8 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Plain Tortilla Wraps 8 Pack","u":"https://groceries.morrisons.com/products/morrisons-plain-tortilla-wraps-8-pack/112909657"}]}
   },
   "sausages": {
    "tesco": {"packs":[[8,1.79]],"product":"Tesco British Pork Sausages 8 Pack","checked":"2026-10-06","items":[{"n":"Tesco British Pork Sausages 8 Pack"}]},
    "sainsburys": {"packs":[[8,1.79]],"product":"Sainsburys Butchers choice British Pork Sausage x8 454g","checked":"2026-10-06","items":[{"n":"Sainsburys Butchers choice British Pork Sausage x8 454g"}]},
-   "morrisons": {"packs":[[8,2.3,1.5]],"product":"Richmond 8 Thick Pork Sausages 410g","checked":"2026-10-08","items":[{"n":"Richmond 8 Thick Pork Sausages 410g","u":"https://groceries.morrisons.com/products/richmond-8-thick-pork-sausages-410g/111071477"}],"saleNote":"Was £2.30"}
+   "morrisons": {"packs":[[8,1.79]],"product":"Morrisons Butcher's Style 8 Pork Sausages 454g","checked":"2026-10-26","items":[{"n":"Morrisons Butcher's Style 8 Pork Sausages 454g","u":"https://groceries.morrisons.com/products/morrisons-butcher-s-style-8-pork-sausages-454g/104421547"}]}
   },
   "veggie_sausages": {
    "tesco": {"packs":[[6,2.0]],"product":"Tesco Plant Chef 6 Herby Bangers 300G","checked":"2026-10-05","items":[{"n":"Tesco Plant Chef 6 Herby Bangers 300G"}]},
    "sainsburys": {"packs":[[6,2.5]],"product":"Linda McCartney Vegetarian Sausages x6 270g","checked":"2026-10-05","items":[{"n":"Linda McCartney Vegetarian Sausages x6 270g"}],"note":"a brand: no own-label version found"},
-   "morrisons": {"packs":[[6,3.1]],"product":"Cauldron Lincolnshire Vegetarian Sausages x6 276g","checked":"2026-10-08","items":[{"n":"Cauldron Lincolnshire Vegetarian Sausages x6 276g","u":"https://groceries.morrisons.com/products/cauldron-lincolnshire-vegetarian-sausages-x6-276g/102751631"}]}
+   "morrisons": {"packs":[[6,2.5]],"product":"Linda McCartney's 6 Vegetarian Sausages","checked":"2026-10-26","items":[{"n":"Linda McCartney's 6 Vegetarian Sausages","u":"https://groceries.morrisons.com/products/linda-mccartney-s-6-vegetarian-sausages/110944281"}]}
   },
   "potatoes": {
-   "morrisons": {"packs":[[2500,1.65]],"product":"Morrisons British White Potatoes 2.5Kg","checked":"2026-10-08","items":[{"n":"Morrisons British White Potatoes 2.5Kg","u":"https://groceries.morrisons.com/products/morrisons-british-white-potatoes-2-5kg/108414361"}]}
+   "morrisons": {"packs":[[2500,1.65]],"product":"Morrisons British White Potatoes 2.5Kg","checked":"2026-10-26","items":[{"n":"Morrisons British White Potatoes 2.5Kg","u":"https://groceries.morrisons.com/products/morrisons-british-white-potatoes-2-5kg/108414361"}]}
   },
   "pesto": {
    "tesco": {"packs":[[190,0.89]],"product":"Tesco Classic Green Pesto 190G","checked":"2026-10-05","items":[{"n":"Tesco Classic Green Pesto 190G"}]},
    "sainsburys": {"packs":[[190,0.89]],"product":"Sainsburys Green Pesto 190g","checked":"2026-10-05","items":[{"n":"Sainsburys Green Pesto 190g"}]},
-   "morrisons": {"packs":[[190,0.89]],"product":"Morrisons Green Pesto","checked":"2026-10-08","items":[{"n":"Morrisons Green Pesto","u":"https://groceries.morrisons.com/products/morrisons-green-pesto/104557735"}]}
+   "morrisons": {"packs":[[190,0.89]],"product":"Morrisons Green Pesto","checked":"2026-10-26","items":[{"n":"Morrisons Green Pesto","u":"https://groceries.morrisons.com/products/morrisons-green-pesto/104557735"}]}
   },
   "vegan_pesto": {
    "tesco": {"packs":[[190,1.1,null,0.85]],"product":"Tesco Free From Green Pesto 190G","checked":"2026-10-05","items":[{"n":"Tesco Free From Green Pesto 190G"}]},
    "sainsburys": {"packs":[[190,1.1]],"product":"Sainsburys Free From 190g Green Pesto","checked":"2026-10-05","items":[{"n":"Sainsburys Free From 190g Green Pesto"}]},
-   "morrisons": {"packs":[[190,0.89]],"product":"Morrisons Plant Revolution Vegan Green Pesto 190g","checked":"2026-10-08","items":[{"n":"Morrisons Plant Revolution Vegan Green Pesto 190g","u":"https://groceries.morrisons.com/products/morrisons-plant-revolution-vegan-green-pesto-190g/112177345"}]}
+   "morrisons": {"packs":[[190,0.89]],"product":"Morrisons Plant Revolution Vegan Green Pesto 190g","checked":"2026-10-26","items":[{"n":"Morrisons Plant Revolution Vegan Green Pesto 190g","u":"https://groceries.morrisons.com/products/morrisons-plant-revolution-vegan-green-pesto-190g/112177345"}]}
   },
   "bread": {
    "tesco": {"packs":[[1,0.55]],"product":"H.W. Nevill’s Medium Sliced White Bread 800g","checked":"2026-10-05","items":[{"n":"H.W. Nevill’s Medium Sliced White Bread 800g"}]},
    "sainsburys": {"packs":[[1,0.74]],"product":"Sainsburys Soft Medium Sliced White Bread 800g","checked":"2026-10-05","items":[{"n":"Sainsburys Soft Medium Sliced White Bread 800g"}]},
-   "morrisons": {"packs":[[1,0.74]],"product":"Morrisons White Medium Sliced Bread 800g","checked":"2026-10-08","items":[{"n":"Morrisons White Medium Sliced Bread 800g","u":"https://groceries.morrisons.com/products/morrisons-white-medium-sliced-bread-800g/102369773"}]}
+   "morrisons": {"packs":[[1,0.74]],"product":"Morrisons White Medium Sliced Bread 800g","checked":"2026-10-26","items":[{"n":"Morrisons White Medium Sliced Bread 800g","u":"https://groceries.morrisons.com/products/morrisons-white-medium-sliced-bread-800g/102369773"}]}
   },
   "red_lentils": {
    "tesco": {"packs":[[500,2.1],[1000,2.6]],"product":"Tesco Red Split Lentils 500G","checked":"2026-10-05","items":[{"n":"Tesco Red Split Lentils 500G"},{"n":"Tesco Red Split Lentils 1Kg"}]},
    "sainsburys": {"packs":[[500,2.1],[1000,2.6]],"product":"Sainsburys Dried Red Lentils 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Dried Red Lentils 500g"},{"n":"Sainsburys Red Lentils 1kg"}]},
-   "morrisons": {"packs":[[500,2.1,1.5],[1000,2.5]],"product":"Great Scot Red Split Lentils","checked":"2026-10-08","items":[{"n":"Great Scot Red Split Lentils","u":"https://groceries.morrisons.com/products/great-scot-red-split-lentils/100401004"},{"n":"Laila Red Split Lentils","u":"https://groceries.morrisons.com/products/laila-red-split-lentils/114849715"}],"saleNote":"Was £2.10"}
+   "morrisons": {"packs":[[500,1.5],[1000,2.5]],"product":"Great Scot Red Split Lentils","checked":"2026-10-26","items":[{"n":"Great Scot Red Split Lentils","u":"https://groceries.morrisons.com/products/great-scot-red-split-lentils/100401004"},{"n":"Laila Red Split Lentils","u":"https://groceries.morrisons.com/products/laila-red-split-lentils/114849715"}]}
   },
   "spinach": {
    "tesco": {"packs":[[250,1.3]],"product":"Tesco Baby Spinach 250G","checked":"2026-10-05","items":[{"n":"Tesco Baby Spinach 250G"}]},
-   "sainsburys": {"packs":[[260,1.35,null,0.95]],"product":"Sainsburys Young Spinach 260g","checked":"2026-10-05","items":[{"n":"Sainsburys Young Spinach 260g"}]}
+   "sainsburys": {"packs":[[260,1.35,null,0.95]],"product":"Sainsburys Young Spinach 260g","checked":"2026-10-05","items":[{"n":"Sainsburys Young Spinach 260g"}]},
+   "morrisons": {"packs":[[250,3.0,2.5]],"product":"La Famiglia Rana Spinach & Ricotta Tortelloni","checked":"2026-10-26","items":[{"n":"La Famiglia Rana Spinach & Ricotta Tortelloni","u":"https://groceries.morrisons.com/products/la-famiglia-rana-spinach-ricotta-tortelloni/109345424"}],"saleNote":"Was £3"}
   },
   "carrots": {
    "tesco": {"packs":[[1000,0.69]],"product":"Tesco Carrots 1Kg","checked":"2026-10-05","items":[{"n":"Tesco Carrots 1Kg"}]},
    "sainsburys": {"packs":[[1000,0.65]],"product":"Stamford Street Co. Carrots 1kg","checked":"2026-10-05","items":[{"n":"Stamford Street Co. Carrots 1kg"}]},
-   "morrisons": {"packs":[[1000,0.69]],"product":"Morrisons British Carrots 1kg","checked":"2026-10-08","items":[{"n":"Morrisons British Carrots 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-carrots-1kg/108305527"}]}
+   "morrisons": {"packs":[[1000,0.69]],"product":"Morrisons British Carrots 1kg","checked":"2026-10-26","items":[{"n":"Morrisons British Carrots 1kg","u":"https://groceries.morrisons.com/products/morrisons-british-carrots-1kg/108305527"}]}
   },
   "milk": {
    "tesco": {"packs":[[1130,1.2],[2272,1.65]],"product":"Tesco British Semi Skimmed Milk 1.13L, 2 Pints","checked":"2026-10-05","items":[{"n":"Tesco British Semi Skimmed Milk 1.13L, 2 Pints"},{"n":"Tesco British Semi Skimmed Milk 2.272L, 4 Pints"}]},
-   "morrisons": {"packs":[[1136,1.2],[2272,1.65]],"product":"Morrisons British Semi Skimmed Milk 2 Pint","checked":"2026-10-08","items":[{"n":"Morrisons British Semi Skimmed Milk 2 Pint","u":"https://groceries.morrisons.com/products/morrisons-british-semi-skimmed-milk-2-pint/113239376"},{"n":"Morrisons British Semi Skimmed Milk 4 Pint","u":"https://groceries.morrisons.com/products/morrisons-british-semi-skimmed-milk-4-pint/113240422"}]},
+   "morrisons": {"packs":[[1136,1.2],[2272,1.65]],"product":"Morrisons British Semi Skimmed Milk 2 Pint","checked":"2026-10-26","items":[{"n":"Morrisons British Semi Skimmed Milk 2 Pint","u":"https://groceries.morrisons.com/products/morrisons-british-semi-skimmed-milk-2-pint/113239376"},{"n":"Morrisons British Semi Skimmed Milk 4 Pint","u":"https://groceries.morrisons.com/products/morrisons-british-semi-skimmed-milk-4-pint/113240422"}]},
    "aldi": {"packs":[[2272,1.65]],"product":"Cowbelle Semi Skimmed Milk 1.7% Fat","checked":"2026-09-30"},
    "waitrose": {"packs":[[1136,1.25],[2272,1.75]],"product":"Essential British Free Range Semi-Skimmed Milk","checked":"2026-09-30"}
   },
   "oat_drink": {
    "tesco": {"packs":[[1000,1.3,null,1.05]],"product":"Tesco Long Life Oat Original 1L","checked":"2026-10-05","items":[{"n":"Tesco Long Life Oat Original 1L"}]},
    "sainsburys": {"packs":[[1000,1.5]],"product":"Sainsburys Oat Drink 1L","checked":"2026-10-05","items":[{"n":"Sainsburys Oat Drink 1L"}]},
-   "morrisons": {"packs":[[1000,1.5]],"product":"Morrisons Oat Milk","checked":"2026-10-08","items":[{"n":"Morrisons Oat Milk","u":"https://groceries.morrisons.com/products/morrisons-oat-milk/110289298"}]}
+   "morrisons": {"packs":[[1000,1.5]],"product":"Morrisons Oat Milk","checked":"2026-10-26","items":[{"n":"Morrisons Oat Milk","u":"https://groceries.morrisons.com/products/morrisons-oat-milk/110738807"}]}
   },
   "plain_flour": {
    "tesco": {"packs":[[1500,0.7]],"product":"Stockwell & Co. Plain Flour 1.5Kg","checked":"2026-10-06","items":[{"n":"Stockwell & Co. Plain Flour 1.5Kg"}]},
    "sainsburys": {"packs":[[1500,0.7]],"product":"Sainsburys Plain Flour 1.5kg","checked":"2026-10-06","items":[{"n":"Sainsburys Plain Flour 1.5kg"}]},
-   "morrisons": {"packs":[[1500,0.7]],"product":"Morrisons Plain Flour 1.5kg","checked":"2026-10-08","items":[{"n":"Morrisons Plain Flour 1.5kg","u":"https://groceries.morrisons.com/products/morrisons-plain-flour-1-5kg/107783471"}]}
+   "morrisons": {"packs":[[1500,0.7]],"product":"Morrisons Plain Flour 1.5kg","checked":"2026-10-26","items":[{"n":"Morrisons Plain Flour 1.5kg","u":"https://groceries.morrisons.com/products/morrisons-plain-flour-1-5kg/107783471"}]}
   },
   "bacon": {
    "tesco": {"packs":[[200,1.69]],"product":"Tesco Smoked Bacon Lardons 200G","checked":"2026-10-05","items":[{"n":"Tesco Smoked Bacon Lardons 200G"}]},
-   "morrisons": {"packs":[[200,2.8]],"product":"Morrisons Smoked Lardons","checked":"2026-10-08","items":[{"n":"Morrisons Smoked Lardons","u":"https://groceries.morrisons.com/products/morrisons-smoked-lardons/105042362"}]}
+   "morrisons": {"packs":[[200,2.8]],"product":"Morrisons Smoked Lardons","checked":"2026-10-26","items":[{"n":"Morrisons Smoked Lardons","u":"https://groceries.morrisons.com/products/morrisons-smoked-lardons/105042362"}]}
   },
   "chickpeas": {
    "tesco": {"packs":[[400,0.41]],"product":"Tesco Chickpeas In Water 400G","checked":"2026-10-05","items":[{"n":"Tesco Chickpeas In Water 400G"}]},
-   "morrisons": {"packs":[[400,0.37]],"product":"Morrisons Chickpeas In Water (400g)","checked":"2026-10-08","items":[{"n":"Morrisons Chickpeas In Water (400g)","u":"https://groceries.morrisons.com/products/morrisons-chickpeas-in-water-400g/110434045"}]}
+   "morrisons": {"packs":[[400,0.37]],"product":"Morrisons Chickpeas In Water (400g)","checked":"2026-10-26","items":[{"n":"Morrisons Chickpeas In Water (400g)","u":"https://groceries.morrisons.com/products/morrisons-chickpeas-in-water-400g/110434045"}]}
   },
   "tomatoes": {
    "tesco": {"packs":[[6,0.99]],"product":"Tesco Classic Round Tomatoes 6 Pack","checked":"2026-10-06","items":[{"n":"Tesco Classic Round Tomatoes 6 Pack"}],"est":[1]},
@@ -292,7 +293,7 @@
   "lemons": {
    "tesco": {"packs":[[1,0.37],[4,0.89]],"product":"Tesco Lemons Each","checked":"2026-10-05","items":[{"n":"Tesco Lemons Each"},{"n":"Suntrail Farms Price Lemons Minimum 4 Pack"}]},
    "sainsburys": {"packs":[[1,0.37],[4,0.89]],"product":"Sainsburys Lemons","checked":"2026-10-05","items":[{"n":"Sainsburys Lemons"},{"n":"Stamford Street Co. 4 x Unwaxed Lemons"}]},
-   "morrisons": {"packs":[[4,0.89]],"product":"Morrisons Savers Lemons 4 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Savers Lemons 4 Pack","u":"https://groceries.morrisons.com/products/morrisons-savers-lemons-4-pack/113742641"}]}
+   "morrisons": {"packs":[[4,0.89]],"product":"Morrisons Savers Lemons 4 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Savers Lemons 4 Pack","u":"https://groceries.morrisons.com/products/morrisons-savers-lemons-4-pack/113742641"}]}
   },
   "oats": {
    "tesco": {"packs":[[1000,0.85]],"product":"Growers Harvest Porridge Oats 1Kg","checked":"2026-10-05","items":[{"n":"Growers Harvest Porridge Oats 1Kg"}]},
@@ -302,20 +303,20 @@
   "bananas": {
    "tesco": {"packs":[[1,0.16],[5,0.78]],"product":"Tesco Bananas Loose","checked":"2026-10-05","items":[{"n":"Tesco Bananas Loose"},{"n":"Tesco Ripe Bananas 5 Pack"}]},
    "sainsburys": {"packs":[[5,0.78]],"product":"Sainsburys Fairtrade Bananas x5","checked":"2026-10-05","items":[{"n":"Sainsburys Fairtrade Bananas x5"}],"est":[1]},
-   "morrisons": {"packs":[[5,0.78]],"product":"Fyffes Bananas 5 Pack","checked":"2026-10-08","items":[{"n":"Fyffes Bananas 5 Pack","u":"https://groceries.morrisons.com/products/fyffes-bananas-5-pack/115455355"}]}
+   "morrisons": {"packs":[[5,0.78]],"product":"Fyffes Bananas 5 Pack","checked":"2026-10-26","items":[{"n":"Fyffes Bananas 5 Pack","u":"https://groceries.morrisons.com/products/fyffes-bananas-5-pack/115455355"}]}
   },
   "mushrooms": {
    "tesco": {"packs":[[400,1.29]],"product":"Tesco Closed Cup Mushrooms 400G","checked":"2026-10-05","items":[{"n":"Tesco Closed Cup Mushrooms 400G"}]},
    "sainsburys": {"packs":[[400,1.29,null,1.15]],"product":"Sainsburys Closed Cup Mushrooms Vitamin D 400g","checked":"2026-10-05","items":[{"n":"Sainsburys Closed Cup Mushrooms Vitamin D 400g"}]},
-   "morrisons": {"packs":[[250,1.0],[465,1.5]],"product":"Morrisons Closed Cup Mushrooms 250g","checked":"2026-10-08","items":[{"n":"Morrisons Closed Cup Mushrooms 250g","u":"https://groceries.morrisons.com/products/morrisons-closed-cup-mushrooms-250g/112702218"},{"n":"Morrisons British Closed Cup Mushrooms 465g","u":"https://groceries.morrisons.com/products/morrisons-british-closed-cup-mushrooms-465g/115267952"}]}
+   "morrisons": {"packs":[[250,1.0],[465,1.5]],"product":"Morrisons Closed Cup Mushrooms 250g","checked":"2026-10-26","items":[{"n":"Morrisons Closed Cup Mushrooms 250g","u":"https://groceries.morrisons.com/products/morrisons-closed-cup-mushrooms-250g/112702218"},{"n":"Morrisons British Closed Cup Mushrooms 465g","u":"https://groceries.morrisons.com/products/morrisons-british-closed-cup-mushrooms-465g/115267952"}]}
   },
   "soft_cheese": {
    "tesco": {"packs":[[200,0.95]],"product":"Creamfields Soft Cheese 200G","checked":"2026-10-06","items":[{"n":"Creamfields Soft Cheese 200G"}]},
    "sainsburys": {"packs":[[200,0.89]],"product":"Stamford Street Co. Soft Cheese 200g","checked":"2026-10-06","items":[{"n":"Stamford Street Co. Soft Cheese 200g"}]},
-   "morrisons": {"packs":[[200,0.89]],"product":"Morrisons Savers Soft Cheese 200g","checked":"2026-10-06","items":[{"n":"Morrisons Savers Soft Cheese 200g"}]}
+   "morrisons": {"packs":[[200,0.89]],"product":"Morrisons Savers Soft Cheese 200g","checked":"2026-10-26","items":[{"n":"Morrisons Savers Soft Cheese 200g","u":"https://groceries.morrisons.com/products/morrisons-savers-soft-cheese-200g/112462963"}]}
   },
   "tofu": {
-   "morrisons": {"packs":[[280,2.5,2.0]],"product":"The Tofoo Co. Naked Tofu 280g","checked":"2026-10-08","items":[{"n":"The Tofoo Co. Naked Tofu 280g","u":"https://groceries.morrisons.com/products/the-tofoo-co-naked-tofu-280g/111461045"}],"saleNote":"Was £2.50"}
+   "morrisons": {"packs":[[280,2.5]],"product":"The Tofoo Co. Naked Tofu 280g","checked":"2026-10-26","items":[{"n":"The Tofoo Co. Naked Tofu 280g","u":"https://groceries.morrisons.com/products/the-tofoo-co-naked-tofu-280g/111461045"}]}
   },
   "instant_noodles": {
    "tesco": {"packs":[[1,0.39]],"product":"Hearty Food Co. Chicken Flavour Instant Noodles 100G","checked":"2026-10-05","items":[{"n":"Hearty Food Co. Chicken Flavour Instant Noodles 100G"}]},
@@ -325,22 +326,22 @@
   "frozen_mixed_veg": {
    "tesco": {"packs":[[1000,0.99]],"product":"Growers Harvest Mixed Vegetables 1Kg","checked":"2026-10-06","items":[{"n":"Growers Harvest Mixed Vegetables 1Kg"}]},
    "sainsburys": {"packs":[[1000,0.99]],"product":"Stamford Street Mixed Vegetables 1kg","checked":"2026-10-06","items":[{"n":"Stamford Street Mixed Vegetables 1kg"}]},
-   "morrisons": {"packs":[[1000,0.98]],"product":"Morrisons Savers Mixed Vegetables 1kg","checked":"2026-10-08","items":[{"n":"Morrisons Savers Mixed Vegetables 1kg","u":"https://groceries.morrisons.com/products/morrisons-savers-mixed-vegetables-1kg/104898468"}]}
+   "morrisons": {"packs":[[1000,0.98]],"product":"Morrisons Savers Mixed Vegetables 1kg","checked":"2026-10-26","items":[{"n":"Morrisons Savers Mixed Vegetables 1kg","u":"https://groceries.morrisons.com/products/morrisons-savers-mixed-vegetables-1kg/104898468"}]}
   },
   "arborio": {
    "tesco": {"packs":[[1000,3.3]],"product":"Tesco Risotto Rice 1Kg","checked":"2026-10-05","items":[{"n":"Tesco Risotto Rice 1Kg"}]},
    "sainsburys": {"packs":[[500,2.25]],"product":"Sainsburys Arborio Risotto Rice 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Arborio Risotto Rice 500g"}]},
-   "morrisons": {"packs":[[500,2.65]],"product":"Riso Gallo Easy Cook Risotto Rice 500g","checked":"2026-10-08","items":[{"n":"Riso Gallo Easy Cook Risotto Rice 500g","u":"https://groceries.morrisons.com/products/riso-gallo-easy-cook-risotto-rice-500g/114975965"}]}
+   "morrisons": {"packs":[[500,2.65]],"product":"Riso Gallo Easy Cook Risotto Rice 500g","checked":"2026-10-26","items":[{"n":"Riso Gallo Easy Cook Risotto Rice 500g","u":"https://groceries.morrisons.com/products/riso-gallo-easy-cook-risotto-rice-500g/114975965"}]}
   },
   "black_beans": {
    "tesco": {"packs":[[400,0.46]],"product":"Tesco Black Beans 400G","checked":"2026-10-06","items":[{"n":"Tesco Black Beans 400G"}]},
    "sainsburys": {"packs":[[400,0.45]],"product":"Sainsburys Black Beans in Water 400g","checked":"2026-10-06","items":[{"n":"Sainsburys Black Beans in Water 400g"}]},
-   "morrisons": {"packs":[[400,0.5]],"product":"Morrisons Black Beans In Water","checked":"2026-10-08","items":[{"n":"Morrisons Black Beans In Water","u":"https://groceries.morrisons.com/products/morrisons-black-beans-in-water/115102525"}]}
+   "morrisons": {"packs":[[400,0.5]],"product":"Morrisons Black Beans In Water","checked":"2026-10-26","items":[{"n":"Morrisons Black Beans In Water","u":"https://groceries.morrisons.com/products/morrisons-black-beans-in-water/115102525"}]}
   },
   "salsa": {
    "tesco": {"packs":[[300,0.95]],"product":"Tesco Mild Salsa Dip 300g","checked":"2026-10-05","items":[{"n":"Tesco Mild Salsa Dip 300g"}]},
    "sainsburys": {"packs":[[300,1.5]],"product":"Sainsburys Mild Salsa Dip 300g","checked":"2026-10-05","items":[{"n":"Sainsburys Mild Salsa Dip 300g"}]},
-   "morrisons": {"packs":[[300,1.5]],"product":"Morrisons Mild Salsa Dip 300g","checked":"2026-10-08","items":[{"n":"Morrisons Mild Salsa Dip 300g","u":"https://groceries.morrisons.com/products/morrisons-mild-salsa-dip-300g/115434888"}]}
+   "morrisons": {"packs":[[300,1.5]],"product":"Morrisons Mild Salsa Dip 300g","checked":"2026-10-26","items":[{"n":"Morrisons Mild Salsa Dip 300g","u":"https://groceries.morrisons.com/products/morrisons-mild-salsa-dip-300g/115434888"}]}
   },
   "couscous": {
    "tesco": {"packs":[[500,1.3]],"product":"Tesco Cous Cous 500G","checked":"2026-10-05","items":[{"n":"Tesco Cous Cous 500G"}]},
@@ -350,12 +351,12 @@
   "feta": {
    "tesco": {"packs":[[200,0.85]],"product":"Creamfields Greek Style Salad Cheese 200G","checked":"2026-10-05","items":[{"n":"Creamfields Greek Style Salad Cheese 200G"}]},
    "sainsburys": {"packs":[[200,0.85]],"product":"Stamford Street Co. Greek Style Salad Cheese 200g","checked":"2026-10-05","items":[{"n":"Stamford Street Co. Greek Style Salad Cheese 200g"}]},
-   "morrisons": {"packs":[[200,2.25]],"product":"Morrisons Greek Feta","checked":"2026-10-08","items":[{"n":"Morrisons Greek Feta","u":"https://groceries.morrisons.com/products/morrisons-greek-feta/106145443"}]}
+   "morrisons": {"packs":[[200,2.25]],"product":"Morrisons Greek Feta","checked":"2026-10-26","items":[{"n":"Morrisons Greek Feta","u":"https://groceries.morrisons.com/products/morrisons-greek-feta/106145443"}]}
   },
   "pittas": {
    "tesco": {"packs":[[6,0.5]],"product":"Tesco White Plain Pitta Bread 6 Pack","checked":"2026-10-05","items":[{"n":"Tesco White Plain Pitta Bread 6 Pack"}]},
    "sainsburys": {"packs":[[6,0.5]],"product":"Sainsburys White Pittas x6","checked":"2026-10-05","items":[{"n":"Sainsburys White Pittas x6"}]},
-   "morrisons": {"packs":[[6,0.5]],"product":"Morrisons Stonebaked White Pittas 6 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Stonebaked White Pittas 6 Pack","u":"https://groceries.morrisons.com/products/morrisons-stonebaked-white-pittas-6-pack/109515964"}]}
+   "morrisons": {"packs":[[6,0.5]],"product":"Morrisons Stonebaked White Pittas 6 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Stonebaked White Pittas 6 Pack","u":"https://groceries.morrisons.com/products/morrisons-stonebaked-white-pittas-6-pack/109515964"}]}
   },
   "mozzarella": {
    "tesco": {"packs":[[250,2.5]],"product":"Tesco Grated Mozzarella 250G","checked":"2026-10-05","items":[{"n":"Tesco Grated Mozzarella 250G"}]},
@@ -364,7 +365,7 @@
   "tortilla_chips": {
    "tesco": {"packs":[[200,0.57]],"product":"Stockwell & Co. Lightly Salted Tortilla Chips 200g","checked":"2026-10-05","items":[{"n":"Stockwell & Co. Lightly Salted Tortilla Chips 200g"}]},
    "sainsburys": {"packs":[[200,0.57]],"product":"Stamford Street Co. Tortilla Chips 200g","checked":"2026-10-05","items":[{"n":"Stamford Street Co. Tortilla Chips 200g"}]},
-   "morrisons": {"packs":[[180,0.8]],"product":"Morrisons Cool Tortilla Chips 180g","checked":"2026-10-08","items":[{"n":"Morrisons Cool Tortilla Chips 180g","u":"https://groceries.morrisons.com/products/morrisons-cool-tortilla-chips-180g/109551535"}]}
+   "morrisons": {"packs":[[180,0.8]],"product":"Morrisons Cool Tortilla Chips 180g","checked":"2026-10-26","items":[{"n":"Morrisons Cool Tortilla Chips 180g","u":"https://groceries.morrisons.com/products/morrisons-cool-tortilla-chips-180g/109551535"}]}
   },
   "jalapenos": {
    "sainsburys": {"packs":[[200,1.05]],"product":"Sainsburys Sliced Jalapenos, Inspired to Cook 200g","checked":"2026-10-05","items":[{"n":"Sainsburys Sliced Jalapenos, Inspired to Cook 200g"}]}
@@ -372,7 +373,7 @@
   "fish_fingers": {
    "tesco": {"packs":[[10,0.8]],"product":"Hearty Food Co Fish Fingers 10 Pack 250g","checked":"2026-10-05","items":[{"n":"Hearty Food Co Fish Fingers 10 Pack 250g"}]},
    "sainsburys": {"packs":[[10,1.25]],"product":"Sainsburys 10 Breaded Omega 3 Pollock Fillet Fish Fingers 300g","checked":"2026-10-05","items":[{"n":"Sainsburys 10 Breaded Omega 3 Pollock Fillet Fish Fingers 300g"}]},
-   "morrisons": {"packs":[[10,0.8]],"product":"Morrisons Savers Fish Fingers 10 Pack","checked":"2026-10-08","items":[{"n":"Morrisons Savers Fish Fingers 10 Pack","u":"https://groceries.morrisons.com/products/morrisons-savers-fish-fingers-10-pack/104917833"}]}
+   "morrisons": {"packs":[[10,0.8]],"product":"Morrisons Savers Fish Fingers 10 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Savers Fish Fingers 10 Pack","u":"https://groceries.morrisons.com/products/morrisons-savers-fish-fingers-10-pack/104917833"}]}
   },
   "lettuce": {
    "tesco": {"packs":[[1,0.89]],"product":"Tesco Iceberg Lettuce Each","checked":"2026-10-05","items":[{"n":"Tesco Iceberg Lettuce Each"}]},
@@ -382,21 +383,21 @@
   "mayonnaise": {
    "tesco": {"packs":[[500,0.89]],"product":"Tesco Mayonnaise 500Ml","checked":"2026-10-05","items":[{"n":"Tesco Mayonnaise 500Ml"}]},
    "sainsburys": {"packs":[[500,0.89]],"product":"Sainsburys Mayonnaise, Thick & Creamy 500ml","checked":"2026-10-05","items":[{"n":"Sainsburys Mayonnaise, Thick & Creamy 500ml"}]},
-   "morrisons": {"packs":[[500,0.95]],"product":"Morrisons Mayonnaise 500ml","checked":"2026-10-08","items":[{"n":"Morrisons Mayonnaise 500ml","u":"https://groceries.morrisons.com/products/morrisons-mayonnaise-500ml/113133483"}]}
+   "morrisons": {"packs":[[500,0.95]],"product":"Morrisons Mayonnaise 500ml","checked":"2026-10-26","items":[{"n":"Morrisons Mayonnaise 500ml","u":"https://groceries.morrisons.com/products/morrisons-mayonnaise-500ml/113133483"}]}
   },
   "cannellini_beans": {
    "tesco": {"packs":[[400,0.45]],"product":"Tesco Cannellini Beans Water 400G","checked":"2026-10-05","items":[{"n":"Tesco Cannellini Beans Water 400G"}]},
    "sainsburys": {"packs":[[400,0.45]],"product":"Sainsburys Cannellini Beans In Water 400g","checked":"2026-10-05","items":[{"n":"Sainsburys Cannellini Beans In Water 400g"}]},
-   "morrisons": {"packs":[[400,0.45]],"product":"Morrisons Cannellini Beans In Water (400g)","checked":"2026-10-08","items":[{"n":"Morrisons Cannellini Beans In Water (400g)","u":"https://groceries.morrisons.com/products/morrisons-cannellini-beans-in-water-400g/110428067"}]}
+   "morrisons": {"packs":[[400,0.45]],"product":"Morrisons Cannellini Beans In Water (400g)","checked":"2026-10-26","items":[{"n":"Morrisons Cannellini Beans In Water (400g)","u":"https://groceries.morrisons.com/products/morrisons-cannellini-beans-in-water-400g/110428067"}]}
   },
   "sweet_potatoes": {
    "tesco": {"packs":[[1000,1.19]],"product":"Tesco Sweet Potatoes 1Kg","checked":"2026-10-05","items":[{"n":"Tesco Sweet Potatoes 1Kg"}]},
-   "morrisons": {"packs":[[1000,0.99]],"product":"Morrisons Sweet Potatoes 1kg","checked":"2026-10-08","items":[{"n":"Morrisons Sweet Potatoes 1kg","u":"https://groceries.morrisons.com/products/morrisons-sweet-potatoes-1kg/108572051"}]}
+   "morrisons": {"packs":[[1000,1.19]],"product":"Morrisons Sweet Potatoes 1kg","checked":"2026-10-26","items":[{"n":"Morrisons Sweet Potatoes 1kg","u":"https://groceries.morrisons.com/products/morrisons-sweet-potatoes-1kg/108572051"}]}
   },
   "yoghurt": {
    "tesco": {"packs":[[500,0.95]],"product":"Creamfields Greek Style Natural Yogurt 500G","checked":"2026-10-05","items":[{"n":"Creamfields Greek Style Natural Yogurt 500G"}]},
    "sainsburys": {"packs":[[500,1.15]],"product":"Sainsburys Greek Style Natural Yogurt 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Greek Style Natural Yogurt 500g"}]},
-   "morrisons": {"packs":[[500,1.15]],"product":"Morrisons Greek Style Yogurt 500g","checked":"2026-10-08","items":[{"n":"Morrisons Greek Style Yogurt 500g","u":"https://groceries.morrisons.com/products/morrisons-greek-style-yogurt-500g/103078919"}]}
+   "morrisons": {"packs":[[500,1.15]],"product":"Morrisons Greek Style Yogurt 500g","checked":"2026-10-26","items":[{"n":"Morrisons Greek Style Yogurt 500g","u":"https://groceries.morrisons.com/products/morrisons-greek-style-yogurt-500g/103078919"}]}
   },
   "pork_mince": {
    "tesco": {"packs":[[500,2.4]],"product":"Tesco Pork Mince 20% Fat 500G","checked":"2026-10-06","items":[{"n":"Tesco Pork Mince 20% Fat 500G"}]},
@@ -411,11 +412,11 @@
   "beef_burgers": {
    "tesco": {"packs":[[4,2.79],[8,2.25]],"product":"Tesco 4 Beef Quarter Pounders 454g","checked":"2026-10-05","items":[{"n":"Tesco 4 Beef Quarter Pounders 454g"},{"n":"Butchers Choice 8 Burgers 397g"}]},
    "sainsburys": {"packs":[[4,4.0],[8,2.6]],"product":"Sainsburys Beef Quarter Pounders x4 454g","checked":"2026-10-05","items":[{"n":"Sainsburys Beef Quarter Pounders x4 454g"},{"n":"Stamford Street Co. Beef Burgers x8 397g"}]},
-   "morrisons": {"packs":[[4,4.0],[8,2.6]],"product":"Morrisons British Beef Steak Burgers 4 Pack","checked":"2026-10-05","items":[{"n":"Morrisons British Beef Steak Burgers 4 Pack"},{"n":"Morrisons Savers 8 British Beef Burgers 397g"}]}
+   "morrisons": {"packs":[[4,3.5,2.62],[8,2.6]],"product":"Morrisons Scotch Beef Burgers 454g","checked":"2026-10-26","items":[{"n":"Morrisons Scotch Beef Burgers 454g","u":"https://groceries.morrisons.com/products/morrisons-scotch-beef-burgers-454g/111685680"},{"n":"Morrisons Savers 8 British Beef Burgers 397g","u":"https://groceries.morrisons.com/products/morrisons-savers-8-british-beef-burgers-397g/112635983"}],"saleNote":"Was £3.50"}
   },
   "veggie_burgers": {
    "tesco": {"packs":[[4,1.35]],"product":"Tesco Plant Chef 4 Vegetable Burgers 454g","checked":"2026-10-06","items":[{"n":"Tesco Plant Chef 4 Vegetable Burgers 454g"}]},
-   "morrisons": {"packs":[[4,2.0]],"product":"Morrisons Plant Revolution Vegetable Burger 454g 4 pack","checked":"2026-10-06","items":[{"n":"Morrisons Plant Revolution Vegetable Burger 454g 4 pack"}]}
+   "morrisons": {"packs":[[4,4.0]],"product":"Quorn Southern Fried Vegetarian Burgers x4 252g","checked":"2026-10-26","items":[{"n":"Quorn Southern Fried Vegetarian Burgers x4 252g","u":"https://groceries.morrisons.com/products/quorn-southern-fried-vegetarian-burgers-x4-252g/100002755"}]}
   },
   "pork_steaks": {
    "sainsburys": {"packs":[[2,3.25,null,2.76],[4,4.75]],"product":"Sainsburys British Pork Loin Steaks x2 240g","checked":"2026-10-06","items":[{"n":"Sainsburys British Pork Loin Steaks x2 240g"},{"n":"Sainsburys British Pork Loin Steaks x4 480g"}]}
@@ -432,7 +433,7 @@
   "chicken_whole": {
    "tesco": {"packs":[[1,4.5,null,4.0]],"product":"Tesco Medium Whole Chicken 1.3-1.7kg","checked":"2026-10-05","items":[{"n":"Tesco Medium Whole Chicken 1.3-1.7kg"}]},
    "sainsburys": {"packs":[[1,5.5]],"product":"Sainsburys 1.6kg British Fresh Medium Whole Chicken","checked":"2026-10-05","items":[{"n":"Sainsburys 1.6kg British Fresh Medium Whole Chicken"}]},
-   "morrisons": {"packs":[[1,5.29]],"product":"Morrisons Scottish Large Whole Chicken 1.8kg","checked":"2026-10-05","items":[{"n":"Morrisons Scottish Large Whole Chicken 1.8kg"}]}
+   "morrisons": {"packs":[[1.13,5.5]],"product":"Morrisons British Large Whole Chicken 1.7kg","checked":"2026-10-26","items":[{"n":"Morrisons British Large Whole Chicken 1.7kg","u":"https://groceries.morrisons.com/products/morrisons-british-large-whole-chicken-1-7kg/108444640"}]}
   },
   "chicken_drumsticks": {
    "tesco": {"packs":[[1000,2.15]],"product":"Tesco British Chicken Drumsticks 1Kg","checked":"2026-10-05","items":[{"n":"Tesco British Chicken Drumsticks 1Kg"}]},
@@ -441,7 +442,7 @@
   },
   "salmon": {
    "tesco": {"packs":[[2,4.5]],"product":"Tesco 2 boneless Salmon Fillets 240g","checked":"2026-10-05","items":[{"n":"Tesco 2 boneless Salmon Fillets 240g"}]},
-   "morrisons": {"packs":[[2,4.95]],"product":"Morrisons Boneless 2 Atlantic Salmon Fillets","checked":"2026-10-05","items":[{"n":"Morrisons Boneless 2 Atlantic Salmon Fillets"}]}
+   "morrisons": {"packs":[[2,10.0],[4,8.5]],"product":"Morrisons 2 Salmon Fillets 220g","checked":"2026-10-26","items":[{"n":"Morrisons 2 Salmon Fillets 220g","u":"https://groceries.morrisons.com/products/morrisons-2-salmon-fillets-220g/111595107"},{"n":"Morrisons Market Street 4 Boneless Salmon Fillets 440g","u":"https://groceries.morrisons.com/products/morrisons-market-street-4-boneless-salmon-fillets-440g/115342748"}]}
   },
   "white_fish": {
    "morrisons": {"packs":[[1.85,2.59],[3.46,5.0]],"product":"Morrisons Basa Fillets","checked":"2026-10-08","items":[{"n":"Morrisons Basa Fillets","u":"https://groceries.morrisons.com/products/morrisons-basa-fillets/113038072"},{"n":"Morrisons 3 Skinless & Boneless Basa Fillets 450g","u":"https://groceries.morrisons.com/products/morrisons-3-skinless-boneless-basa-fillets-450g/115000465"}]}
@@ -451,11 +452,12 @@
   },
   "chorizo": {
    "tesco": {"packs":[[150,1.25]],"product":"Tesco Spanish Chorizo Sausage Slices 150G","checked":"2026-10-05","items":[{"n":"Tesco Spanish Chorizo Sausage Slices 150G"}]},
-   "sainsburys": {"packs":[[170,1.4]],"product":"Sainsburys Spanish Chorizo Slices x34 170g","checked":"2026-10-05","items":[{"n":"Sainsburys Spanish Chorizo Slices x34 170g"}]}
+   "sainsburys": {"packs":[[170,1.4]],"product":"Sainsburys Spanish Chorizo Slices x34 170g","checked":"2026-10-05","items":[{"n":"Sainsburys Spanish Chorizo Slices x34 170g"}]},
+   "morrisons": {"packs":[[140,1.75,1.5]],"product":"Morrisons Sliced Spicy Chorizo","checked":"2026-10-26","items":[{"n":"Morrisons Sliced Spicy Chorizo","u":"https://groceries.morrisons.com/products/morrisons-sliced-spicy-chorizo/115395428"}],"saleNote":"Was £1.75"}
   },
   "broccoli": {
    "tesco": {"packs":[[375,0.9,null,0.75]],"product":"Tesco Broccoli 375G","checked":"2026-10-05","items":[{"n":"Tesco Broccoli 375G"}]},
-   "morrisons": {"packs":[[300,0.69]],"product":"Morrisons Broccoli 300g","checked":"2026-10-05","items":[{"n":"Morrisons Broccoli 300g"}]}
+   "morrisons": {"packs":[[375,0.9]],"product":"Morrisons Broccoli 375g","checked":"2026-10-26","items":[{"n":"Morrisons Broccoli 375g","u":"https://groceries.morrisons.com/products/morrisons-broccoli-375g/109148703"}]}
   },
   "cauliflower": {
    "tesco": {"packs":[[1,1.18]],"product":"Tesco Cauliflower Each","checked":"2026-10-05","items":[{"n":"Tesco Cauliflower Each"}]},
@@ -489,7 +491,7 @@
   "green_beans": {
    "tesco": {"packs":[[220,0.85]],"product":"Tesco Green Beans 220G","checked":"2026-10-05","items":[{"n":"Tesco Green Beans 220G"}]},
    "sainsburys": {"packs":[[200,1.4]],"product":"Sainsburys Fine Green Beans 200g","checked":"2026-10-05","items":[{"n":"Sainsburys Fine Green Beans 200g"}]},
-   "morrisons": {"packs":[[200,0.77]],"product":"Morrisons Savers Green Beans 200g","checked":"2026-10-05","items":[{"n":"Morrisons Savers Green Beans 200g"}]}
+   "morrisons": {"packs":[[200,0.77]],"product":"Morrisons Savers Green Beans","checked":"2026-10-26","items":[{"n":"Morrisons Savers Green Beans","u":"https://groceries.morrisons.com/products/morrisons-savers-green-beans/112941382"}]}
   },
   "avocado": {
    "tesco": {"packs":[[1,0.69],[2,1.5]],"product":"Tesco Ripe & Ready Avocado","checked":"2026-10-06","items":[{"n":"Tesco Ripe & Ready Avocado"},{"n":"Tesco Perfectly Ripe Avocados Twin Pack"}]},
@@ -504,7 +506,7 @@
   "oranges": {
    "tesco": {"packs":[[1,0.35],[5,0.99]],"product":"Tesco Oranges Each","checked":"2026-10-05","items":[{"n":"Tesco Oranges Each"},{"n":"Suntrail Farms Price Orange Minimum 5 Pack"}]},
    "sainsburys": {"packs":[[1,0.3],[5,1.5]],"product":"Sainsburys Oranges loose","checked":"2026-10-05","items":[{"n":"Sainsburys Oranges loose"},{"n":"Sainsburys Oranges x5"}]},
-   "morrisons": {"packs":[[1,0.35],[5,1.5]],"product":"Morrisons Loose Orange","checked":"2026-10-05","items":[{"n":"Morrisons Loose Orange"},{"n":"Morrisons Oranges 5 Pack"}]}
+   "morrisons": {"packs":[[5,1.5]],"product":"Morrisons Oranges 5 Pack","checked":"2026-10-26","items":[{"n":"Morrisons Oranges 5 Pack","u":"https://groceries.morrisons.com/products/morrisons-oranges-5-pack/109541521"}]}
   },
   "strawberries": {
    "tesco": {"packs":[[400,2.5]],"product":"Tesco Strawberries 400G","checked":"2026-10-05","items":[{"n":"Tesco Strawberries 400G"}]},
@@ -513,7 +515,7 @@
   "blueberries": {
    "tesco": {"packs":[[150,1.55]],"product":"Rosedene Farms Blueberries 150G","checked":"2026-10-05","items":[{"n":"Rosedene Farms Blueberries 150G"}]},
    "sainsburys": {"packs":[[150,2.0]],"product":"Sainsburys Blueberries 150g","checked":"2026-10-05","items":[{"n":"Sainsburys Blueberries 150g"}]},
-   "morrisons": {"packs":[[150,2.0]],"product":"Morrisons Blueberries 150g Punnet","checked":"2026-10-05","items":[{"n":"Morrisons Blueberries 150g Punnet"}]}
+   "morrisons": {"packs":[[125,1.29]],"product":"Morrisons Savers Blueberries 125g","checked":"2026-10-26","items":[{"n":"Morrisons Savers Blueberries 125g","u":"https://groceries.morrisons.com/products/morrisons-savers-blueberries-125g/113455600"}]}
   },
   "red_onion": {
    "sainsburys": {"packs":[[3,0.95]],"product":"Sainsburys Red Onions x3","checked":"2026-10-05","items":[{"n":"Sainsburys Red Onions x3"}],"est":[1]},
@@ -521,7 +523,8 @@
   },
   "ginger": {
    "tesco": {"packs":[[100,0.56]],"product":"Tesco Root Ginger Loose","checked":"2026-10-05","items":[{"n":"Tesco Root Ginger Loose"}]},
-   "sainsburys": {"packs":[[100,1.25]],"product":"Sainsburys Ginger 100g","checked":"2026-10-05","items":[{"n":"Sainsburys Ginger 100g"}]}
+   "sainsburys": {"packs":[[100,1.25]],"product":"Sainsburys Ginger 100g","checked":"2026-10-05","items":[{"n":"Sainsburys Ginger 100g"}]},
+   "morrisons": {"packs":[[125,1.55]],"product":"Morrisons Ginger 125g","checked":"2026-10-26","items":[{"n":"Morrisons Ginger 125g","u":"https://groceries.morrisons.com/products/morrisons-ginger-125g/110541561"}]}
   },
   "coriander": {
    "tesco": {"packs":[[30,0.5]],"product":"Tesco Fresh Cut Coriander 30G","checked":"2026-10-05","items":[{"n":"Tesco Fresh Cut Coriander 30G"}]},
@@ -536,12 +539,12 @@
   "basil": {
    "tesco": {"packs":[[30,0.5]],"product":"Tesco Fresh Cut Basil 30G","checked":"2026-10-05","items":[{"n":"Tesco Fresh Cut Basil 30G"}]},
    "sainsburys": {"packs":[[30,0.5]],"product":"Sainsburys Fresh Packed Basil 30g","checked":"2026-10-05","items":[{"n":"Sainsburys Fresh Packed Basil 30g"}]},
-   "morrisons": {"packs":[[30,0.7]],"product":"Morrisons Fresh Basil 30g","checked":"2026-10-05","items":[{"n":"Morrisons Fresh Basil 30g"}]}
+   "morrisons": {"packs":[[30,0.7]],"product":"Morrisons Fresh Basil 30g","checked":"2026-10-26","items":[{"n":"Morrisons Fresh Basil 30g","u":"https://groceries.morrisons.com/products/morrisons-fresh-basil-30g/110419419"}]}
   },
   "rocket": {
    "tesco": {"packs":[[60,1.0]],"product":"Tesco Wild Rocket 60G","checked":"2026-10-05","items":[{"n":"Tesco Wild Rocket 60G"}]},
    "sainsburys": {"packs":[[60,1.0]],"product":"Sainsburys Wild Rocket 60g","checked":"2026-10-05","items":[{"n":"Sainsburys Wild Rocket 60g"}]},
-   "morrisons": {"packs":[[60,1.0]],"product":"Morrisons Wild Rocket 60g","checked":"2026-10-05","items":[{"n":"Morrisons Wild Rocket 60g"}]}
+   "morrisons": {"packs":[[60,1.0]],"product":"Morrisons Wild Rocket 60g","checked":"2026-10-26","items":[{"n":"Morrisons Wild Rocket 60g","u":"https://groceries.morrisons.com/products/morrisons-wild-rocket-60g/112489939"}]}
   },
   "mixed_salad": {
    "tesco": {"packs":[[120,1.2]],"product":"Tesco Mixed Leaf Salad 120G","checked":"2026-10-06","items":[{"n":"Tesco Mixed Leaf Salad 120G"}]},
@@ -549,7 +552,7 @@
   },
   "cherry_tomatoes": {
    "tesco": {"packs":[[250,0.62]],"product":"Nightingale Farms Cherry Tomatoes 250G","checked":"2026-10-05","items":[{"n":"Nightingale Farms Cherry Tomatoes 250G"}]},
-   "morrisons": {"packs":[[225,1.35]],"product":"Morrisons Vine Ripe Cherry Tomatoes 225g","checked":"2026-10-05","items":[{"n":"Morrisons Vine Ripe Cherry Tomatoes 225g"}]}
+   "morrisons": {"packs":[[225,1.35]],"product":"Morrisons Vine Ripe Cherry Tomatoes 225g","checked":"2026-10-26","items":[{"n":"Morrisons Vine Ripe Cherry Tomatoes 225g","u":"https://groceries.morrisons.com/products/morrisons-vine-ripe-cherry-tomatoes-225g/108388529"}]}
   },
   "new_potatoes": {
    "sainsburys": {"packs":[[1000,0.99]],"product":"Sainsburys 1kg Baby Potatoes","checked":"2026-10-05","items":[{"n":"Sainsburys 1kg Baby Potatoes"}]},
@@ -558,10 +561,11 @@
   "parsnips": {
    "tesco": {"packs":[[500,0.55]],"product":"Perfectly Imperfect Parsnips 500G","checked":"2026-10-05","items":[{"n":"Perfectly Imperfect Parsnips 500G"}]},
    "sainsburys": {"packs":[[500,0.74]],"product":"Sainsburys British Parsnips 500g","checked":"2026-10-05","items":[{"n":"Sainsburys British Parsnips 500g"}]},
-   "morrisons": {"packs":[[500,0.74]],"product":"Morrisons Parsnips 500g","checked":"2026-10-05","items":[{"n":"Morrisons Parsnips 500g"}]}
+   "morrisons": {"packs":[[500,0.55]],"product":"Morrisons Wonky Parsnips 500g","checked":"2026-10-26","items":[{"n":"Morrisons Wonky Parsnips 500g","u":"https://groceries.morrisons.com/products/morrisons-wonky-parsnips-500g/108502141"}]}
   },
   "beetroot": {
-   "sainsburys": {"packs":[[250,0.85]],"product":"Sainsburys Beetroot Vacuum Pack 250g","checked":"2026-10-05","items":[{"n":"Sainsburys Beetroot Vacuum Pack 250g"}]}
+   "sainsburys": {"packs":[[250,0.85]],"product":"Sainsburys Beetroot Vacuum Pack 250g","checked":"2026-10-05","items":[{"n":"Sainsburys Beetroot Vacuum Pack 250g"}]},
+   "morrisons": {"packs":[[300,0.95]],"product":"Morrisons Natural Cooked Beetroot","checked":"2026-10-26","items":[{"n":"Morrisons Natural Cooked Beetroot","u":"https://groceries.morrisons.com/products/morrisons-natural-cooked-beetroot/108337043"}]}
   },
   "frozen_spinach": {
    "tesco": {"packs":[[900,1.65]],"product":"Tesco Leaf Spinach 900G","checked":"2026-10-06","items":[{"n":"Tesco Leaf Spinach 900G"}]},
@@ -580,12 +584,12 @@
   "double_cream": {
    "tesco": {"packs":[[300,1.29]],"product":"Creamfields Double Cream 300Ml","checked":"2026-10-05","items":[{"n":"Creamfields Double Cream 300Ml"}]},
    "sainsburys": {"packs":[[300,1.7]],"product":"Sainsburys Double Cream 300ml","checked":"2026-10-05","items":[{"n":"Sainsburys Double Cream 300ml"}]},
-   "morrisons": {"packs":[[300,1.7]],"product":"Morrisons British Double Cream 300ml","checked":"2026-10-05","items":[{"n":"Morrisons British Double Cream 300ml"}]}
+   "morrisons": {"packs":[[300,1.73]],"product":"Morrisons For Farmers British Double Cream","checked":"2026-10-26","items":[{"n":"Morrisons For Farmers British Double Cream","u":"https://groceries.morrisons.com/products/morrisons-for-farmers-british-double-cream/108175380"}]}
   },
   "single_cream": {
    "tesco": {"packs":[[300,1.09]],"product":"Creamfields Single Cream 300Ml","checked":"2026-10-06","items":[{"n":"Creamfields Single Cream 300Ml"}]},
    "sainsburys": {"packs":[[300,1.35]],"product":"Sainsburys British Single Cream 300ml","checked":"2026-10-06","items":[{"n":"Sainsburys British Single Cream 300ml"}]},
-   "morrisons": {"packs":[[300,1.35]],"product":"Morrisons British Single Cream 300ml","checked":"2026-10-06","items":[{"n":"Morrisons British Single Cream 300ml"}]}
+   "morrisons": {"packs":[[300,1.35]],"product":"Morrisons British Single Cream","checked":"2026-10-26","items":[{"n":"Morrisons British Single Cream","u":"https://groceries.morrisons.com/products/morrisons-british-single-cream/103142642"}]}
   },
   "soured_cream": {
    "tesco": {"packs":[[300,0.85]],"product":"Tesco Soured Cream 300Ml","checked":"2026-10-06","items":[{"n":"Tesco Soured Cream 300Ml"}]},
@@ -593,7 +597,7 @@
    "morrisons": {"packs":[[300,0.85]],"product":"Morrisons British Soured Cream 300ml","checked":"2026-10-06","items":[{"n":"Morrisons British Soured Cream 300ml"}]}
   },
   "cottage_cheese": {
-   "morrisons": {"packs":[[300,0.85]],"product":"Morrisons Savers Cottage Cheese 300g","checked":"2026-10-05","items":[{"n":"Morrisons Savers Cottage Cheese 300g"}]}
+   "morrisons": {"packs":[[300,0.85]],"product":"Morrisons Savers Cottage Cheese 300g","checked":"2026-10-26","items":[{"n":"Morrisons Savers Cottage Cheese 300g","u":"https://groceries.morrisons.com/products/morrisons-savers-cottage-cheese-300g/113362809"}]}
   },
   "halloumi": {
    "tesco": {"packs":[[225,1.99]],"product":"Tesco Halloumi 225G","checked":"2026-10-05","items":[{"n":"Tesco Halloumi 225G"}]},
@@ -607,12 +611,12 @@
   "whole_milk": {
    "tesco": {"packs":[[1130,1.2],[2272,1.65]],"product":"Tesco British Whole Milk 1.13L, 2 Pints","checked":"2026-10-05","items":[{"n":"Tesco British Whole Milk 1.13L, 2 Pints"},{"n":"Tesco British Whole Milk 2.272L, 4 Pints"}]},
    "sainsburys": {"packs":[[1130,1.2],[2270,1.65]],"product":"Sainsburys British Whole Milk 1.13L (2 pint)","checked":"2026-10-05","items":[{"n":"Sainsburys British Whole Milk 1.13L (2 pint)"},{"n":"Sainsburys British Whole Milk 2.27L (4 pint)"}]},
-   "morrisons": {"packs":[[1136,1.2],[2272,1.65]],"product":"Morrisons British Whole Milk 2 Pint","checked":"2026-10-05","items":[{"n":"Morrisons British Whole Milk 2 Pint"},{"n":"Morrisons British Whole Milk 4 Pint"}]}
+   "morrisons": {"packs":[[1136,1.2],[2272,1.65]],"product":"Morrisons British Whole Milk 2 Pint","checked":"2026-10-26","items":[{"n":"Morrisons British Whole Milk 2 Pint","u":"https://groceries.morrisons.com/products/morrisons-british-whole-milk-2-pint/113240377"},{"n":"Morrisons British Whole Milk 4 Pint","u":"https://groceries.morrisons.com/products/morrisons-british-whole-milk-4-pint/113239405"}]}
   },
   "soya_drink": {
    "tesco": {"packs":[[1000,0.79]],"product":"The Grower’s Harvest Soya Drink Unsweetened 1L","checked":"2026-10-06","items":[{"n":"The Grower’s Harvest Soya Drink Unsweetened 1L"}]},
    "sainsburys": {"packs":[[1000,1.3]],"product":"Sainsburys Unsweetened Long Life Soya Drink 1L","checked":"2026-10-06","items":[{"n":"Sainsburys Unsweetened Long Life Soya Drink 1L"}]},
-   "morrisons": {"packs":[[1000,1.3]],"product":"Morrisons Long Life Unsweetened Soya Drink 1L","checked":"2026-10-06","items":[{"n":"Morrisons Long Life Unsweetened Soya Drink 1L"}]}
+   "morrisons": {"packs":[[1000,1.3]],"product":"Morrisons Long Life Unsweetened Soya Drink","checked":"2026-10-26","items":[{"n":"Morrisons Long Life Unsweetened Soya Drink","u":"https://groceries.morrisons.com/products/morrisons-long-life-unsweetened-soya-drink/103124321"}]}
   },
   "almond_drink": {
    "tesco": {"packs":[[1000,1.15,null,0.95]],"product":"Tesco Unsweetened Almond Drink 1L","checked":"2026-10-05","items":[{"n":"Tesco Unsweetened Almond Drink 1L"}]},
@@ -622,7 +626,7 @@
   "natural_yoghurt": {
    "tesco": {"packs":[[500,1.15]],"product":"Tesco Natural Yogurt 500G","checked":"2026-10-05","items":[{"n":"Tesco Natural Yogurt 500G"}]},
    "sainsburys": {"packs":[[500,1.15]],"product":"Sainsburys Natural Yogurt 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Natural Yogurt 500g"}]},
-   "morrisons": {"packs":[[500,1.15]],"product":"Morrisons Natural Yogurt 500g","checked":"2026-10-05","items":[{"n":"Morrisons Natural Yogurt 500g"}]}
+   "morrisons": {"packs":[[400,2.25,1.75]],"product":"Activia Big Pot Natural Yoghurt 400g","checked":"2026-10-26","items":[{"n":"Activia Big Pot Natural Yoghurt 400g","u":"https://groceries.morrisons.com/products/activia-big-pot-natural-yoghurt-400g/116224807"}],"saleNote":"Was £2.25"}
   },
   "wholemeal_bread": {
    "tesco": {"packs":[[1,0.55]],"product":"H.W. Nevill’s Medium Sliced Wholemeal Bread 800g","checked":"2026-10-06","items":[{"n":"H.W. Nevill’s Medium Sliced Wholemeal Bread 800g"}]},
@@ -661,7 +665,7 @@
   "fusilli": {
    "tesco": {"packs":[[500,0.75],[1000,1.19]],"product":"Tesco Fusilli Pasta 500G","checked":"2026-10-05","items":[{"n":"Tesco Fusilli Pasta 500G"},{"n":"Tesco Fusilli Pasta Twists 1Kg"}]},
    "sainsburys": {"packs":[[500,0.6],[1000,1.19]],"product":"Sainsburys Fusilli Pasta 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Fusilli Pasta 500g"},{"n":"Sainsburys Fusilli Pasta 1kg"}]},
-   "morrisons": {"packs":[[500,0.75],[1000,1.19]],"product":"Morrisons Fusilli 500g","checked":"2026-10-05","items":[{"n":"Morrisons Fusilli 500g"},{"n":"Morrisons Fusilli 1kg"}]}
+   "morrisons": {"packs":[[1000,1.19]],"product":"Morrisons Fusilli 1kg","checked":"2026-10-26","items":[{"n":"Morrisons Fusilli 1kg","u":"https://groceries.morrisons.com/products/morrisons-fusilli-1kg/114525956"}]}
   },
   "lasagne_sheets": {
    "tesco": {"packs":[[500,0.75]],"product":"Tesco Lasagne Pasta 500G","checked":"2026-10-05","items":[{"n":"Tesco Lasagne Pasta 500G"}]},
@@ -671,7 +675,7 @@
   "basmati_rice": {
    "tesco": {"packs":[[1000,1.79]],"product":"Tesco Basmati Rice 1Kg","checked":"2026-10-05","items":[{"n":"Tesco Basmati Rice 1Kg"}]},
    "sainsburys": {"packs":[[500,0.89],[1000,1.79]],"product":"Sainsburys Basmati Rice 500g","checked":"2026-10-05","items":[{"n":"Sainsburys Basmati Rice 500g"},{"n":"Sainsburys Basmati Rice 1kg"}]},
-   "morrisons": {"packs":[[500,1.3],[1000,1.79]],"product":"Morrisons Basmati Rice 500g","checked":"2026-10-05","items":[{"n":"Morrisons Basmati Rice 500g"},{"n":"Morrisons Basmati Rice 1kg"}]}
+   "morrisons": {"packs":[[1000,1.79]],"product":"Morrisons Basmati Rice 1kg","checked":"2026-10-26","items":[{"n":"Morrisons Basmati Rice 1kg","u":"https://groceries.morrisons.com/products/morrisons-basmati-rice-1kg/104544029"}]}
   },
   "quinoa": {
    "tesco": {"packs":[[300,3.1]],"product":"Tesco Quinoa 300G","checked":"2026-10-06","items":[{"n":"Tesco Quinoa 300G"}]},
@@ -704,7 +708,7 @@
   "baking_powder": {
    "tesco": {"packs":[[150,0.57]],"product":"Stockwell & Co. Baking Powder 150G","checked":"2026-10-06","items":[{"n":"Stockwell & Co. Baking Powder 150G"}]},
    "sainsburys": {"packs":[[160,0.65]],"product":"Sainsburys Baking Powder 160g","checked":"2026-10-06","items":[{"n":"Sainsburys Baking Powder 160g"}]},
-   "morrisons": {"packs":[[160,0.75]],"product":"Morrisons Baking Powder 160g","checked":"2026-10-06","items":[{"n":"Morrisons Baking Powder 160g"}]}
+   "morrisons": {"packs":[[160,0.75]],"product":"Morrisons Baking Powder 160g","checked":"2026-10-26","items":[{"n":"Morrisons Baking Powder 160g","u":"https://groceries.morrisons.com/products/morrisons-baking-powder-160g/112099720"}]}
   },
   "salt": {
    "sainsburys": {"packs":[[750,0.75]],"product":"Sainsburys Table Salt Bottle 750g","checked":"2026-10-06","items":[{"n":"Sainsburys Table Salt Bottle 750g"}]},
@@ -764,12 +768,15 @@
   "bbq_sauce": {
    "tesco": {"packs":[[440,1.0]],"product":"Tesco Bbq Sauce 440G","checked":"2026-10-05","items":[{"n":"Tesco Bbq Sauce 440G"}]},
    "sainsburys": {"packs":[[500,1.15]],"product":"Sainsburys BBQ Sauce 500g","checked":"2026-10-05","items":[{"n":"Sainsburys BBQ Sauce 500g"}]},
-   "morrisons": {"packs":[[450,1.25]],"product":"Morrisons BBQ Sauce 450g","checked":"2026-10-05","items":[{"n":"Morrisons BBQ Sauce 450g"}]}
+   "morrisons": {"packs":[[450,1.25]],"product":"Morrisons BBQ Sauce 450g","checked":"2026-10-26","items":[{"n":"Morrisons BBQ Sauce 450g","u":"https://groceries.morrisons.com/products/morrisons-bbq-sauce-450g/111658366"}]}
   },
   "mustard": {
    "tesco": {"packs":[[185,0.45]],"product":"Tesco Dijon Mustard 185G","checked":"2026-10-05","items":[{"n":"Tesco Dijon Mustard 185G"}]},
    "sainsburys": {"packs":[[185,0.45]],"product":"Sainsburys Dijon Mustard 185g","checked":"2026-10-05","items":[{"n":"Sainsburys Dijon Mustard 185g"}]},
    "morrisons": {"packs":[[185,0.45]],"product":"Morrisons Dijon Mustard 185g","checked":"2026-10-05","items":[{"n":"Morrisons Dijon Mustard 185g"}]}
+  },
+  "sweet_chilli_sauce": {
+   "morrisons": {"packs":[[250,2.55,2.0]],"product":"Blue Dragon Thai Sweet Chilli Sauce Medium 250ml","checked":"2026-10-26","items":[{"n":"Blue Dragon Thai Sweet Chilli Sauce Medium 250ml","u":"https://groceries.morrisons.com/products/blue-dragon-thai-sweet-chilli-sauce-medium-250ml/113785465"}],"saleNote":"Was £2.55"}
   },
   "pasta_sauce": {
    "morrisons": {"packs":[[490,3.0,1.75]],"product":"Heinz Tomato And Basil Margherita Pasta Sauce 490g","checked":"2026-10-08","items":[{"n":"Heinz Tomato And Basil Margherita Pasta Sauce 490g","u":"https://groceries.morrisons.com/products/heinz-tomato-and-basil-margherita-pasta-sauce-490g/115992919"}],"saleNote":"Was £3"}
