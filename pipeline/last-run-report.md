@@ -2,7 +2,12 @@
 
 Ingredients searched: 8. Searches made: 1. Estimated cost: about $0.07 (worst case; Apify bills per result returned).
 
-**Run stopped early:** Apify says the account is out of credit (HTTP 402). Top up or upgrade the plan.
+**Run stopped early:** Apify says the account is out of credit (HTTP 402). Top up or upgrade the plan. Apify said: {
+  "error": {
+    "type": "not-enough-usage-to-run-paid-actor",
+    "message": "Your remaining usage of $4.999597 this billing cycle isn't enough for this run. Increase your limit by upgrading to a paid plan at https://console.apify.com/billing/subscription"
+  }
+}
 
 ## Summary by shop
 
