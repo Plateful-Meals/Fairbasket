@@ -1,0 +1,128 @@
+# Plateful: automatic price update.
+#
+# How often is set by the repository variable AUTO_UPDATE (README step 14):
+#   on (or weekly) = Mondays only.
+#   every2         = Monday, Wednesday, Friday and Sunday (about every 2 days).
+#   daily          = every day.
+# On Mondays it refreshes the ingredients whose turn it is (each ingredient has a "refresh" number in
+# pipeline/config.json: 1 = every week, 2 = every second week, 4 = every fourth week).
+# On the extra days it refreshes only the everyday ingredients (refresh 1), which is where offers come and go.
+#
+# IMPORTANT: this file only works when it lives at  .github/workflows/update-prices.yml  in your repository.
+# README.md (step 4) shows how to create it there with GitHub's web editor.
+
+name: Update prices
+
+on:
+  # Every day at 05:17 UTC. Nothing happens unless AUTO_UPDATE is set, and on days the setting does not include (README step 14).
+  schedule:
+    - cron: '17 5 * * *'
+  # The "Run workflow" button on the Actions tab.
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'test = a few ingredients, report only, costs cents.  live = every ingredient, updates the website.'
+        type: choice
+        options:
+          - test
+          - live
+        default: test
+      scope:
+        description: 'Only used by live runs.  all = every ingredient (about $8.50 at most).  due = the ingredients whose turn it is this week (Monday runs, about $6 at most).  everyday = only the everyday ingredients (extra runs, about $4 at most).'
+        type: choice
+        options:
+          - all
+          - due
+          - everyday
+        default: all
+
+permissions:
+  contents: write     # lets the job save prices.json back to the repository
+  pages: write        # lets the job ask GitHub Pages to rebuild the site
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    # A scheduled run does nothing until the repository variable AUTO_UPDATE is set (on, weekly, every2 or daily).
+    if: github.event_name != 'schedule' || contains(fromJSON('["on","weekly","every2","daily"]'), vars.AUTO_UPDATE)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Decide whether today is a run day
+        id: when
+        env:
+          EVENT: ${{ github.event_name }}
+          SETTING: ${{ vars.AUTO_UPDATE }}
+          SCOPE_IN: ${{ github.event.inputs.scope }}
+        run: |
+          dow=$(date -u +%u)   # 1 = Monday ... 7 = Sunday
+          case "$SETTING" in daily) freq=day ;; every2) freq=2days ;; *) freq=week ;; esac
+          go=false; scope=due
+          if [ "$EVENT" != "schedule" ]; then
+            go=true; scope="${SCOPE_IN:-all}"
+          elif [ "$dow" = "1" ]; then
+            go=true; scope=due
+          elif [ "$SETTING" = "daily" ]; then
+            go=true; scope=everyday
+          elif [ "$SETTING" = "every2" ] && { [ "$dow" = "3" ] || [ "$dow" = "5" ] || [ "$dow" = "7" ]; }; then
+            go=true; scope=everyday
+          fi
+          echo "go=$go" >> "$GITHUB_OUTPUT"; echo "scope=$scope" >> "$GITHUB_OUTPUT"; echo "freq=$freq" >> "$GITHUB_OUTPUT"
+          echo "Setting: ${SETTING:-not set}. Run today: $go (scope $scope)."
+
+      - name: Get the code
+        if: steps.when.outputs.go == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: steps.when.outputs.go == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the matching rules still fit the site
+        if: steps.when.outputs.go == 'true'
+        run: python pipeline/update_prices.py --check-config
+
+      - name: Fetch prices from the shops (through Apify)
+        if: steps.when.outputs.go == 'true'
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          MODE: ${{ github.event.inputs.mode || 'live' }}
+          SCOPE: ${{ steps.when.outputs.scope }}
+          FREQ: ${{ steps.when.outputs.freq }}
+          # Which shops to search. To save money, make a repository variable called SHOPS (README step 13), e.g. aldi,lidl
+          SHOPS: ${{ vars.SHOPS || 'aldi,lidl,morrisons' }}
+        run: python pipeline/update_prices.py --mode "$MODE" --scope "$SCOPE" --shops "$SHOPS" --freq "$FREQ"
+
+      # Works out the site's web address from the repository name and writes it into index.html (link previews),
+      # 404.html, sitemap.xml and robots.txt. It changes nothing if the address is already there.
+      - name: Tell the site its own web address
+        if: always() && steps.when.outputs.go == 'true'
+        run: python pipeline/site_address.py
+
+      - name: Save the results
+        if: always() && steps.when.outputs.go == 'true'
+        env:
+          MODE: ${{ github.event.inputs.mode || 'live' }}
+        run: |
+          git config user.name "plateful-bot"
+          git config user.email "plateful-bot@users.noreply.github.com"
+          git add prices.json pipeline/last-run-report.md 2>/dev/null || true
+          git add index.html 404.html sitemap.xml robots.txt 2>/dev/null || true
+          if [ -d pipeline/samples ]; then git add pipeline/samples; fi
+          if git diff --cached --quiet; then
+            echo "Nothing changed, nothing to save."
+          else
+            git commit -m "Update prices ($MODE run, $(date -u +%F))"
+            git push
+          fi
+
+      - name: Ask GitHub Pages to rebuild the site
+        if: success() && steps.when.outputs.go == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "/repos/${{ github.repository }}/pages/builds" || echo "Could not request a rebuild; Pages usually rebuilds by itself after the push."
