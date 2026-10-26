@@ -1,0 +1,57 @@
+# Fairbasket: Google Shopping test (DataForSEO).
+# Run it by hand from the Actions tab: "Google Shopping test" > Run workflow.
+# It searches about 20 ingredients on UK Google Shopping, then shows which of the 8 supermarkets
+# appear with prices. It costs a fraction of a US cent per search (about 2 cents in total) and
+# does NOT change prices.json or the website.
+#
+# Needs two repository secrets: DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD (the API login and API
+# password from the API Access page on dataforseo.com, not your website password).
+
+name: Google Shopping test
+
+on:
+  workflow_dispatch:
+    inputs:
+      sandbox:
+        description: 'true = free dummy data, only checks the connection works.  false = the real test (uses a little of your $1 credit).'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+        default: 'false'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run the Google Shopping test
+        env:
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          SANDBOX: ${{ github.event.inputs.sandbox }}
+        run: |
+          if [ "$SANDBOX" = "true" ]; then
+            python pipeline/google_shopping_test.py --sandbox --count 3
+          else
+            python pipeline/google_shopping_test.py
+          fi
+
+      - name: Keep the raw results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-shopping-test
+          path: pipeline/google-shopping-test/
+          if-no-files-found: ignore
