@@ -1,6 +1,7 @@
 {
  "_about": "How the weekly job searches for and recognises each Plateful ingredient. Edit freely; run \"python pipeline/update_prices.py --check-config\" after changes.",
  "shops": {
+  "iceland": {"name": "Iceland", "actor": "studio-amba~iceland-uk-scraper", "per_1000_results": 2.0, "n": 10, "n_wide": 15, "input": {"searchQuery": "{kw}", "maxProducts": "{n}"}},
   "tesco": {
    "name": "Tesco",
    "card": "Clubcard",
