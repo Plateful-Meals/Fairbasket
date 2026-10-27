@@ -1,7 +1,6 @@
 {
  "_about": "How the weekly job searches for and recognises each Plateful ingredient. Edit freely; run \"python pipeline/update_prices.py --check-config\" after changes.",
  "shops": {
-  "iceland": {"name": "Iceland", "actor": "studio-amba~iceland-uk-scraper", "per_1000_results": 2.0, "n": 10, "n_wide": 15, "input": {"searchQuery": "{kw}", "maxProducts": "{n}"}},
   "tesco": {
    "name": "Tesco",
    "card": "Clubcard",
@@ -54,7 +53,7 @@
   "morrisons": {
    "name": "Morrisons",
    "actor": "studio-amba~morrisons-scraper",
-   "per_1000_results": 4.0,
+   "per_1000_results": 4,
    "n": 6,
    "n_wide": 10,
    "input": {
@@ -67,6 +66,17 @@
     "search_url": "https://groceries.morrisons.com/search?q={kw}",
     "link": "groceries\\.morrisons\\.com/products/"
    }
+  },
+  "iceland": {
+   "name": "Iceland",
+   "actor": "studio-amba~iceland-uk-scraper",
+   "per_1000_results": 2,
+   "n": 10,
+   "n_wide": 15,
+   "input": {
+    "searchQuery": "{kw}",
+    "maxProducts": "{n}"
+   }
   }
  },
  "tags": {
@@ -74,15 +84,16 @@
   "free_from": "\\b(gluten|lactose|dairy|wheat)[ -]?free\\b|\\bfree ?from\\b",
   "plant": "\\b(vegan|vegetarian|veggie|plant[ -]?based|plant kitchen|meat[ -]?free|meatless)\\b",
   "premium": "\\b(finest|specially selected|taste the difference|the best|luxury|deluxe|premium|signature|gourmet|artisan|extra special|heritage)\\b",
-  "flavour": "flavou?r|\\bspicy\\b|\\bhot\\b|chilli|chili|garlic|herb|lemon|\\bbbq\\b|barbecue|honey|maple|curry|\\bmint\\b|teriyaki|cajun|piri|smoked|(with|and|&) cheese",
+  "flavour": "flavou?r|\\bspicy\\b|\\bhot\\b|chilli|chili|garlic|herb|lemon|\\bbbq\\b|barbecue|honey|maple|curry|\\bmint\\b|teriyaki|cajun|piri|smoked|smoky|(with|and|&) cheese",
   "kids": "\\b(kids?|children\\'?s?|toddler|baby|mini|petit|bite[ -]?size)\\b",
   "ready": "ready[ -]?(meal|to eat|made)|microwave|meal kit|sandwich|salad bowl",
-  "assorted": "\\b(variety|assorted|selection|bundle|gift|hamper|multi[ -]?buy)\\b"
+  "assorted": "\\b(variety|assorted|selection|bundle|gift|hamper|multi[ -]?buy)\\b",
+  "prepared": "\\b(quiches?|mash|pasty|pasties|sandwich(es)?|wraps?|lasagne|crisps|biscuits?|cookies?|crackers?|mousse|desserts?|sweets|mints?|mintoes|candies|toffees?|fudge|cakes?|tarts?|ice ?creams?|milkshakes?|stuffing|houmous|hummus|coleslaw|risotto|kievs?|goujons?|meatballs?|sausage rolls?|snack(s|ing)?|cereal bars?|pasta salad|ready meal|meal for one|pots? of|spirall?i)\\b"
  },
  "frozen_regex": "\\bfrozen\\b|\\bfrzn\\b",
  "tolerance": 0.15,
  "sanity_low": 0.25,
- "sanity_high": 4.0,
+ "sanity_high": 4,
  "stale_days": 42,
  "shop_min_hit_ratio": 0.25,
  "test_products": [
@@ -102,8 +113,9 @@
     "beef",
     "mince"
    ],
-   "avoid": "steak mince|extra lean|\\b[345]\\s?%|\\b2[05]\\s?%|quarter|meatball|lasagne|bolognese|cottage|stew|pasty|roll\\b|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
-   "wide": true
+   "avoid": "pork|lamb|turkey|chicken|venison|plant|meat[- ]?free|vegan|vegetarian|steak mince|extra lean|\\b[345]\\s?%|\\b2[05]\\s?%|quarter|meatball|lasagne|bolognese|cottage|stew|pasty|roll\\b|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|\\b(1[6-9]|[2-9]\\d)\\s?%",
+   "wide": true,
+   "prefer": "\\b1[0-2]\\s?%"
   },
   "turkey_mince": {
    "kw": "turkey mince",
@@ -111,7 +123,8 @@
     "turkey",
     "mince"
    ],
-   "avoid": "meatball|sausage|cooked|chilli|bolognese|stuffing|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning"
+   "avoid": "meatball|sausage|cooked|chilli|bolognese|stuffing|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "prefer": "\\b2\\s?%"
   },
   "plant_mince": {
    "kw": "meat free mince",
@@ -203,7 +216,10 @@
    "must": [
     "arborio|risotto"
    ],
-   "avoid": "mushroom|chicken|seafood|asparagus|tomato|saffron|milanese|cheese|parmesan|garlic|herb|spinach|butternut|pumpkin|truffle|porcini|microwave|pouch|\\bpot\\b|cooked|stock|cake|pudding|arancini|carnaroli|vialone|basmati|jasmine|paella|bomba|sushi|sticky|wild|brown|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning"
+   "avoid": "mushroom|chicken|seafood|asparagus|tomato|saffron|milanese|cheese|parmesan|garlic|herb|spinach|butternut|pumpkin|truffle|porcini|microwave|pouch|\\bpot\\b|cooked|stock|cake|pudding|arancini|carnaroli|vialone|basmati|jasmine|paella|bomba|sushi|sticky|wild|brown|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "allow": [
+    "prepared"
+   ]
   },
   "couscous": {
    "kw": "couscous",
@@ -573,7 +589,7 @@
    "must": [
     "mushroom"
    ],
-   "avoid": "dried|soup|sauce|p[aâ]t[eé]|stuffed|garlic|cream|butter|marinated|pickled|canned|\\btins?\\b|\\bjar\\b|cooked|grilled|fried|breaded|risotto|pasta|curry|stroganoff|seasoning|stock|powder|coffee|grow|shiitake|oyster|enoki|\\bking\\b|portobell|portabella|\\bflat\\b|large|mixed|wild|exotic|sliced|diced|chopped|frozen|organic|vegan|plant|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad",
+   "avoid": "dried|soup|sauce|p[aâ]t[eé]|stuffed|garlic|cream|butter|marinated|pickled|canned|\\btins?\\b|\\bjar\\b|cooked|grilled|fried|breaded|risotto|pasta|curry|stroganoff|seasoning|stock|powder|coffee|grow|shiitake|oyster|enoki|\\bking\\b|portobell|portabella|\\bflat\\b|large|mixed|wild|exotic|sliced|diced|chopped|frozen|organic|vegan|plant|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|stir[- ]?fry|\\bmix\\b|medley",
    "tol": 0.25,
    "wide": true
   },
@@ -678,7 +694,7 @@
   "bacon": {
    "kw": "smoked bacon lardons",
    "must": [
-    "lardon|bacon"
+    "lardons?|cubetti"
    ],
    "avoid": "rashers?|streaky|medallion|bits|pieces|\\bback\\b|middle|unsmoked|turkey|beef|vegan|plant|veggie|meat[ -]?free|butty|\\bbap\\b|\\broll\\b|jam|mayo|seasoning|salt|baked|beans|cheese|burger|carbonara|cooked|chicken|pork belly|gammon|\\bham\\b|sausage|pancetta|chorizo|salami|crumble|grill|steak|peas|salmon|fish|prawn|spread|chop|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad",
    "allow": [
@@ -743,9 +759,9 @@
   "butter": {
    "kw": "salted butter",
    "must": [
-    "butter"
+    "\\bbutter\\b"
    ],
-   "avoid": "unsalted|spreadable|\\bspread\\b|softer|lighter|reduced|garlic|peanut|cashew|almond|\\bnuts?\\b|shea|cooking|ghee|clarified|plant|vegan|dairy[ -]?free|flavou?r|biscuit|popcorn|milk|\\bbeans?\\b|chocolate|squash|croissant|cake|cookie|pastry|brioche|icing|cream\\b|margarine|\\btub\\b|cheese|scotch|caramel|toffee|herb|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "buttery|elmlea|spread|spreadable|\\bblend|lighter|\\blight\\b|vegetable|plant|dairy[ -]?free|vegan|unsalted|spreadable|\\bspread\\b|softer|lighter|reduced|garlic|peanut|cashew|almond|\\bnuts?\\b|shea|cooking|ghee|clarified|plant|vegan|dairy[ -]?free|flavou?r|biscuit|popcorn|milk|\\bbeans?\\b|chocolate|squash|croissant|cake|cookie|pastry|brioche|icing|cream\\b|margarine|\\btub\\b|cheese|scotch|caramel|toffee|herb|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
    "tol": 0.15,
    "wide": true
   },
@@ -767,7 +783,7 @@
    "must": [
     "cheddar"
    ],
-   "avoid": "crisps?|sandwich|biscuit|snack|sauce|spread|slices|grated|\\bmini\\b|lighter|reduced|cracker|scone|onion|pickle|white|vegan|plant|cream|\\broll\\b|\\bpie\\b|twist|cubes|bites|sticks|smoke|blue|stilton|cooking|processed|wedge",
+   "avoid": "crisps?|sandwich|biscuit|snack|sauce|spread|slices|grated|\\bmini\\b|lighter|reduced|cracker|scone|onion|pickle|white|vegan|plant|cream|\\broll\\b|\\bpie\\b|twist|cubes|bites|sticks|smoke|blue|stilton|cooking|processed|wedge|quiche|mash|bacon|vintage|reserve|\\bmedium\\b|\\bmild\\b|smoky",
    "prefer": "mature|extra mature",
    "tol": 0.2,
    "wide": true
@@ -859,7 +875,10 @@
     "tortilla|wrap|fajita"
    ],
    "avoid": "chips?|crisps?|corn\\b|whole ?wheat|whole ?meal|seeded|spinach|tomato|chilli|cheese|flavou?r|chicken|falafel|\\bkit\\b|hoisin|protein|gluten|free ?from|\\blow\\b|lighter|\\bmini\\b|small|taco|\\bbeans?\\b|crispy|kebab|\\bhot\\b|cajun|piri|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
-   "wide": true
+   "wide": true,
+   "allow": [
+    "prepared"
+   ]
   },
   "pittas": {
    "kw": "pitta bread",
@@ -1155,7 +1174,7 @@
    "must": [
     "celery"
    ],
-   "avoid": "salt|seed|soup|sticks|juice|hearts|sliced|diced|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad",
+   "avoid": "salt|seed|soup|sticks|juice|hearts|sliced|diced|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|fruit|\\bnuts?\\b",
    "tol": 0.3,
    "refresh": 2
   },
@@ -1246,7 +1265,7 @@
    "must": [
     "strawberr"
    ],
-   "avoid": "jam|yog|cream|\\bice\\b|milk|shake|smoothie|coulis|dried|tart|cake|sorbet|chocolate|dipped|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "mango|raspberr|apple|blueberr|blackberr|cherr|pineapple|\\bmix|medley|jam|yog|cream|\\bice\\b|milk|shake|smoothie|coulis|dried|tart|cake|sorbet|chocolate|dipped|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
    "tol": 0.25,
    "refresh": 2
   },
@@ -1614,7 +1633,10 @@
    ],
    "avoid": "fresh|egg|whole ?wheat|gluten|free ?from|spinach|verde|ready|bake|\\bkit\\b|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
    "tol": 0.2,
-   "refresh": 4
+   "refresh": 4,
+   "allow": [
+    "prepared"
+   ]
   },
   "basmati_rice": {
    "kw": "basmati rice",
@@ -1960,5 +1982,5 @@
    "refresh": 4
   }
  },
- "_about_shops": "Shops with an \"actor\" can be checked by the Apify robot (the GitHub job). Shops with a \"browser\" block can be checked by the home price checker (price-checker/check_prices.py). Aldi, Asda, Waitrose and Iceland have no \"browser\" block on purpose: their robots.txt rules do not allow automated visits to their product pages."
+ "_about_shops": "Shops with an \"actor\" can be checked by the Apify robot (the GitHub job). Shops with a \"browser\" block can be checked by the home price checker (price-checker/check_prices.py). Asda and Waitrose have no robot on purpose: their sites block automated visits. Iceland was added to the Apify robot in October 2026."
 }
