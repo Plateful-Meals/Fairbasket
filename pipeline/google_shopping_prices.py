@@ -103,7 +103,16 @@ def num(v):
     return None
 
 
-def to_fixtures(results, outdir, shops):
+def extra_text(it):
+    """Any extra words Google gives about a listing (snippet, description, tags): sometimes the pack size is only there."""
+    parts = [str(it.get(k) or '') for k in ('snippet', 'description')]
+    tags = it.get('tags')
+    if isinstance(tags, list):
+        parts += [str(t) for t in tags]
+    return ' | '.join(x.strip() for x in parts if x and x.strip())[:200]
+
+
+def to_fixtures(results, outdir, shops, U=None, examples=None):
     """results: {pid: DataForSEO task}.  Writes outdir/<shop>/<pid>.json in the shape update_prices.py reads."""
     seen_per_shop = collections.Counter()
     for pid, t in results.items():
@@ -121,6 +130,11 @@ def to_fixtures(results, outdir, shops):
                 continue
             seen.add(key)
             row = {'name': str(it.get('title')).strip(), 'price': price}
+            extra = extra_text(it)
+            if U is not None and extra and not U.parse_sizes(row['name']) and U.parse_sizes(extra):
+                row['size'] = extra          # the title has no pack size but the extra words do
+            if examples is not None and len(examples) < 14 and not U.parse_sizes(row['name']):
+                examples.append(f'- {sid}, "{row["name"]}", £{price}: extra words = "{extra or "none"}"')
             was = num(it.get('old_price'))
             if was:
                 row['originalPrice'] = was
@@ -259,7 +273,8 @@ def main():
         results, spent = search(ids, queries, login, password, a.wait, a.max_spend, a.raw_dir)
     if not results:
         sys.exit('No results came back, so nothing was changed.')
-    got = to_fixtures(results, fx, shops)
+    examples = []
+    got = to_fixtures(results, fx, shops, U, examples)
 
     # a copy of config.json where every Google Shopping shop looks like a normal shop to update_prices.py
     cfg2 = copy.deepcopy(cfg)
@@ -294,6 +309,8 @@ def main():
             f'Listings from the six shops were found for: ' + ', '.join(f'{s} {got.get(s, 0)}' for s in shops) + ' ingredients.',
             '(The lines below were produced by the same matching step as the Apify robot, so "Searches ok" means Google answered.)', '']
     body = [ln for ln in rep.split('\n')[1:] if not ln.startswith('Ingredients searched:')]
+    if examples:
+        body += ['', '## What Google says about listings whose name has no pack size (for checking)', ''] + examples + ['']
     open(a.report, 'w', encoding='utf-8').write('\n'.join(head) + '\n' + '\n'.join(body))
     if a.mode == 'live' and os.path.exists(a.prices):
         d = json.load(open(a.prices, encoding='utf-8'))
