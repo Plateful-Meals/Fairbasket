@@ -123,7 +123,7 @@
     "turkey",
     "mince"
    ],
-   "avoid": "meatball|sausage|cooked|chilli|bolognese|stuffing|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "meatball|sausage|cooked|chilli|bolognese|stuffing|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|\\bbeef\\b|\\bpork\\b|\\blamb\\b|chicken",
    "prefer": "\\b2\\s?%"
   },
   "plant_mince": {
@@ -783,7 +783,7 @@
    "must": [
     "cheddar"
    ],
-   "avoid": "crisps?|sandwich|biscuit|snack|sauce|spread|slices|grated|\\bmini\\b|lighter|reduced|cracker|scone|onion|pickle|white|vegan|plant|cream|\\broll\\b|\\bpie\\b|twist|cubes|bites|sticks|smoke|blue|stilton|cooking|processed|wedge|quiche|mash|bacon|vintage|reserve|\\bmedium\\b|\\bmild\\b|smoky",
+   "avoid": "crisps?|sandwich|biscuit|snack|sauce|spread|slices|grated|\\bmini\\b|lighter|reduced|cracker|scone|onion|pickle|white|vegan|plant|cream|\\broll\\b|\\bpie\\b|twist|cubes|bites|sticks|smoke|blue|stilton|cooking|processed|wedge|quiche|mash|bacon|vintage|reserve|\\bmedium\\b|\\bmild\\b|smoky|sliced",
    "prefer": "mature|extra mature",
    "tol": 0.2,
    "wide": true
@@ -967,7 +967,7 @@
     "pork",
     "mince"
    ],
-   "avoid": "sausage|meatball|stir|lean|\\b[345]\\s?%|steak|burger|\\bpie\\b|pasty|roll\\b|bake|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "sausage|meatball|stir|lean|\\b[345]\\s?%|steak|burger|\\bpie\\b|pasty|roll\\b|bake|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|\\bbeef\\b|\\blamb\\b|turkey|chicken",
    "wide": true,
    "refresh": 2
   },
@@ -977,7 +977,7 @@
     "lamb",
     "mince"
    ],
-   "avoid": "meatball|kofta|shepherd|cottage|burger|samosa|\\bpie\\b|pasty|bake|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "meatball|kofta|shepherd|cottage|burger|samosa|\\bpie\\b|pasty|bake|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|\\bbeef\\b|\\bpork\\b|turkey|chicken",
    "wide": true,
    "refresh": 2
   },
@@ -1265,7 +1265,7 @@
    "must": [
     "strawberr"
    ],
-   "avoid": "mango|raspberr|apple|blueberr|blackberr|cherr|pineapple|\\bmix|medley|jam|yog|cream|\\bice\\b|milk|shake|smoothie|coulis|dried|tart|cake|sorbet|chocolate|dipped|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "mango|raspberr|apple|blueberr|blackberr|cherr|pineapple|\\bmix|medley|jam|yog|cream|\\bice\\b|milk|shake|smoothie|coulis|dried|tart|cake|sorbet|chocolate|dipped|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|kefir|\\bpots?\\b|drink|fromage|frais|compote|conserve|jelly|laces|sweets",
    "tol": 0.25,
    "refresh": 2
   },

@@ -9,13 +9,14 @@ sources share:
   run_matcher()   runs update_prices.py on the saved listings
   guard()         a last check on every price a run wants to change. A price is NOT changed, and is listed in the
                   report for a person to look at, when
-                    - it jumps up by more than half, or falls by more than 40%, compared with the price it replaces, or
+                    - it jumps up by more than half compared with the price it replaces, or falls by more than 40%
+                      (same product) / more than 65% (a different, cheaper product), or
                     - per gram / per item it is more than 2.2 times the middle price of the other shops for that product
                       (or under a third of it).
                   The old price stays (with its old date), so a bad listing can never push a silly price onto the site.
   shop_names()    display names for reports.
 """
-import copy, datetime as dt, importlib.util, json, os, statistics, subprocess, sys
+import copy, datetime as dt, importlib.util, json, os, re, statistics, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -77,6 +78,10 @@ def _per_unit(entry):
     return min(vals) if vals else None
 
 
+def _plain(name):
+    return re.sub(r'[^a-z0-9]', '', str(name or '').lower())
+
+
 def guard(old, new, shops, today, names, label=None):
     """Compare the prices this run wants to write (new) with what was there before (old). Puts the old entry back for
     any change that fails the checks. Returns report lines (empty if nothing was held back)."""
@@ -92,10 +97,14 @@ def guard(old, new, shops, today, names, label=None):
             why = []
             if o:
                 before = {p[0]: p[1] for p in o.get('packs', []) if len(p) > 1}
+                # a cheaper DIFFERENT product (e.g. the shop's value range) may well be much cheaper; the same product
+                # suddenly costing 40% less is more likely a misread
+                same = _plain(o.get('product')) == _plain(n.get('product'))
+                floor = MAX_DROP if same else 0.35
                 for p in n.get('packs', []):
                     if p[0] in before and before[p[0]]:
                         r = p[1] / before[p[0]]
-                        if r > MAX_RISE or r < MAX_DROP:
+                        if r > MAX_RISE or r < floor:
                             why.append(f'{p[0]}: £{before[p[0]]:.2f} -> £{p[1]:.2f} ({(r - 1) * 100:+.0f}%)')
             mine = _per_unit(n)
             others = [u for sid, e in new['prices'].get(pid, {}).items() if sid != s for u in [_per_unit(e)] if u]

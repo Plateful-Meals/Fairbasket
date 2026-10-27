@@ -313,6 +313,17 @@ def main():
         sys.exit('DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD are not set. In GitHub: Settings > Secrets and variables > Actions.')
     os.makedirs(a.raw_dir, exist_ok=True)
     spent = 0.0
+    balance = None
+    if not a.fixtures:
+        try:                                   # how much DataForSEO credit is left (never spend past it)
+            u = call('/v3/appendix/user_data', login, password)
+            balance = float(u['tasks'][0]['result'][0]['money']['balance'])
+            print(f'DataForSEO credit left: ${balance:.2f}')
+            if balance - 0.02 < a.max_spend:
+                a.max_spend = max(0.0, balance - 0.02)
+                print(f'  so this run will spend at most ${a.max_spend:.2f}')
+        except Exception as e:                 # not fatal: the spending limit still applies
+            print('  (could not read the DataForSEO balance:', str(e)[:80] + ')')
 
     def fetch(queries):
         nonlocal spent
@@ -405,7 +416,8 @@ def main():
     rep = open(a.report, encoding='utf-8').read().split('\n')
     head = [f'# Fairbasket Google Shopping update: {a.mode} run, {today}', '',
             '_Test run: prices.json was NOT changed. The lines below show what a live run would do._' if a.mode == 'test' else '', '',
-            f'Ingredients searched: {len(ids)}; answered: {len(answered)}. Cost about ${spent:.3f}. '
+            f'Ingredients searched: {len(ids)}; answered: {len(answered)}. Cost about ${spent:.3f}'
+            + (f' (credit left before this run: ${balance:.2f})' if balance is not None else '') + '. '
             f'Listings from the shops: {stats["listings"]}; left out as brands: {stats["brands (not own-label)"]}; '
             f'left out as premium/bulk: {stats["premium or bulk"]}; pack size filled from earlier names: '
             f'{stats["sizes filled from earlier names"]}; still no pack size: {stats["no pack size"]}.', '']
