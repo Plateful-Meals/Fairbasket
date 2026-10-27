@@ -1,7 +1,10 @@
 # Fairbasket: automatic shop prices.
 #   Aldi                                      from Aldi's own product pages (pipeline/aldi_prices.py), free
 #   Tesco, Sainsbury's, Asda, Waitrose, Iceland  from UK Google Shopping through DataForSEO
-#                                             (pipeline/google_shopping_prices.py), about 1 US cent per 10 searches
+#                                             (pipeline/google_shopping_prices.py), about 1 US cent per 10 searches.
+#                                             Automatic runs use one search per ingredient; set the repository variable
+#                                             GOOGLE_SHOP_SEARCHES to  missing  to also search "<shop> <ingredient>"
+#                                             where a shop had nothing usable (finds more, costs about 5 times as much).
 #   Morrisons is checked by the home price checker on your computer; Lidl does not publish prices online.
 #
 # Run it by hand: Actions tab > "Shop prices" > Run workflow.
@@ -44,12 +47,12 @@ on:
         type: string
         default: '30'
       shop_searches:
-        description: 'Google: missing = a second "<shop> <ingredient>" search for shops with nothing usable (finds more, costs more).'
+        description: 'Google: off = one search per ingredient (about 20 cents for all).  missing = also a "<shop> <ingredient>" search where a shop had nothing usable (finds more, about 5 times the cost).'
         type: choice
         options:
-          - missing
           - 'off'
-        default: missing
+          - missing
+        default: 'off'
 
 permissions:
   contents: write
@@ -68,7 +71,8 @@ jobs:
       MODE: ${{ github.event.inputs.mode || 'live' }}
       SOURCES: ${{ github.event.inputs.sources || 'both' }}
       LIMIT: ${{ github.event.inputs.limit || '30' }}
-      SHOP_SEARCHES: ${{ github.event.inputs.shop_searches || 'missing' }}
+      SHOP_SEARCHES: ${{ github.event.inputs.shop_searches || vars.GOOGLE_SHOP_SEARCHES || 'off' }}
+      PYTHONUNBUFFERED: '1'
     steps:
       - name: Get the code
         uses: actions/checkout@v4
