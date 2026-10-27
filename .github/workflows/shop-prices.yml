@@ -1,0 +1,143 @@
+# Fairbasket: automatic shop prices.
+#   Aldi                                      from Aldi's own product pages (pipeline/aldi_prices.py), free
+#   Tesco, Sainsbury's, Asda, Waitrose, Iceland  from UK Google Shopping through DataForSEO
+#                                             (pipeline/google_shopping_prices.py), about 1 US cent per 10 searches
+#   Morrisons is checked by the home price checker on your computer; Lidl does not publish prices online.
+#
+# Run it by hand: Actions tab > "Shop prices" > Run workflow.
+#   mode test = reads prices and writes reports only. prices.json and the website are NOT changed.
+#   mode live = also saves the new prices to prices.json, so the website shows them within a few minutes.
+#
+# Automatic runs every Monday and Thursday morning happen only when the repository variable SHOP_PRICES is set to  on
+# (Settings > Secrets and variables > Actions > Variables). Delete the variable, or set it to  off, to stop them.
+#
+# Every price is checked before it is saved: a price that jumps by more than half, falls by more than 40%, or is far
+# from the other shops is held back and listed in the report, and the old price stays on the site.
+#
+# Needs the repository secrets DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD (Aldi needs nothing).
+# IMPORTANT: this file only works at  .github/workflows/shop-prices.yml
+
+name: Shop prices
+
+on:
+  schedule:
+    - cron: '23 5 * * 1,4'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'test = reports only, nothing on the website changes.  live = save the new prices.'
+        type: choice
+        options:
+          - test
+          - live
+        default: test
+      sources:
+        description: 'Which sources to run.'
+        type: choice
+        options:
+          - both
+          - aldi
+          - google
+        default: both
+      limit:
+        description: 'Test runs only: how many ingredients to check.'
+        type: string
+        default: '30'
+      shop_searches:
+        description: 'Google: missing = a second "<shop> <ingredient>" search for shops with nothing usable (finds more, costs more).'
+        type: choice
+        options:
+          - missing
+          - 'off'
+        default: missing
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  prices:
+    if: github.event_name != 'schedule' || vars.SHOP_PRICES == 'on'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      MODE: ${{ github.event.inputs.mode || 'live' }}
+      SOURCES: ${{ github.event.inputs.sources || 'both' }}
+      LIMIT: ${{ github.event.inputs.limit || '30' }}
+      SHOP_SEARCHES: ${{ github.event.inputs.shop_searches || 'missing' }}
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the matching rules still fit the site
+        run: |
+          python pipeline/update_prices.py --check-config
+          cp prices.json "$RUNNER_TEMP/base-prices.json"
+
+      - name: Aldi (product pages)
+        if: env.SOURCES != 'google'
+        continue-on-error: true
+        run: |
+          python pipeline/aldi_prices.py --mode "$MODE" --limit "$LIMIT"
+          cat pipeline/aldi-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Tesco, Sainsbury's, Asda, Waitrose, Iceland (Google Shopping)
+        if: env.SOURCES != 'aldi'
+        continue-on-error: true
+        env:
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: |
+          python pipeline/google_shopping_prices.py --mode "$MODE" --limit "$LIMIT" --shop-searches "$SHOP_SEARCHES"
+          cat pipeline/google-shopping-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the reports and the raw answers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shop-prices-reports
+          path: |
+            pipeline/aldi-report.md
+            pipeline/google-shopping-report.md
+            pipeline/google-shopping-raw/
+          if-no-files-found: ignore
+
+      - name: Save the results (live runs only)
+        if: env.MODE == 'live'
+        run: |
+          set -e
+          git config user.name "fairbasket-bot"
+          git config user.email "fairbasket-bot@users.noreply.github.com"
+          keep="prices.json pipeline/aldi-map.json pipeline/google-sizes.json pipeline/aldi-report.md pipeline/google-shopping-report.md"
+          mkdir -p "$RUNNER_TEMP/out"
+          for f in $keep; do if [ -f "$f" ]; then cp "$f" "$RUNNER_TEMP/out/$(basename "$f")"; fi; done
+          for attempt in 1 2 3; do
+            # start from the newest copy on GitHub, so prices saved meanwhile (home checker, price editor) are kept
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            python pipeline/price_sources.py merge prices.json "$RUNNER_TEMP/out/prices.json" "$RUNNER_TEMP/base-prices.json" aldi,tesco,sainsburys,asda,waitrose,iceland
+            for f in aldi-map.json google-sizes.json aldi-report.md google-shopping-report.md; do
+              if [ -f "$RUNNER_TEMP/out/$f" ]; then cp "$RUNNER_TEMP/out/$f" "pipeline/$f"; fi
+            done
+            for f in $keep; do if [ -f "$f" ]; then git add "$f"; fi; done
+            if git diff --cached --quiet; then echo "Nothing changed, nothing to save."; exit 0; fi
+            git commit -q -m "Update shop prices (Aldi pages + Google Shopping, $(date -u +%F))"
+            if git push -q origin HEAD:main; then echo "Saved."; exit 0; fi
+            echo "GitHub changed meanwhile, trying again ($attempt)."; sleep 10
+          done
+          exit 1
+
+      - name: Ask GitHub Pages to rebuild the site
+        if: success() && env.MODE == 'live'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "/repos/${{ github.repository }}/pages/builds" || echo "Pages rebuilds by itself after the push."
