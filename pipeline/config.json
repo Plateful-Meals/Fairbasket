@@ -83,7 +83,7 @@
   "organic": "\\borganic\\b",
   "free_from": "\\b(gluten|lactose|dairy|wheat)[ -]?free\\b|\\bfree ?from\\b",
   "plant": "\\b(vegan|vegetarian|veggie|plant[ -]?based|plant kitchen|meat[ -]?free|meatless)\\b",
-  "premium": "\\b(finest|specially selected|taste the difference|the best|luxury|deluxe|premium|signature|gourmet|artisan|extra special|heritage)\\b",
+  "premium": "\\b(finest|specially selected|taste the difference|the best|luxury|deluxe|premium|signature|gourmet|artisan|extra special|exceptional|heritage)\\b",
   "flavour": "flavou?r|\\bspicy\\b|\\bhot\\b|chilli|chili|garlic|herb|lemon|\\bbbq\\b|barbecue|honey|maple|curry|\\bmint\\b|teriyaki|cajun|piri|smoked|smoky|(with|and|&) cheese",
   "kids": "\\b(kids?|children\\'?s?|toddler|baby|mini|petit|bite[ -]?size)\\b",
   "ready": "ready[ -]?(meal|to eat|made)|microwave|meal kit|sandwich|salad bowl",
@@ -482,7 +482,7 @@
     "garlic",
     "\\b(bulbs?|each|loose|fresh|whole|pack)\\b|\\d\\s?x"
    ],
-   "avoid": "bread|pur[eé]e|paste|powder|granules|mayo|butter|sauce|naan|baguette|salt|crushed|minced|chopped|\\boil\\b|infused|dressing|\\bdip\\b|seasoning|pickled|black|wild|squeez|sticks|mushroom|prawn|chicken|slices|\\bjar\\b|tube|clove|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad",
+   "avoid": "bread|pur[eé]e|paste|powder|granules|mayo|butter|sauce|naan|baguette|salt|crushed|minced|chopped|\\boil\\b|infused|dressing|\\bdip\\b|seasoning|pickled|black|wild|squeez|sticks|mushroom|prawn|chicken|slices|\\bjar\\b|tube|clove|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|ciabatta|focaccia|flatbread|squares|pizza|slices|naans?",
    "allow": [
     "flavour"
    ],
@@ -598,8 +598,11 @@
    "must": [
     "spinach"
    ],
-   "avoid": "frozen|chopped|leaf ?&|pur[eé]e|cream|paneer|pasta|wilted|curry|\\bsag\\b|bake|bhaji|noodle|bread|smoothie|organic|cheese|\\bmix\\b|kale|chard|rocket|watercress|beet|drink|juice|powder|gnocchi|ravioli|tortellini|cannelloni|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
-   "tol": 0.35
+   "avoid": "frozen|chopped|leaf ?&|pur[eé]e|cream|paneer|pasta|wilted|curry|\\bsag\\b|bake|bhaji|noodle|bread|smoothie|organic|cheese|\\bmix\\b|kale|chard|rocket|watercress|beet|drink|juice|powder|gnocchi|ravioli|tortellini|cannelloni|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|tortell|ravioli|gnocchi|filled",
+   "tol": 0.35,
+   "allow": [
+    "kids"
+   ]
   },
   "frozen_peas": {
    "kw": "frozen peas",
@@ -633,7 +636,7 @@
     "berr",
     "mixed|summer|forest|fruit"
    ],
-   "avoid": "smoothie|yog|\\bice\\b|sorbet|jam|compote|coulis|crumble|cake|muffin|\\bbars?\\b|dried|freeze|powder|juice|drink|cereal|granola|muesli|porridge|oats|tropical|mango|pineapple|banana|spinach|kale|veg\\b|organic|vegan|gluten|free ?from|cooked|ready|microwave|sweet|sugar|syrup|glaze|coated|chocolate|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad",
+   "avoid": "smoothie|yog|\\bice\\b|sorbet|jam|compote|coulis|crumble|cake|muffin|\\bbars?\\b|dried|freeze|powder|juice|drink|cereal|granola|muesli|porridge|oats|tropical|mango|pineapple|banana|spinach|kale|veg\\b|organic|vegan|gluten|free ?from|cooked|ready|microwave|sweet|sugar|syrup|glaze|coated|chocolate|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|wheats|shreddies|flakes|clusters|biscuits?",
    "frozen": true
   },
   "chicken_breast": {
@@ -661,7 +664,7 @@
     "chicken",
     "plant|vegan|meat[ -]?free|quorn|vegetarian|no chicken|veggie|free from|style|alternative"
    ],
-   "avoid": "kiev|dippers|goujon|fillet|sausage|roll|wrap|gravy|stock|southern|popcorn|tikka|korma|curry|bake|dinner|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "kiev|dippers|goujon|fillet|sausage|roll|wrap|gravy|stock|southern|popcorn|tikka|korma|curry|bake|dinner|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|pattie|patty|smashed",
    "allow": [
     "plant",
     "free_from"
@@ -1022,7 +1025,7 @@
     "pork",
     "steak|loin"
    ],
-   "avoid": "mince|sausage|belly|\\bribs?\\b|bacon|gammon|chop|stir|strips|diced|cubes|marinated|pulled|joint|roast|sliced|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "mince|sausage|belly|\\bribs?\\b|bacon|gammon|chop|stir|strips|diced|cubes|marinated|pulled|joint|roast|sliced|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|chinese|glazed|seasoned|sticky",
    "wide": true,
    "refresh": 2
   },
@@ -1124,7 +1127,7 @@
    "must": [
     "prawn"
    ],
-   "avoid": "\\braw\\b|uncooked|tempura|breaded|battered|crispy|coconut|cocktail|\\brings?\\b|crackers?|stir|skewer|dumpling|toast|marinated|paella|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "\\braw\\b|uncooked|tempura|breaded|battered|crispy|coconut|cocktail|\\brings?\\b|crackers?|stir|skewer|dumpling|toast|marinated|paella|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|\\bwith\\b|feta|tomato|oregano|protein|pasta|\\bmeal\\b",
    "frozen": true,
    "tol": 0.2,
    "refresh": 2
@@ -1247,7 +1250,7 @@
    "must": [
     "\\bapples?\\b"
    ],
-   "avoid": "juice|pie|crumble|pur[eé]e|cider|vinegar|chips|crisps|dried|slices?|sliced|snack|\\bbars?\\b|cake|tart|strudel|turnover|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
+   "avoid": "juice|pie|crumble|pur[eé]e|cider|vinegar|chips|crisps|dried|slices?|sliced|snack|\\bbars?\\b|cake|tart|strudel|turnover|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning|bramley|cooking",
    "loose": true,
    "refresh": 2
   },
@@ -1466,7 +1469,7 @@
    "must": [
     "sour(ed)? cream"
    ],
-   "avoid": "dip|dressing|chive|onion|light|reduced|vegan|plant|crisps|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad",
+   "avoid": "dip|dressing|chive|onion|light|reduced|vegan|plant|crisps|sandwich|\\bpie\\b|quiche|pizza|soup|\\bkit\\b|\\bmeal\\b|\\bbowl\\b|snack|crisps?|\\bbites\\b|nuggets?|burger|\\bdip\\b|salad|chicken|shaker",
    "tol": 0.2,
    "refresh": 2
   },
@@ -1497,7 +1500,8 @@
    "avoid": "vegan|plant|dairy[ -]?free|\\blight\\b|reduced|burger|toastie|sandwich|sauce|\\bpaste\\b|dip\\b|dressing|marinade|flavou?r|\\bmix\\b|seasoning",
    "wide": true,
    "count_nouns": "slices?",
-   "refresh": 2
+   "refresh": 2,
+   "prefer": "cheddar"
   },
   "whole_milk": {
    "kw": "whole milk",
