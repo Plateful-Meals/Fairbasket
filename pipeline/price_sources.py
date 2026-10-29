@@ -15,6 +15,12 @@ sources share:
                       (or under a third of it).
                   The old price stays (with its old date), so a bad listing can never push a silly price onto the site.
   shop_names()    display names for reports.
+  SOURCES, tag_source(), respect_priority(), expire(), merge_into()
+                  combining sources: every price says where it came from ("src"); a better source's price is never
+                  replaced while it is fresh (hand-typed 14 days, Pepesto 3 days, others 7 days), and Pepesto prices
+                  are removed after 3 days as its terms require.
+  ProductMap      pipeline/product-map.json: blocked shop products and the products matched before, so new or changed
+                  matches can be listed for a person to check once.
 """
 import copy, datetime as dt, importlib.util, json, os, re, statistics, subprocess, sys
 
@@ -171,10 +177,176 @@ def today_utc():
     return dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')
 
 
-def merge_into(theirs, ours, base, shops):
+# ----------------------------------------------------------------------------- combining sources
+# Every price in prices.json says where it came from ("src"). When two sources have a price for the same product at
+# the same shop, the better source wins while its price is fresh; after that any newer price may replace it.
+#   rank  = how much the source is trusted (higher wins)
+#   fresh = days a price from it keeps priority over lower-ranked sources
+#   max_age = days after which the price is removed altogether (None = kept until replaced; the site's own 42-day
+#             rule still applies). Pepesto's terms allow keeping its prices for 3 days.
+SOURCES = {
+    'manual':     {'rank': 50, 'fresh': 14, 'max_age': None, 'label': 'typed in by hand (price editor)'},
+    'pepesto':    {'rank': 40, 'fresh': 3,  'max_age': 3,    'label': 'Pepesto (shop website data, daily)'},
+    'aldi-pages': {'rank': 35, 'fresh': 7,  'max_age': None, 'label': "Aldi's own product pages"},
+    'checker':    {'rank': 30, 'fresh': 7,  'max_age': None, 'label': 'home price checker'},
+    'google':     {'rank': 20, 'fresh': 7,  'max_age': None, 'label': 'Google Shopping'},
+    'unknown':    {'rank': 10, 'fresh': 0,  'max_age': None, 'label': 'older price, source not recorded'},
+}
+MANUAL_NOTE = 'Price typed in by hand'
+
+
+def source_of(entry):
+    if not isinstance(entry, dict):
+        return 'unknown'
+    s = entry.get('src')
+    if s in SOURCES:
+        return s
+    if str(entry.get('note') or '').startswith(MANUAL_NOTE):
+        return 'manual'
+    return 'unknown'
+
+
+def _age(entry, today):
+    try:
+        return (dt.date.fromisoformat(today) - dt.date.fromisoformat(entry.get('checked') or '')).days
+    except (ValueError, TypeError):
+        return 999
+
+
+def tag_source(new, old, shops, today, src):
+    """Mark the entries this run wrote today with their source."""
+    n = 0
+    for pid, by_shop in new.get('prices', {}).items():
+        for s in shops:
+            e = by_shop.get(s)
+            if e and e.get('checked') == today and e != old.get('prices', {}).get(pid, {}).get(s):
+                e['src'] = src
+                n += 1
+    return n
+
+
+def wins(current, incoming, today):
+    """Should incoming replace current? Only a fresher-or-equal price, and never over a better source that is still
+    fresh."""
+    if not current:
+        return True
+    if not incoming:
+        return False
+    a, b = SOURCES[source_of(current)], SOURCES[source_of(incoming)]
+    if a['rank'] > b['rank'] and _age(current, today) <= a['fresh']:
+        return False
+    return (incoming.get('checked') or '') >= (current.get('checked') or '')
+
+
+def respect_priority(old, new, shops, today, names=None):
+    """Undo changes in new that would push out a better, still-fresh price from another source. Returns report lines."""
+    kept = []
+    for pid, by_shop in list(new.get('prices', {}).items()):
+        for s in shops:
+            o, n = old.get('prices', {}).get(pid, {}).get(s), by_shop.get(s)
+            if n is None or n == o or not o:
+                continue
+            if not wins(o, n, today):
+                by_shop[s] = o
+                kept.append(f'- {(names or {}).get(s, s)}, {pid}: kept the {SOURCES[source_of(o)]["label"]} price from '
+                            f'{o.get("checked")}')
+    if not kept:
+        return []
+    return ['## Kept because a better source has a fresh price', ''] + kept + ['']
+
+
+def expire(d, today):
+    """Remove prices older than their source allows (Pepesto: 3 days). Returns how many were removed."""
+    gone = 0
+    for pid, by_shop in list(d.get('prices', {}).items()):
+        for s, e in list(by_shop.items()):
+            mx = SOURCES[source_of(e)]['max_age']
+            if mx is not None and _age(e, today) > mx:
+                del by_shop[s]
+                gone += 1
+        if not by_shop:
+            del d['prices'][pid]
+    return gone
+
+
+# ----------------------------------------------------------------------------- the product map
+class ProductMap:
+    """pipeline/product-map.json: for each product and shop, the shop products matched to it before.
+
+      {"beef_mince": {"tesco": {"pins": {"500": {"url": ..., "name": ..., "gtin": [...], "first": d, "last": d,
+                                                   "runs": 3}},
+                                "block": ["https://...wrong product..."]}}}
+
+    - "block": shop products a person has said are wrong for this product. They are never used again.
+    - "pins": the product matched at each pack size, with how many runs in a row picked it. A new match, or a
+      different product replacing an earlier one, is listed in the report so a person can check it once; if it is
+      wrong, its link goes into "block".
+    """
+
+    def __init__(self, path):
+        self.path = path
+        self.data = {}
+        if os.path.exists(path):
+            try:
+                self.data = json.load(open(path, encoding='utf-8'))
+            except ValueError:
+                self.data = {}
+        self.new, self.changed = [], []
+
+    def blocked(self, pid, shop):
+        return set(self.data.get(pid, {}).get(shop, {}).get('block', []))
+
+    def record(self, new, old, shops, today, gtins=None, names=None):
+        gtins = gtins or {}
+        for pid, by_shop in new.get('prices', {}).items():
+            for s in shops:
+                e = by_shop.get(s)
+                if not e or e.get('checked') != today or e == old.get('prices', {}).get(pid, {}).get(s):
+                    continue
+                node = self.data.setdefault(pid, {}).setdefault(s, {})
+                pins = node.setdefault('pins', {})
+                for pk, it in zip(e.get('packs', []), e.get('items', [])):
+                    key, url = f'{pk[0]:g}', it.get('u') or ''
+                    if not url:
+                        continue
+                    p = pins.get(key)
+                    if p and p.get('url') == url:
+                        p['runs'] = int(p.get('runs', 1)) + 1
+                        p['last'] = today
+                        continue
+                    line = f'- {(names or {}).get(s, s)}, {pid} ({key}): [{it.get("n", "")}]({url})'
+                    if p:
+                        self.changed.append(line + f' replaces [{p.get("name", "")}]({p.get("url")})')
+                    else:
+                        self.new.append(line)
+                    pins[key] = {'url': url, 'name': it.get('n', ''), 'first': today, 'last': today, 'runs': 1}
+                    if gtins.get(url):
+                        pins[key]['gtin'] = gtins[url]
+
+    def report(self):
+        out = []
+        if self.changed:
+            out += ['## Matches that changed (check these)', '',
+                    'A different shop product was picked than last time (usually a cheaper own-label pack). If one is '
+                    'wrong, copy its link into "block" for that product and shop in pipeline/product-map.json.', ''] \
+                   + self.changed + ['']
+        if self.new:
+            out += [f'## New matches ({len(self.new)})', '',
+                    'First time these were matched. Check a few; a wrong one goes into "block" in pipeline/product-map.json.',
+                    ''] + self.new[:400] + ([f'- ... and {len(self.new) - 400} more'] if len(self.new) > 400 else []) + ['']
+        return out
+
+    def save(self):
+        with open(self.path, 'w', encoding='utf-8') as f:
+            json.dump(dict(sorted(self.data.items())), f, ensure_ascii=False, indent=1)
+
+
+def merge_into(theirs, ours, base, shops, today=None):
     """Put what THIS run changed (ours compared with base, the prices.json the run started from) into the newest
     prices.json on GitHub (theirs). Everything the run did not change stays as it is on GitHub, so prices saved in the
-    meantime by the home checker or typed into the price editor are never lost."""
+    meantime by the home checker or typed into the price editor are never lost. A change never pushes out a price
+    from a better source that is still fresh (see SOURCES), and prices past their source's limit are removed."""
+    today = today or today_utc()
     out = copy.deepcopy(theirs)
     out.setdefault('prices', {})
     for pid in set(ours.get('prices', {})) | set(base.get('prices', {})):
@@ -185,11 +357,13 @@ def merge_into(theirs, ours, base, shops):
                 continue                                   # this run did not touch it
             row = out['prices'].setdefault(pid, {})
             if mine is None:
-                row.pop(s, None)
-            else:
+                if row.get(s) == before:                   # only remove what this run saw; a newer price stays
+                    row.pop(s, None)
+            elif wins(row.get(s), mine, today):
                 row[s] = mine
             if not row:
                 out['prices'].pop(pid, None)
+    expire(out, today)
     if (ours.get('checked') or '') > (out.get('checked') or ''):
         for k in ('checked', 'label'):
             if k in ours:
@@ -206,5 +380,15 @@ if __name__ == '__main__':
         cat = U.read_catalogue(open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read())
         finish(U, cat, sys.argv[2], merged)
         print('Merged this run\'s prices into the newest prices.json.')
+    elif len(sys.argv) == 3 and sys.argv[1] == 'expire':
+        # python pipeline/price_sources.py expire prices.json   -> removes prices older than their source allows
+        U = load_updater()
+        d = json.load(open(sys.argv[2], encoding='utf-8'))
+        gone = expire(d, today_utc())
+        if gone:
+            cat = U.read_catalogue(open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read())
+            finish(U, cat, sys.argv[2], d)
+        print(f'Removed {gone} price(s) older than their source allows.')
     else:
-        sys.exit('usage: price_sources.py merge THEIRS.json OURS.json BASE.json shop1,shop2')
+        sys.exit('usage: price_sources.py merge THEIRS.json OURS.json BASE.json shop1,shop2\n'
+                 '       price_sources.py expire prices.json')
