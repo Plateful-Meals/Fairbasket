@@ -277,6 +277,9 @@ def main():
     new = json.load(open(out_prices, encoding='utf-8'))
     held = PS.guard(old, new, ['aldi'], today, names)
     PS.keep_recent_packs(old, new, ['aldi'], today)
+    PS.tag_source(new, old, ['aldi'], today, 'aldi-pages')
+    held += PS.respect_priority(old, new, ['aldi'], today, names)
+    PS.expire(new, today)
     for pid in searched:                                      # remember which pages were picked
         if pid in fresh_map:
             amap[pid] = fresh_map[pid]                        # (an ingredient not read because of a stop keeps its old map)
