@@ -1,0 +1,139 @@
+# Fairbasket: daily prices for Tesco, Sainsbury's, Asda, Morrisons and Waitrose from the Pepesto grocery API
+# (pipeline/pepesto_prices.py). Aldi and Iceland come from the "Shop prices" job; Lidl from the price editor.
+#
+# Run it by hand: Actions tab > "Pepesto prices" > Run workflow.
+#   mode test = asks Pepesto and writes a report (Coverage table first). prices.json and the website are NOT changed.
+#   mode live = also saves the new prices to prices.json, so the website shows them within a few minutes.
+#   limit     = test runs only: how many products to send (0 = all 526: the full coverage test, about EUR 3.20).
+#
+# Automatic runs (every morning, plus a bigger one on the 1st of each month) happen only when the repository variable
+# PEPESTO_PRICES is set to  on  (Settings > Secrets and variables > Actions > Variables).
+# Pepesto's terms let us keep its prices for 3 days, so once the site uses Pepesto prices this job must run daily;
+# prices older than 3 days are removed automatically (the site then shows a price from another source, or an estimate).
+#
+# Needs the repository secret PEPESTO_API_KEY.
+# Optional repository variable PEPESTO_MAX_SPEND: euros one automatic run may spend (default 3).
+# IMPORTANT: this file only works at  .github/workflows/pepesto-prices.yml
+
+name: Pepesto prices
+
+on:
+  schedule:
+    - cron: '17 4 * * *'      # every day: the daily price lists (about EUR 1.60 a day on Growth)
+    - cron: '47 5 1 * *'      # 1st of each month: also searches for drinks, snacks, household (capped, about EUR 28)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'test = report only, nothing on the website changes.  live = save the new prices.'
+        type: choice
+        options:
+          - test
+          - live
+        default: test
+      limit:
+        description: 'Test runs only: how many products (0 = all).'
+        type: string
+        default: '0'
+      searches:
+        description: 'off = daily list only.  missing = also a full-range search for products the list did not have (dearer, capped).'
+        type: choice
+        options:
+          - 'off'
+          - missing
+        default: 'off'
+      max_spend:
+        description: 'Euros this run may spend at most.'
+        type: string
+        default: '6'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  prices:
+    if: github.event_name != 'schedule' || vars.PEPESTO_PRICES == 'on'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      MODE: ${{ github.event.inputs.mode || 'live' }}
+      LIMIT: ${{ github.event.inputs.limit || '0' }}
+      SEARCHES: ${{ github.event.inputs.searches || (github.event.schedule == '47 5 1 * *' && 'missing') || 'off' }}
+      MAX_SEARCHES: ${{ (github.event.schedule == '47 5 1 * *' && '460') || '100' }}
+      MAX_SPEND: ${{ github.event.inputs.max_spend || (github.event.schedule == '47 5 1 * *' && '30') || vars.PEPESTO_MAX_SPEND || '3' }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the matching rules still fit the site
+        run: |
+          python pipeline/update_prices.py --check-config
+          cp prices.json "$RUNNER_TEMP/base-prices.json"
+
+      - name: Prices from Pepesto
+        id: pepesto
+        continue-on-error: true
+        env:
+          PEPESTO_API_KEY: ${{ secrets.PEPESTO_API_KEY }}
+        run: |
+          python pipeline/pepesto_prices.py --mode "$MODE" --limit "$LIMIT" --searches "$SEARCHES" --max-searches "$MAX_SEARCHES" --max-spend "$MAX_SPEND"
+          cat pipeline/pepesto-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the report (raw Pepesto answers are kept 3 days only, as Pepesto's terms require)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pepesto-report
+          path: |
+            pipeline/pepesto-report.md
+            pipeline/pepesto-raw/
+          retention-days: 3
+          if-no-files-found: ignore
+
+      - name: Save the results (live runs only)
+        if: env.MODE == 'live'
+        run: |
+          set -e
+          git config user.name "fairbasket-bot"
+          git config user.email "fairbasket-bot@users.noreply.github.com"
+          mkdir -p "$RUNNER_TEMP/out"
+          for f in prices.json pipeline/product-map.json pipeline/pepesto-report.md; do if [ -f "$f" ]; then cp "$f" "$RUNNER_TEMP/out/$(basename "$f")"; fi; done
+          for attempt in 1 2 3; do
+            # start from the newest copy on GitHub, so prices saved meanwhile (price editor, other robots) are kept
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            if [ "${{ steps.pepesto.outcome }}" = "success" ]; then
+              python pipeline/price_sources.py merge prices.json "$RUNNER_TEMP/out/prices.json" "$RUNNER_TEMP/base-prices.json" tesco,sainsburys,asda,morrisons,waitrose
+              for f in product-map.json pepesto-report.md; do
+                if [ -f "$RUNNER_TEMP/out/$f" ]; then cp "$RUNNER_TEMP/out/$f" "pipeline/$f"; fi
+              done
+            fi
+            # whatever happened above: Pepesto prices older than 3 days come off the site
+            python pipeline/price_sources.py expire prices.json
+            for f in prices.json pipeline/product-map.json pipeline/pepesto-report.md; do if [ -f "$f" ]; then git add "$f"; fi; done
+            if git diff --cached --quiet; then echo "Nothing changed, nothing to save."; exit 0; fi
+            git commit -q -m "Update prices from Pepesto ($(date -u +%F))"
+            if git push -q origin HEAD:main; then echo "Saved."; exit 0; fi
+            echo "GitHub changed meanwhile, trying again ($attempt)."; sleep 10
+          done
+          exit 1
+
+      - name: Ask GitHub Pages to rebuild the site
+        if: success() && env.MODE == 'live'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "/repos/${{ github.repository }}/pages/builds" || echo "Pages rebuilds by itself after the push."
+
+      - name: Fail the run if Pepesto failed (so you get an email)
+        if: steps.pepesto.outcome == 'failure'
+        run: exit 1
