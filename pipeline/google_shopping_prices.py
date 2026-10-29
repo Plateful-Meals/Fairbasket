@@ -409,6 +409,9 @@ def main():
     new = json.load(open(out_prices, encoding='utf-8'))
     held = PS.guard(old, new, shops, today, names)
     PS.keep_recent_packs(old, new, shops, today)
+    PS.tag_source(new, old, shops, today, 'google')
+    held += PS.respect_priority(old, new, shops, today, names)
+    PS.expire(new, today)
     if a.mode == 'live':
         PS.finish(U, cat_all, a.prices, new)
         memory.save()
