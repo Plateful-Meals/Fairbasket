@@ -880,6 +880,17 @@ body[data-view="privacy"] .pf-home-logo,body[data-view="terms"] .pf-home-logo{he
 .foot-nav a{display:inline-flex;align-items:center;min-height:40px}
 .demo-note .foot-priv{margin:0 0 6px}
 .demo-note .made-by{opacity:1;color:var(--muted)}
+.aw{margin:14px 0 18px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card,#fff)}
+.aw h2{margin:0 0 4px;font-size:1.25rem}
+.aw-row{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0;align-items:flex-end}
+.aw-row .field{min-width:120px}
+.aw select{min-height:44px;padding:0 10px;font:inherit}
+.aw-opts label{display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.aw-opts input{width:20px;height:20px}
+.aw-res{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--soft,#eef3ee)}
+.aw-res p{margin:4px 0}
+.aw-tot{font-size:1.1rem}
+
 .foot-line .linkbtn{display:inline-flex;align-items:center;min-height:32px}
 .l-basics input{width:24px;height:24px;margin-top:0}
 #app:focus{outline:none}
@@ -10700,6 +10711,106 @@ function recipeOptions(){
 }
 /* v53: a recipe's price for a given number of servings (the planner gives each meal its own) */
 function planPrice(m, serves){ const keep = state.serves; state.serves = serves; try { return mealBest(m, 99); } finally { state.serves = keep; } }
+/* ---------- v60: Plan my week for me ----------
+   Picks the dinners for the week that cost least when the shopping is bought together (a pack of mince can serve two meals),
+   keeping some variety, then puts them on the planner. It uses the same prices, shops and diet settings as the rest of the site. */
+const PF_AW = {n:5, people:2, budget:35, veg:false, quick:false, last:null, undo:null, msg:''};
+try { const v = JSON.parse(localStorage.getItem('pf-aw') || 'null'); if (v){ if (v.n >= 3 && v.n <= 7) PF_AW.n = v.n; if (v.people >= 1 && v.people <= 6) PF_AW.people = v.people; if (v.budget >= 5 && v.budget <= 1000) PF_AW.budget = v.budget; PF_AW.veg = !!v.veg; PF_AW.quick = !!v.quick; } } catch (e) {}
+function pfAwRows(ms, people){
+  const by = {}, rows = [];
+  ms.forEach(m => {
+    const scale = people / m.serves;
+    m.items.forEach(([pid, q]) => {
+      const fin = applyDiets(pid); if (!P[fin]) return;
+      const tot = (P[fin].u === P[pid].u ? q : defaultQty(fin)) * scale;
+      let r = by[fin]; if (!r){ r = by[fin] = {pid:fin, base:pid, tot:0}; rows.push(r); }
+      r.tot += tot;
+    });
+  });
+  return rows.filter(r => !state.have.has(r.pid));
+}
+/* the cost of buying these meals together, each item at its cheapest shop (a quick measure used while searching) */
+function pfAwCost(ms, people){
+  const rows = pfAwRows(ms, people); if (!rows.length) return 0;
+  const R = compute(rows); if (!R.rows.length || !R.stores.length) return Infinity;
+  let t = 0;
+  for (const r of R.rows){ let c = Infinity; for (const st of R.stores){ const x = R.cell[r.pid][st.id]; if (x && x.cost < c) c = x.cost; } if (c === Infinity) return Infinity; t += c; }
+  return t;
+}
+function pfAwPool(o){
+  return MEALS.filter(m => !m.custom && mealIsType(m, 'dinner') && canCook(m) && goalFits(m)
+    && (!o.quick || (COOK[m.id] && COOK[m.id].t <= 30))
+    && (!o.veg || !m.items.some(([pid]) => P[pid] && (P[pid].c === 'meat' || P[pid].c === 'fish'))));
+}
+function pfAwMain(m){ const it = m.items.find(([pid]) => P[pid] && (P[pid].c === 'meat' || P[pid].c === 'fish')); return it ? it[0] : 'veg'; }
+function pfAwPlan(o){
+  const pool = pfAwPool(o), n = Math.min(o.n, pool.length); if (n < 1) return null;
+  const capOf = k => (k === 'veg' && o.veg) ? n : 2;
+  const okAdd = (set, m, skip) => { const k = pfAwMain(m); return set.filter((x, i) => i !== skip && pfAwMain(x) === k).length < capOf(k); };
+  const cost = set => pfAwCost(set, o.people);
+  let chosen = [];
+  while (chosen.length < n){
+    let best = null, bc = Infinity;
+    for (const m of pool){ if (chosen.includes(m) || !okAdd(chosen, m, -1)) continue; const c = cost(chosen.concat(m)); if (c < bc - 1e-9){ bc = c; best = m; } }
+    if (!best) break; chosen.push(best);
+  }
+  if (!chosen.length) return null;
+  let cur = cost(chosen);
+  if (cur === Infinity) return null;
+  for (let pass = 0; pass < 2; pass++){
+    let improved = false;
+    for (let i = 0; i < chosen.length; i++){
+      for (const m of pool){
+        if (chosen.includes(m) || !okAdd(chosen, m, i)) continue;
+        const t = chosen.slice(); t[i] = m; const c = cost(t);
+        if (c < cur - 0.005){ chosen = t; cur = c; improved = true; }
+      }
+    }
+    if (!improved) break;
+  }
+  const R = compute(pfAwRows(chosen, o.people)), best = pfSmartBest(R); if (!best) return null;
+  const complete = R.totals.filter(x => !x.missing.length).sort((x, y) => x.total - y.total), base = pfBaseline(complete);
+  const checked = best.picks.filter(p => allChecked(p.sol)).length;
+  return {meals:chosen, total:best.total, shops:groupPicks(best.picks).map(g => g.s.name), dear:base ? base.total : null, dearName:base ? base.name : '', checked, of:best.picks.length, people:o.people, budget:o.budget};
+}
+const PF_AW_DAYS = {1:[0], 2:[0, 3], 3:[0, 2, 4], 4:[0, 1, 3, 5], 5:[0, 1, 2, 3, 4], 6:[0, 1, 2, 3, 4, 5], 7:[0, 1, 2, 3, 4, 5, 6]};
+function pfAwRun(){
+  const num = (id, d) => { const el = document.getElementById(id); return el ? Number(String(el.value).replace(/[^0-9.]/g, '')) || d : d; };
+  const o = {n:Math.min(7, Math.max(3, Math.round(num('aw-n', PF_AW.n)))), people:Math.min(6, Math.max(1, Math.round(num('aw-people', PF_AW.people)))),
+    budget:Math.min(BUDGET.MAX, Math.max(5, num('aw-budget', PF_AW.budget))), veg:!!(document.getElementById('aw-veg') || {}).checked, quick:!!(document.getElementById('aw-quick') || {}).checked};
+  Object.assign(PF_AW, o);
+  try { localStorage.setItem('pf-aw', JSON.stringify({n:o.n, people:o.people, budget:o.budget, veg:o.veg, quick:o.quick})); } catch (e) {}
+  const plan = pfAwPlan(o);
+  if (!plan){ PF_AW.last = null; PF_AW.msg = 'We could not find a week that fits those choices. Try fewer dinners, or untick a filter.'; return false; }
+  PF_AW.undo = JSON.parse(JSON.stringify(LIFE.plan));
+  LIFE.plan = DAYS.map(() => []);
+  const days = PF_AW_DAYS[Math.min(7, plan.meals.length)] || [0, 1, 2, 3, 4];
+  plan.meals.forEach((m, i) => LIFE.plan[days[i]].push({id:m.id, serves:o.people}));
+  lifeSave();
+  state.week = r2(o.budget); state.weekText = state.week.toFixed(2); save();
+  PF_AW.last = plan; PF_AW.msg = '';
+  return true;
+}
+function autoWeekHTML(){
+  const o = PF_AW, p = o.last, opt = (a, v, f) => a.map(x => `<option value="${x}"${x === v ? ' selected' : ''}>${f ? f(x) : x}</option>`).join('');
+  let res = '';
+  if (p){
+    const diff = r2(p.budget - p.total), sv = p.dear != null ? r2(p.dear - p.total) : 0;
+    res = `<div class="aw-res" id="aw-res" role="status"><p class="aw-tot"><strong>${gbp(p.total)}</strong> for ${plural(p.meals.length, 'dinner', 'dinners')} for ${plural(p.people, 'person', 'people')}, bought together at ${esc(shopsText(p.shops))}.</p>
+      <p>${diff >= 0 ? `That is ${gbp(diff)} under your budget of ${gbp(p.budget)}.` : `That is ${gbp(-diff)} over your budget of ${gbp(p.budget)}. It is the cheapest week we could find with these choices.`}${sv >= .5 ? ` It is ${gbp(sv)} less than buying the same week at ${esc(p.dearName.toLowerCase())}.` : ''}</p>
+      <p class="hint">${p.checked === p.of ? 'Every price behind this week was checked on a shop website.' : `${p.checked} of the ${p.of} items behind this week had prices checked on a shop website. The rest are estimates, so treat the total as a guide.`}</p></div>`;
+  }
+  return `<section class="aw" id="aw" aria-labelledby="aw-h"><h2 id="aw-h">Plan my week for me</h2>
+    <p class="hint">Tell us your budget and we choose dinners that cost least when you buy them together. It replaces the week below, and you can undo it.</p>
+    <div class="aw-row">
+      <div class="field"><label class="field-label" for="aw-budget">Budget for the week</label><div class="bg-money"><span class="bg-pound" aria-hidden="true">£</span><input id="aw-budget" inputmode="decimal" autocomplete="off" maxlength="7" value="${esc(String(o.budget))}"></div></div>
+      <div class="field"><label class="field-label" for="aw-people">People</label><select id="aw-people">${opt([1, 2, 3, 4, 5, 6], o.people)}</select></div>
+      <div class="field"><label class="field-label" for="aw-n">Dinners</label><select id="aw-n">${opt([3, 4, 5, 6, 7], o.n)}</select></div>
+    </div>
+    <div class="aw-row aw-opts"><label><input type="checkbox" id="aw-veg"${o.veg ? ' checked' : ''}> Vegetarian only</label><label><input type="checkbox" id="aw-quick"${o.quick ? ' checked' : ''}> 30 minutes or less</label></div>
+    <div class="life-tools"><button type="button" class="btn" id="aw-go" data-act="autoweek">Plan my week</button>${o.undo ? '<button type="button" class="btn-ghost" id="aw-undo" data-act="autoweekundo">Undo</button>' : ''}</div>
+    ${o.msg ? `<p class="err" id="aw-msg" role="alert">${esc(o.msg)}</p>` : ''}${res}</section>`;
+}
 function planHTML(){
   const t = todayIdx(), opts = recipeOptions(), count = LIFE.plan.reduce((a, d) => a + d.length, 0);
   const wk = {tot:0, dear:0, n:0};
@@ -10729,6 +10840,7 @@ function planHTML(){
   return `<div class="wrap life plan">
     <h1 id="plan-h1">Meal planner</h1>
     <p class="lede">Put recipes against the days of the week, each with its own number of servings. When the week looks right, send it all to My shop to price it.</p>
+    ${autoWeekHTML()}
     <div class="life-tools"><button type="button" class="btn" id="plan-shop" data-act="planshop"${count ? '' : ' disabled'}>Add the week to my shop</button>${count ? '<button type="button" class="btn-ghost" id="plan-clear" data-act="planclear">Clear the week</button>' : ''}<span class="hint" id="plan-count">${count ? plural(count, 'meal', 'meals') + ' planned' : 'Nothing planned yet'}</span></div>
     ${sumHTML}
     <ol class="days">${daysHTML}</ol>
@@ -10842,6 +10954,15 @@ document.addEventListener('click', e => {
       LIFE.plan[day].splice(i, 1); lifeSave(); say(m ? `${m.n} moved to Cooked before.` : 'Taken off.'); render(); focusSoon('pa-' + day); break;
     }
     case 'planclear': LIFE.plan = DAYS.map(() => []); lifeSave(); say('The week is clear.'); render(); focusSoon('pa-0'); break;
+    case 'autoweek': {
+      const ok = pfAwRun(); render();
+      if (ok) say(`Planned ${plural(PF_AW.last.meals.length, 'dinner', 'dinners')} for ${gbp(PF_AW.last.total)}.`); else say(PF_AW.msg);
+      focusSoon(ok ? 'aw-res' : 'aw-go'); break;
+    }
+    case 'autoweekundo': {
+      if (PF_AW.undo){ LIFE.plan = PF_AW.undo; PF_AW.undo = null; PF_AW.last = null; lifeSave(); say('Your earlier week is back.'); render(); focusSoon('aw-go'); }
+      break;
+    }
     case 'planshop': {
       const want = {}; LIFE.plan.forEach(d => d.forEach(x => { if (mealById(x.id)) want[x.id] = Math.min(12, (want[x.id] || 0) + x.serves); }));
       let added = 0, skipped = 0;
