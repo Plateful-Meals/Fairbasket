@@ -2428,7 +2428,7 @@ body[data-view="meal"] .pf-home-logo,body[data-view="basket"] .pf-home-logo,body
   <nav class="foot-nav" aria-label="About this site"><a href="#about" id="foot-about-page" data-act="page" data-p="about">About Fairbasket</a><a href="#privacy" id="foot-privacy" data-act="page" data-p="privacy">Privacy</a><a href="#terms" id="foot-terms" data-act="page" data-p="terms">Terms of use</a><a href="login.html?view=login" id="foot-acct" hidden>Log in</a></nav>
   <p class="foot-priv">No adverts and no tracking. Your choices are saved in this browser. An account is optional and only keeps your first name and email.</p>
   <p class="credits">Store locations: Geolytix Retail Points, June 2026, open data. Contains public sector information licensed under the Open Government Licence v3.0. Contains Ordnance Survey data © Crown copyright and database right, Royal Mail data © Royal Mail copyright and database right, and National Statistics data © Crown copyright and database right. Postcode areas: Office for National Statistics data, Open Government Licence v3.0, and GeoNames, CC BY 4.0. Maps: Google Maps. Typeface: Archivo, SIL Open Font Licence.</p>
-  <p class="made-by">© <span id="foot-year">2026</span> Fairbasket. Made by Noah.</p>
+  <p class="made-by">© <span id="foot-year">2026</span> Fairbasket. Made by Noah. Contact: <a href="mailto:contact@fairbasket.co.uk">contact@fairbasket.co.uk</a></p>
 </footer>
 
 <style id="pf-v53">
@@ -9523,7 +9523,7 @@ function listAnd(a){ return a.length < 2 ? a.join('') : a.slice(0, -1).join(', '
 
 /* ---- Site standards (v30): Privacy and Terms pages, "delete everything saved", page titles, skip link ---- */
 const PF_BUILD = 'site';      /* 'preview' = the claude.ai copy, 'site' = the GitHub Pages site, 'file' = the downloaded file */
-const PF_UPDATED = '22 October 2026';
+const PF_UPDATED = '19 November 2026';
 /* everything this page ever keeps in the browser's storage */
 const PF_KEYS = ['plateful-basket', 'bristol-basket', 'plateful-mylist', 'plateful-leftovers', 'plateful-recipes', 'plateful-saved', 'plateful-ticks', 'plateful-edits', 'plateful-life'];
 /* The feedback form's link. Empty = the feedback section at the bottom of the page stays hidden. */
@@ -9820,7 +9820,7 @@ function privacyHTML(){
       <p>UK data protection law lets you see, correct and delete personal information that an organisation holds about you. Fairbasket holds none unless you make an account, and then it holds only the first name and email address described under Accounts, which you can delete yourself on the account page. Everything else described on this page stays on your own device, where you can delete it with the button above or by clearing this site's data in your browser settings. If you think any website is misusing your information, you can complain to the ${extLink('https://ico.org.uk/make-a-complaint/', "Information Commissioner's Office")}.</p>
 
       <h2>Who runs Fairbasket</h2>
-      <p>Fairbasket is a personal project made by Noah. It is not a business, it sells nothing and it carries no adverts. The ${pageLink('terms', 'terms of use')} explain what the site does and does not promise.</p>
+      <p>Fairbasket is a personal project made by Noah. It is not a business, it sells nothing and it carries no adverts. The ${pageLink('terms', 'terms of use')} explain what the site does and does not promise. To ask about your information or to report a problem, email <a href="mailto:contact@fairbasket.co.uk">contact@fairbasket.co.uk</a>.</p>
 
       <p class="legal-date">If Fairbasket ever starts to collect anything, this page will say so first. Last updated ${PF_UPDATED}.</p>
     </div>
