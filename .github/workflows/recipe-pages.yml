@@ -1,0 +1,46 @@
+# Keeps the recipe pages (recipes/*.html) and sitemap.xml in step with index.html.
+# It runs whenever index.html or the generator changes, and you can also run it by hand from the Actions tab.
+# It only changes the recipe pages and the sitemap, never the shop prices.
+name: Recipe pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - tools/make-recipe-pages.js
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recipe-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Work out whether the home page itself changed
+        run: |
+          if git diff --quiet HEAD~1 HEAD -- index.html 2>/dev/null; then echo "HOME_CHANGED=" >> "$GITHUB_ENV"; else echo "HOME_CHANGED=1" >> "$GITHUB_ENV"; fi
+      - name: Build the recipe pages and sitemap
+        run: node tools/make-recipe-pages.js
+      - name: Save any changes
+        run: |
+          if [ -n "$(git status --porcelain recipes sitemap.xml)" ]; then
+            git config user.name "fairbasket-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add recipes sitemap.xml
+            git commit -m "Update recipe pages and sitemap"
+            git push
+          else
+            echo "Nothing to change."
+          fi
